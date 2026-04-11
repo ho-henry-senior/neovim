@@ -1,8 +1,4 @@
----@brief
----
---- https://github.com/microsoft/pyright
----
---- `pyright`, a static type checker and language server for python
+-- Install with:
 
 local function set_python_path(path)
 	local clients = vim.lsp.get_clients({

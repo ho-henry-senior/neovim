@@ -1,5 +1,6 @@
+-- Install with: brew install marksman
 return {
-  cmd = { "marksman", "server" },
-  filetypes = { "markdown" },
-  root_markers = { ".git" },
+	cmd = { "marksman", "server" },
+	filetypes = { "markdown" },
+	root_markers = { ".git" },
 }

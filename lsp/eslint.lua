@@ -1,3 +1,5 @@
+-- Install with: npm install -g eslint
+
 local lsp = vim.lsp
 
 -- ESLint flat config patterns (ESLint 9+)

@@ -1,3 +1,4 @@
+-- Install with: brew install terraform-ls
 ---@type vim.lsp.Config
 return {
 	cmd = { "terraform-ls", "serve" },

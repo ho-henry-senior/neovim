@@ -1,3 +1,4 @@
+-- Insall with: brew install harper-ls
 return {
 	cmd = { "harper-ls", "--stdio" },
 	filetypes = { "markdown", "text", "tex", "typst" },
