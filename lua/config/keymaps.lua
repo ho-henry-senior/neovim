@@ -179,3 +179,9 @@ map("n", "<leader>pd", function()
 		end
 	end)
 end, { desc = "Delete Plugin" })
+
+-- Toggle diagnostics
+vim.keymap.set("n", "<leader>uv", function()
+	local vt = vim.diagnostic.config().virtual_text
+	vim.diagnostic.config({ virtual_text = not vt })
+end, { desc = "Toggle LSP Text" })
