@@ -21,6 +21,10 @@
       "rev": "07aa57148ac28986bab9f55e87ee3d929e2726b1",
       "src": "https://github.com/zbirenbaum/copilot.lua"
     },
+    "dotenv.nvim": {
+      "rev": "7d516e9293c6e3ac21830fb10a4e8674c02747c6",
+      "src": "https://github.com/ellisonleao/dotenv.nvim"
+    },
     "gitsigns.nvim": {
       "rev": "0f00d07c2c3106ba6abd594ac1c17f211141b7b5",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
@@ -36,6 +40,18 @@
     "markdown-preview.nvim": {
       "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
       "src": "https://github.com/iamcco/markdown-preview.nvim"
+    },
+    "neotest": {
+      "rev": "fd0b7986dd0ae04e38ec7dc0c78a432e3820839c",
+      "src": "https://github.com/nvim-neotest/neotest"
+    },
+    "neotest-jest": {
+      "rev": "0e7979d51301dfae5ef839d771bd28cf593fde3f",
+      "src": "https://github.com/nvim-neotest/neotest-jest"
+    },
+    "neotest-python": {
+      "rev": "e6df4f1892f6137f58135917db24d1655937d831",
+      "src": "https://github.com/nvim-neotest/neotest-python"
     },
     "nvim-cmp": {
       "rev": "a1d504892f2bc56c2e79b65c6faded2fd21f3eca",

@@ -20,7 +20,11 @@ opt.ignorecase = true -- Case insensitive search
 opt.smartcase = true -- Case sensitive if uppercase in search
 opt.hlsearch = false -- Don't highlight search results
 opt.incsearch = true -- Show matches as you type
-vim.opt.guicursor = "a:blinkon250-blinkoff250" -- Cursor blinking
+vim.opt.guicursor = table.concat({ -- Blinking cursor definitions for different modes.
+	"n-v-c:block-blinkon250-blinkoff250",
+	"i-ci:ver25-blinkon250-blinkoff250",
+	"r-cr:hor20-blinkon250-blinkoff250",
+}, ",")
 -- Visual settings
 opt.termguicolors = true -- Enable 24-bit colors
 vim.cmd.colorscheme("catppuccin")
