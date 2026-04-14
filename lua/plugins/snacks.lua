@@ -45,7 +45,7 @@ Snacks.setup({
 	statuscolumn = { enabled = true }, -- Enhances the status column (the area to the left of the line numbers) with additional features like diagnostics, git signs, and more.
 	terminal = { enabled = true }, -- Provides a built-in terminal emulator with features like floating windows, customizable keybindings, and integration with the rest of the Snacks ecosystem.
 	toggle = { enabled = true }, -- Provides a convenient way to toggle various editor features on and off with customizable keybindings.
-	words = { enabled = false }, -- Provides enhanced navigation for jumping between occurrences of the word under the cursor, with support for counting and direction.
+	words = { enabled = true }, -- Provides enhanced navigation for jumping between occurrences of the word under the cursor, with support for counting and direction.
 	zen = { enabled = true }, -- Provides a distraction-free writing mode that centers the text and dims the surroundings, with optional features like a zoomed-in view and customizable keybindings.
 
 	picker = { -- Provides a powerful and extensible interface for creating various pickers (e.g., file search, git status, diagnostics) with support for custom sources, keybindings, and integration with the rest of the Snacks ecosystem.
@@ -59,7 +59,6 @@ Snacks.setup({
 							["<S-h>"] = "toggle_hidden",
 							["<S-i>"] = "toggle_ignored",
 							["<S-f>"] = "toggle_follow",
-							["<C-y>"] = { "yazi_copy_relative_path", mode = { "n", "i" } },
 						},
 					},
 				},
@@ -132,7 +131,7 @@ Snacks.setup({
 				git_untracked = true, -- Show untracked files in git status
 				jump = { close = true }, -- Auto-close explorer after jumping to a file
 				tree = true, -- Show files in a tree structure rather than a flat list
-				watch = true,
+				watch = true, -- Automatically update explorer when files change
 				exclude = {
 					".yarn/cache/**",
 					".yarn/install/**",
@@ -278,8 +277,8 @@ local   keymaps = {
     { "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
     { "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
     { "<c-_>",      function() Snacks.terminal() end, desc = "which_key_ignore" },
-    { "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
+    { "]r",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n"} },
+    { "[r",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n"} },
 }
 -- stylua: ignore end
 for _, map in ipairs(keymaps) do

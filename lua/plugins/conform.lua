@@ -1,10 +1,10 @@
+-- Install prettier: npm install -g prettier
 vim.pack.add({ "https://github.com/stevearc/conform.nvim" })
 
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
 		python = { "ruff_format", "black", stop_after_first = true },
-
 		json = { "prettier" },
 		jsonc = { "prettier" },
 		javascript = { "prettier" },
@@ -18,14 +18,14 @@ require("conform").setup({
 		yaml = { "prettier" },
 		markdown = { "prettier" },
 		["markdown.mdx"] = { "prettier" },
-    terraform = { "terraform_fmt" },
+		terraform = { "terraform_fmt" },
 		graphql = { "prettier" },
 		xml = { "prettier" },
 	},
 
 	formatters = {
 		prettier = {
----@diagnostic disable-next-line: unused-local
+			---@diagnostic disable-next-line: unused-local
 			args = function(_self, ctx)
 				local search_dir = ctx.dirname or vim.fn.getcwd()
 				local config_files = {
