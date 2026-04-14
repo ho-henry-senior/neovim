@@ -22,10 +22,6 @@ wk.add({
 	{ "<leader>s", group = "search" },
 	{ "<leader>u", group = "ui" },
 	{ "<leader>x", group = "diagnostics/quickfix" },
-	{ "[", group = "prev" },
-	{ "]", group = "next" },
-	{ "g", group = "goto" },
-	{ "z", group = "fold" },
 })
 
 -- dynamic groups
