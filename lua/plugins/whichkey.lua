@@ -25,7 +25,6 @@ wk.add({
 	{ "[", group = "prev" },
 	{ "]", group = "next" },
 	{ "g", group = "goto" },
-	{ "gs", group = "surround" },
 	{ "z", group = "fold" },
 })
 
