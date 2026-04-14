@@ -19,7 +19,7 @@ wk.add({
 	{ "<leader>fC", group = "copy path" },
 	{ "<leader>g", group = "git" },
 	{ "<leader>gh", group = "hunks" },
-	{ "<leader>q", group = "quit/session" },
+	{ "<leader>q", group = "Session" },
 	{ "<leader>s", group = "search" },
 	{ "<leader>u", group = "ui" },
 	{ "<leader>x", group = "diagnostics/quickfix" },

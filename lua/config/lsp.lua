@@ -82,18 +82,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 vim.lsp.enable({
-	"ts_ls", -- JS / TS
-	-- "vtsls",        -- JS / TS
-	"bashls", -- Bash
-	"pyright", -- Python
-	"terraformls", -- Terraform
-	"marksman", -- Markdown
-	"lua_ls", -- Lua
-	"jsonls", -- JSON
-	"yamlls", -- YAML
-	"html", -- HTML
-	"cssls", -- CSS
+	"bash_ls", -- Bash
+	"css_ls", -- CSS
 	"harper_ls", -- Spell checking
+	"html_ls", -- HTML
+	"json_ls", -- JSON
+	"lua_ls", -- Lua
+	"marksman_ls", -- Markdown
+	"pyright_ls", -- Python
+	"terraform_ls", -- Terraform
+	"ts_ls", -- JS / TS
+	"yaml_ls", -- YAML
 })
 
 -- Load Lsp on-demand, e.g: eslint is disable by default
