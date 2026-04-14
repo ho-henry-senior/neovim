@@ -13,7 +13,6 @@ wk.add({
 	{ "<leader><tab>", group = "tabs" },
 	{ "<leader>c", group = "code" },
 	{ "<leader>d", group = "debug" },
-	{ "<leader>D", group = "Diffview" },
 	{ "<leader>dp", group = "profiler" },
 	{ "<leader>f", group = "file/find" },
 	{ "<leader>fC", group = "copy path" },
