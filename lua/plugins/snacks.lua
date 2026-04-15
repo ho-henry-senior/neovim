@@ -176,8 +176,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			Snacks.toggle.animate():map("<leader>ua")
 			Snacks.toggle.indent():map("<leader>ug")
 			Snacks.toggle.scroll():map("<leader>uS")
-			Snacks.toggle.profiler():map("<leader>dpp")
-			Snacks.toggle.profiler_highlights():map("<leader>dph")
+			-- Snacks.toggle.profiler():map("<leader>dpp")
+			-- Snacks.toggle.profiler_highlights():map("<leader>dph")
 		end)
 	end,
 })
