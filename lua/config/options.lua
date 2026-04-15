@@ -102,8 +102,6 @@ if vim.fn.isdirectory(undodir) == 0 then
 	vim.fn.mkdir(undodir, "p")
 end
 
-vim.g.autoformat = true
-vim.g.trouble_lualine = true
 opt.fillchars = {
 	foldopen = "",
 	foldclose = "",
