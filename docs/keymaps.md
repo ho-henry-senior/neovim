@@ -132,8 +132,8 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>z` | Zen mode |
 | `<leader>Z` | Zoom current window |
 | `<leader>ur` | Clear search highlight and refresh |
-| `<leader>ui` | Inspect cursor position highlight data |
-| `<leader>uI` | Inspect Treesitter tree |
+| `<leader>ci` | Inspect cursor position highlight data |
+| `<leader>cI` | Inspect Treesitter tree |
 
 ## Markdown and Writing
 

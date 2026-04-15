@@ -55,8 +55,8 @@ map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- highlights under cursor
-map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
-map("n", "<leader>uI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
+map("n", "<leader>ci", vim.show_pos, { desc = "Inspect Pos" })
+map("n", "<leader>cI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
 
 -- Undo tree
 local function open_undotree()
