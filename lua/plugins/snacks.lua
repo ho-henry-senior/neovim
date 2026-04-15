@@ -33,12 +33,10 @@ Snacks.setup({
 	dashboard = { enabled = false }, -- Provides a customizable dashboard that can be displayed on startup, with support for custom sections, shortcuts, and dynamic content.
 	dim = { enabled = false }, -- Keep inactive windows unstyled unless explicitly needed.
 	explorer = { enabled = true, replace_netrw = true }, -- Provides a built-in file explorer with features like file operations, git integration, diagnostics, and customizable views.
-	image = { enabled = true }, -- Provides support for displaying images directly in the editor, with features like automatic resizing, format support, and integration with the rest of the Snacks ecosystem.
 	indent = { enabled = true }, -- Provides enhanced indentation guides with support for different styles (e.g., lines, dots, trees) and customizable colors and behavior.
 	input = { enabled = true }, -- Provides a consistent and extensible interface for handling user input across various Snacks features, with support for customizable keybindings, input validation, and integration with the rest of the Snacks ecosystem.
 	layout = { enabled = true }, -- Provides a flexible and customizable layout system for arranging and resizing various Snacks UI components (e.g., pickers, explorers, terminals) with support for different screen sizes and orientations.
 	notifier = { enabled = true }, -- Provides a unified interface for displaying notifications, with support for different backends (e.g., native, telescope) and customizable formatting and behavior.
-	quickfile = { enabled = true }, -- Provides a convenient way to quickly create and switch between frequently used files (e.g., TODOs, notes, journal entries) with customizable templates and keybindings.
 	scope = { enabled = true }, -- Provides a way to define and manage custom scopes (e.g., project, git branch, filetype) that can be used to filter and organize various Snacks features like pickers and explorers.
 	scratch = { enabled = true }, -- Provides quick temporary scratch buffers for notes or other transient content.
 	scroll = { enabled = false }, -- Prefer stock scrolling behavior.
