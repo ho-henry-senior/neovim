@@ -1,5 +1,8 @@
 local M = {}
 
+-- Core Snacks feature policy lives here: which modules are enabled, which are
+-- intentionally disabled, and the heavier picker/explorer defaults that shape
+-- the overall workflow.
 M.options = {
 	animate = { enabled = false }, -- Keep visual behavior simpler and closer to stock Neovim.
 	bigfile = { -- Provides optimizations for handling large files by disabling expensive features like treesitter, LSP inlay hints, and diagnostics when a file exceeds a specified size threshold.

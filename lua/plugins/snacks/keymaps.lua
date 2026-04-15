@@ -1,5 +1,7 @@
 local M = {}
 
+-- Keep Snacks keymaps centralized so the plugin entrypoint stays small and the
+-- large picker/navigation surface can evolve without mixing into setup logic.
 local keymaps = {
 	{ "<leader><space>", function(Snacks) Snacks.picker.smart() end, desc = "Smart Find Files" },
 	{ "<leader>n", function(Snacks) Snacks.picker.notifications() end, desc = "Notification History" },
