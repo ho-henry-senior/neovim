@@ -40,7 +40,7 @@ Snacks.setup({
 	notifier = { enabled = true }, -- Provides a unified interface for displaying notifications, with support for different backends (e.g., native, telescope) and customizable formatting and behavior.
 	quickfile = { enabled = true }, -- Provides a convenient way to quickly create and switch between frequently used files (e.g., TODOs, notes, journal entries) with customizable templates and keybindings.
 	scope = { enabled = true }, -- Provides a way to define and manage custom scopes (e.g., project, git branch, filetype) that can be used to filter and organize various Snacks features like pickers and explorers.
-	scratch = { enabled = true }, -- Provides a quick and easy way to create and manage temporary scratch buffers for notes, code snippets, or any other transient content.
+	scratch = { enabled = true }, -- Provides quick temporary scratch buffers for notes or other transient content.
 	scroll = { enabled = false }, -- Prefer stock scrolling behavior.
 	statuscolumn = { enabled = true }, -- Enhances the status column (the area to the left of the line numbers) with additional features like diagnostics, git signs, and more.
 	terminal = { enabled = true }, -- Provides a built-in terminal emulator with features like floating windows, customizable keybindings, and integration with the rest of the Snacks ecosystem.

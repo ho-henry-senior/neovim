@@ -16,7 +16,6 @@ This is a fast, keyboard-first Neovim setup built around stock Neovim 0.12 featu
 - `lua/config`: core editor behavior such as options, keymaps, diagnostics, autocmds, sessions, and LSP wiring.
 - `lua/plugins`: plugin install and setup files, one file per feature area.
 - `lsp`: per-server native LSP configs.
-- `snippets`: custom snippets.
 - `nvim-pack-lock.json`: plugin lock file used by `vim.pack`.
 
 ## Core Behavior

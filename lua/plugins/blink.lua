@@ -23,7 +23,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				documentation = { auto_show = false },
 			},
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = { "lsp", "path", "buffer" },
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
 		})
