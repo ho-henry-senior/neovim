@@ -206,7 +206,7 @@ local renderOpts = {
 
 require("render-markdown").setup(renderOpts)
 
-vim.keymap.set("n", "<leader>um", function()
+vim.keymap.set("n", "<leader>mm", function()
 	local rm = require("render-markdown")
 	local enabled = require("render-markdown.state").enabled
 	if enabled then
@@ -217,7 +217,7 @@ vim.keymap.set("n", "<leader>um", function()
 end, { desc = "Toggle Render Markdown" })
 
 -- Markdown preview
-vim.keymap.set("n", "<leader>cp", function()
+vim.keymap.set("n", "<leader>mp", function()
 	vim.fn["mkdp#util#install"]()
 	vim.cmd("MarkdownPreviewToggle")
 end, { desc = "Markdown preview" })
