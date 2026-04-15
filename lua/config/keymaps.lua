@@ -108,8 +108,7 @@ end, { expr = true, noremap = true, silent = true, desc = "Paste without overwri
 -- Copy whole file content to clipboard with C-c
 map("n", "<C-c>", ":%y+<CR>", opts)
 
--- Visual --
--- Stay in visual mode
+-- Visual -- Stay in visual mode after indenting
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 

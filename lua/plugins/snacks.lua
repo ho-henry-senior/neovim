@@ -6,7 +6,7 @@ vim.pack.add({
 local Snacks = require("snacks")
 
 Snacks.setup({
-	animate = { enabled = true }, -- Provides smooth animations for various editor actions (e.g., opening/closing buffers, navigating, resizing windows) with customizable easing functions and durations.
+	animate = { enabled = false }, -- Keep visual behavior simpler and closer to stock Neovim.
 	bigfile = { -- Provides optimizations for handling large files by disabling expensive features like treesitter, LSP inlay hints, and diagnostics when a file exceeds a specified size threshold.
 		enabled = true,
 		size = 1.5 * 1024 * 1024, -- 1.5MB threshold
@@ -31,7 +31,7 @@ Snacks.setup({
 		end,
 	},
 	dashboard = { enabled = false }, -- Provides a customizable dashboard that can be displayed on startup, with support for custom sections, shortcuts, and dynamic content.
-	dim = { enabled = true }, -- Provides a way to dim inactive windows, buffers, or the entire editor background to help focus on the active content, with customizable dimming levels and exceptions.
+	dim = { enabled = false }, -- Keep inactive windows unstyled unless explicitly needed.
 	explorer = { enabled = true, replace_netrw = true }, -- Provides a built-in file explorer with features like file operations, git integration, diagnostics, and customizable views.
 	image = { enabled = true }, -- Provides support for displaying images directly in the editor, with features like automatic resizing, format support, and integration with the rest of the Snacks ecosystem.
 	indent = { enabled = true }, -- Provides enhanced indentation guides with support for different styles (e.g., lines, dots, trees) and customizable colors and behavior.
@@ -41,7 +41,7 @@ Snacks.setup({
 	quickfile = { enabled = true }, -- Provides a convenient way to quickly create and switch between frequently used files (e.g., TODOs, notes, journal entries) with customizable templates and keybindings.
 	scope = { enabled = true }, -- Provides a way to define and manage custom scopes (e.g., project, git branch, filetype) that can be used to filter and organize various Snacks features like pickers and explorers.
 	scratch = { enabled = true }, -- Provides a quick and easy way to create and manage temporary scratch buffers for notes, code snippets, or any other transient content.
-	scroll = { enabled = true }, -- Provides smooth scrolling with customizable easing functions, scroll offsets, and keybindings for various scroll actions.
+	scroll = { enabled = false }, -- Prefer stock scrolling behavior.
 	statuscolumn = { enabled = true }, -- Enhances the status column (the area to the left of the line numbers) with additional features like diagnostics, git signs, and more.
 	terminal = { enabled = true }, -- Provides a built-in terminal emulator with features like floating windows, customizable keybindings, and integration with the rest of the Snacks ecosystem.
 	toggle = { enabled = true }, -- Provides a convenient way to toggle various editor features on and off with customizable keybindings.
@@ -172,10 +172,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 				:map("<leader>uA")
 			Snacks.toggle.treesitter():map("<leader>uT") -- Toggle Treesitter highlight
 			Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
-			Snacks.toggle.dim():map("<leader>uD")
-			Snacks.toggle.animate():map("<leader>ua")
 			Snacks.toggle.indent():map("<leader>ug")
-			Snacks.toggle.scroll():map("<leader>uS")
 			-- Snacks.toggle.profiler():map("<leader>dpp")
 			-- Snacks.toggle.profiler_highlights():map("<leader>dph")
 		end)

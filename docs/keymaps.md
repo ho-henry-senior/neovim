@@ -128,10 +128,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>uA` | Toggle tabline |
 | `<leader>uT` | Toggle Treesitter highlighting |
 | `<leader>ub` | Toggle light/dark background |
-| `<leader>uD` | Toggle window dimming |
-| `<leader>ua` | Toggle animations |
 | `<leader>ug` | Toggle indent guides |
-| `<leader>uS` | Toggle smooth scrolling |
 | `<leader>uC` | Pick colorscheme |
 | `<leader>z` | Zen mode |
 | `<leader>Z` | Zoom current window |
