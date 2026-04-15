@@ -84,21 +84,6 @@ map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 -- ------------------------------------------------------------------------- }}}
 
--- Close all fold except the current one.
-map("n", "zv", "zMzvzz", {
-	desc = "Close all folds except the current one",
-})
-
--- Close current fold when open. Always open next fold.
-map("n", "zj", "zcjzOzz", {
-	desc = "Close current fold when open. Always open next fold.",
-})
-
--- Close current fold when open. Always open previous fold.
-map("n", "zk", "zckzOzz", {
-	desc = "Close current fold when open. Always open previous fold.",
-})
-
 -- Better paste
 -- remap "p" in visual mode to delete the highlighted text without overwriting your yanked/copied text, and then paste the content from the unnamed register.
 map("x", "p", function()
@@ -116,15 +101,6 @@ map("v", ">", ">gv", opts)
 map("n", "z0", "1z=", {
 	desc = "Fix word under cursor",
 })
-
--- auto close pairs
--- map("i", "'", "''<left>")
-map("i", "`", "``<left>")
-map("i", '"', '""<left>')
-map("i", "(", "()<left>")
-map("i", "[", "[]<left>")
-map("i", "{", "{}<left>")
--- map("i", "<", "<><left>")
 
 -- vim.pack keymaps
 map("n", "<leader>pu", "<cmd>lua vim.pack.update()<CR>")

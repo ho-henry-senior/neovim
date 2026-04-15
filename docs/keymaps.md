@@ -32,12 +32,9 @@ These are the mappings that are either outside the leader namespace or easy to f
 | Visual | `<A-j>` / `<A-k>` | Move selected lines down/up |
 | Normal | `<S-h>` / `<S-l>` | Previous / next buffer |
 | Normal / Visual | `j` / `k` | Move by display line when no count is given |
-| Normal | `zv` | Close all folds except the current one |
-| Normal | `zj` / `zk` | Move to next / previous fold and keep focus tight |
 | Normal | `z0` | Spell-fix word under cursor |
 | Visual | `p` | Paste without overwriting the unnamed register |
 | Normal | `<C-c>` | Copy entire file to system clipboard |
-| Insert | `` ` `` / `"` / `(` / `[` / `{` | Insert matching pair and place cursor inside |
 
 ## AI
 
