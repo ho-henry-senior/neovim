@@ -9,6 +9,14 @@ vim.pack.add({
 	},
 })
 
+-- vim.pack installs nvim-treesitter under an opt directory, but the query files
+-- live under its nested runtime/ subtree. Add that subtree so highlight queries
+-- like queries/python/highlights.scm are visible on runtimepath.
+local treesitter_runtime = vim.fn.stdpath("data") .. "/site/pack/core/opt/nvim-treesitter/runtime"
+if not vim.tbl_contains(vim.opt.runtimepath:get(), treesitter_runtime) then
+	vim.opt.runtimepath:append(treesitter_runtime)
+end
+
 require("nvim-treesitter").setup({})
 require("nvim-treesitter").install({
 	"bash",
