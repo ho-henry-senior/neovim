@@ -25,7 +25,32 @@ M.options = {
 			vim.b[ctx.buf].snacks_indent = false
 		end,
 	},
-	dashboard = { enabled = false }, -- Provides a customizable dashboard that can be displayed on startup, with support for custom sections, shortcuts, and dynamic content.
+	dashboard = {
+		enabled = true,
+		preset = {
+			header = [[
+{__     {__                   {__         {__                
+{__     {__                    {__       {__  {_             
+{__     {__   {__    {__ {__    {__     {__     {___ {__ {__
+{______ {__ {_   {__  {__  {__   {__   {__   {__ {__  {_  {__
+{__     {__{_____ {__ {__  {__    {__ {__    {__ {__  {_  {__
+{__     {__{_         {__  {__     {____     {__ {__  {_  {__
+{__     {__  {____   {___  {__      {__      {__{___  {_  {__]],
+			keys = {
+				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+				{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('grep')" },
+				{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('recent')" },
+				{ icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+			},
+		},
+		sections = {
+			{ section = "header" },
+			{ section = "keys", gap = 1, padding = 1 },
+			{ icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+			{ icon = " ", title = "Projects", section = "projects", indent = 2, padding = 1 },
+		},
+	}, -- Minimal dashboard that works with vim.pack and Snacks picker without lazy.nvim assumptions.
 	dim = { enabled = false }, -- Keep inactive windows unstyled unless explicitly needed.
 	explorer = { enabled = true, replace_netrw = true }, -- Provides a built-in file explorer with features like file operations, git integration, diagnostics, and customizable views.
 	indent = { enabled = true }, -- Provides enhanced indentation guides with support for different styles (e.g., lines, dots, trees) and customizable colors and behavior.
