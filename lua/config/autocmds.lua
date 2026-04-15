@@ -2,6 +2,10 @@ local function augroup(name)
 	return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
 end
 
+-- Autocmds are kept for editor lifecycle, buffer ergonomics, and a small number
+-- of explicit filetype adjustments. Avoid adding plugin-specific workflow here
+-- unless it genuinely needs event-driven behavior.
+
 -- Auto-reload externally modified files (debounced checktime)
 local _checktime_timer = nil
 vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
