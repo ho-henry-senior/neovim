@@ -32,7 +32,3 @@ These are the plugins currently loaded by `lua/plugins/init.lua`.
 
 - `MeanderingProgrammer/render-markdown.nvim`: rich inline rendering for headings, callouts, code blocks, checkboxes, tables, and links.
 - `iamcco/markdown-preview.nvim`: browser preview for Markdown.
-
-## Not Currently Enabled
-
-- `mfussenegger/nvim-dap` and related debugging setup are present in `lua/plugins/dap.lua`, but that file is currently commented out in `lua/plugins/init.lua`. The debug keymaps and UI are not active unless you enable that module.

@@ -1,7 +1,6 @@
 require("plugins.blink")
 require("plugins.conform")
 require("plugins.copilot")
--- require("plugins.dap")
 require("plugins.git")
 require("plugins.grug-far")
 require("plugins.lualine")
