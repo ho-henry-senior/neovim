@@ -12,6 +12,7 @@ wk.setup({
 -- groups
 wk.add({
 	{ "<leader><tab>", group = "tabs" },
+	{ "<leader>a", group = "ai" },
 	{ "<leader>b", group = "buffers" },
 	{ "<leader>c", group = "code" },
 	{ "<leader>d", group = "debug" },
