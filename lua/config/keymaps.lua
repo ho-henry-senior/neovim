@@ -107,7 +107,7 @@ map("v", "p", '"_dP', opts)
 map("n", "<C-c>", ":%y+<CR>", opts)
 
 -- Visual --
--- Stay in indent mode
+-- Stay in visual mode
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
