@@ -2,6 +2,8 @@
 
 ## Required Software
 
+These are the tools needed for the core config and the default validation flow.
+
 ### Homebrew Formulae
 
 - `neovim` `>= 0.12`
@@ -12,10 +14,7 @@
 - `node`
 - `python`
 - `stylua`
-- `lazygit`
 - `marksman`
-- `terraform-ls`
-- `harper-ls`
 
 ### npm Packages
 
@@ -26,8 +25,6 @@
 - `yaml-language-server`
 - `pyright`
 - `prettier`
-- `eslint`
-- `vscode-eslint-language-server`
 
 Example:
 
@@ -39,19 +36,40 @@ npm install -g \
   typescript-language-server \
   yaml-language-server \
   pyright \
-  prettier \
-  eslint \
-  vscode-eslint-language-server
+  prettier
 ```
+
+## Optional Software
+
+These unlock specific features but are not required for the config to load or for `just validate` to pass.
+
+### Homebrew Formulae
+
+- `lazygit`
+- `terraform-ls`
+- `harper-ls`
+- `terraform`
+
+### npm Packages
+
+- `eslint`
+- `vscode-eslint-language-server`
+- `black` or `ruff`
+
+## Verification
+
+- `just check`: load Neovim headlessly and fail if the config or plugins error.
+- `just fmt-check`: verify Lua formatting with `stylua --check`.
+- `just validate`: run both checks.
 
 ## Notes
 
 - `vscode-langservers-extracted` provides the CSS, HTML, and JSON LSP servers.
 - `prettier` is required for formatting JavaScript, TypeScript, JSON, CSS, HTML, Markdown, YAML, and related files.
-- Python formatting uses `ruff_format` or `black`, so at least one of those should exist in your environment.
+- Python formatting uses `ruff_format` or `black`, so at least one of those should exist if you want Python formatting.
 - Terraform formatting uses `terraform fmt`, so install `terraform` if you edit Terraform regularly.
 - A Nerd Font is recommended. The WezTerm example below uses `JetBrainsMono Nerd Font`.
-- GitHub Copilot access is required if you want inline suggestions and Copilot Chat.
+- GitHub Copilot access and authentication are required if you want inline suggestions and Copilot Chat.
 
 ## WezTerm
 
@@ -94,3 +112,14 @@ System clipboard sync is enabled via `unnamedplus` for local sessions. In SSH se
 ## Prettier
 
 Formatting prefers a project-local Prettier config if one exists. Otherwise it falls back to `~/.prettierrc`.
+
+## Failure Modes
+
+- Missing `ripgrep`: grep-based search and some picker workflows will degrade or fail.
+- Missing `fd`: file picking can fall back to slower behavior depending on source.
+- Missing `prettier`: JavaScript, TypeScript, JSON, HTML, CSS, Markdown, YAML, and similar formatting will not run.
+- Missing `stylua`: `just fmt`, `just fmt-check`, and Lua formatting support will fail.
+- Missing `lazygit`: `<leader>gg` will not work.
+- Missing `terraform` or `terraform-ls`: Terraform formatting or LSP support will be unavailable.
+- Missing `harper-ls`: prose and spell/style LSP checks for Markdown and text buffers will be unavailable.
+- Missing Copilot auth: AI mappings load, but Copilot suggestions and Copilot Chat will not be usable.

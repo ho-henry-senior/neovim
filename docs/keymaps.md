@@ -1,5 +1,7 @@
 # Keymaps
 
+This file focuses on custom mappings and high-value workflow shortcuts from this config, not every built-in Vim command.
+
 ## Discoverability
 
 - WhichKey covers most leader mappings.

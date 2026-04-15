@@ -35,13 +35,19 @@ This is a fast, keyboard-first Neovim setup built around stock Neovim 0.12 featu
 
 1. Clone this repo to `~/.config/nvim`.
 2. Install the required software from [docs/tooling.md](docs/tooling.md).
-3. Start Neovim.
-4. Run `<leader>pu` to update/install packages with `vim.pack.update()`.
-5. Authenticate Copilot with `<leader>aA` if you use it.
+3. Run `just validate` to verify Neovim and `stylua` are wired up correctly.
+4. Start Neovim.
+5. Run `<leader>pu` to update/install packages with `vim.pack.update()`.
+6. Authenticate Copilot with `<leader>aA` if you use it.
+
+Notes:
+
+- `vim.pack` installs the plugins declared in this repo.
+- External language servers, formatters, and CLI tools still need to be installed separately.
 
 ## Documentation
 
 - [docs/plugins.md](docs/plugins.md): plugin guide and what each plugin is for.
-- [docs/tooling.md](docs/tooling.md): required software, npm packages, WezTerm, clipboard, and formatter notes.
+- [docs/tooling.md](docs/tooling.md): required vs optional software, verification commands, WezTerm, clipboard, and formatter notes.
 - [docs/keymaps.md](docs/keymaps.md): shortcut reference, especially mappings that are easy to miss.
-- [docs/lsp.md](docs/lsp.md): configured language servers and on-demand LSP setup.
+- [docs/lsp.md](docs/lsp.md): configured language servers, install guidance, and on-demand LSP setup.
