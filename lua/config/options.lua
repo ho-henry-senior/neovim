@@ -27,7 +27,7 @@ vim.opt.guicursor = table.concat({ -- Blinking cursor definitions for different 
 }, ",")
 -- Visual settings
 opt.termguicolors = true -- Enable 24-bit colors
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("default")
 opt.signcolumn = "yes" -- Always show sign column
 opt.showmatch = true -- Highlight matching brackets
 opt.matchtime = 2 -- How long to show matching bracket
@@ -67,7 +67,7 @@ opt.autochdir = false -- Don't auto change directory
 opt.path:append("**") -- include subdirectories in search
 opt.selection = "exclusive" -- Selection behavior
 opt.mouse = "a" -- Enable mouse support
--- opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
 opt.modifiable = true -- Allow buffer modifications
 opt.encoding = "UTF-8" -- Set encoding
 

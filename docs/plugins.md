@@ -1,0 +1,38 @@
+# Plugin Guide
+
+These are the plugins currently loaded by `lua/plugins/init.lua`.
+
+## Editing and Completion
+
+- `saghen/blink.cmp`: completion UI and completion source integration. This is the main completion engine.
+- `stevearc/conform.nvim`: formatting runner. It chooses formatters by filetype and handles format-on-save.
+- `nvim-treesitter/nvim-treesitter`: Treesitter parser support for highlighting, folds, and structure-aware editing.
+- `nvim-treesitter/nvim-treesitter-textobjects`: textobjects and structural motions such as functions, classes, parameters, loops, and statements.
+
+## AI
+
+- `zbirenbaum/copilot.lua`: inline GitHub Copilot suggestions in insert mode.
+- `CopilotC-Nvim/CopilotChat.nvim`: chat and “explain this code” workflows on top of Copilot.
+- `nvim-lua/plenary.nvim`: utility dependency used by CopilotChat.
+
+## Navigation, Search, and UI
+
+- `folke/snacks.nvim`: the main UI/workflow plugin. It provides the picker, explorer, terminal, scratch buffers, notifications, Zen mode, toggles, dimming, smooth scrolling, big-file handling, and more.
+- `folke/which-key.nvim`: shows leader-key groupings and mapping hints.
+- `nvim-lualine/lualine.nvim`: statusline and tabline.
+- `nvim-tree/nvim-web-devicons`: file icons used by several UI plugins.
+
+## Git and Refactoring
+
+- `lewis6991/gitsigns.nvim`: inline git hunks, blame, staging/resetting hunks, and diff helpers.
+- `tduyng/vdiff.nvim`: side-by-side git diff and merge views.
+- `MagicDuck/grug-far.nvim`: search-and-replace UI for project-wide changes.
+
+## Writing and Markdown
+
+- `MeanderingProgrammer/render-markdown.nvim`: rich inline rendering for headings, callouts, code blocks, checkboxes, tables, and links.
+- `iamcco/markdown-preview.nvim`: browser preview for Markdown.
+
+## Not Currently Enabled
+
+- `mfussenegger/nvim-dap` and related debugging setup are present in `lua/plugins/dap.lua`, but that file is currently commented out in `lua/plugins/init.lua`. The debug keymaps and UI are not active unless you enable that module.
