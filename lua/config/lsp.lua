@@ -21,8 +21,6 @@ local default_keymaps = {
 		end,
 		desc = "LSP Fix All",
 	},
-	{ keys = "<leader>cr", func = vim.lsp.buf.rename, desc = "Code Rename" },
-	{ keys = "<leader>k", func = vim.lsp.buf.hover, desc = "Hover Documentation", has = "hoverProvider" },
 	{ keys = "K", func = vim.lsp.buf.hover, desc = "Hover (alt)", has = "hoverProvider" },
 	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto Definition", has = "definitionProvider" },
 }

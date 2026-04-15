@@ -5,35 +5,28 @@ vim.pack.add({
 local wk = require("which-key")
 
 wk.setup({
-	preset = "modern",
+	preset = "classic",
+	icons = { mappings = false },
 })
 
 -- groups
 wk.add({
 	{ "<leader><tab>", group = "tabs" },
+	{ "<leader>b", group = "buffers" },
 	{ "<leader>c", group = "code" },
 	{ "<leader>d", group = "debug" },
-	{ "<leader>dp", group = "profiler" },
-	{ "<leader>f", group = "file/find" },
+	{ "<leader>f", group = "files" },
 	{ "<leader>fC", group = "copy path" },
 	{ "<leader>g", group = "git" },
-	{ "<leader>gh", group = "hunks" },
-	{ "<leader>q", group = "Session" },
+	{ "<leader>gh", group = "git hunks" },
+	{ "<leader>p", group = "plugins" },
+	{ "<leader>q", group = "session" },
 	{ "<leader>s", group = "search" },
 	{ "<leader>u", group = "ui" },
-	{ "<leader>x", group = "diagnostics/quickfix" },
+	{ "<leader>x", group = "diagnostics" },
 })
 
--- dynamic groups
-wk.add({
-	{
-		"<leader>b",
-		group = "buffer",
-		expand = function()
-			return require("which-key.extras").expand.buf()
-		end,
-	},
-})
+-- dynamic group
 
 -- mappings
 wk.add({

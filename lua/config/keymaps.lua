@@ -1,17 +1,9 @@
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- Tab switching
-map("n", "<Tab>", ":bnext<CR>", { desc = "Next buffer" })
-map("n", "<S-Tab>", ":bprevious<CR>", { desc = "Previous buffer" })
-map("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-map("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
-
 -- Better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
-map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
-map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
 
 -- Go to different windows
 map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
@@ -26,22 +18,12 @@ map("n", "<C-S-Left>", "<cmd>vertical resize -5<CR>", opts)
 map("n", "<C-S-Right>", "<cmd>vertical resize +5<CR>", opts)
 
 -- Move Lines
-map("n", "<A-j>", "<cmd>execute 'move .+' . v:count1<cr>==", { desc = "Move Down" })
-map("n", "<A-k>", "<cmd>execute 'move .-' . (v:count1 + 1)<cr>==", { desc = "Move Up" })
-map("i", "<A-j>", "<esc><cmd>m .+1<cr>==gi", { desc = "Move Down" })
-map("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
-map("v", "<A-j>", ":<C-u>execute \"'<,'>move '>+\" . v:count1<cr>gv=gv", { desc = "Move Down" })
-map("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
-map("v", "J", ":move '>+1<CR>gv=gv", { desc = "Move Block Down" })
-map("v", "K", ":move '<-2<CR>gv=gv", { desc = "Move Block Up" })
+map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Down" })
+map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Up" })
 
 -- buffers
 map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "[b", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
-map("n", "]b", "<cmd>bnext<cr>", { desc = "Next Buffer" })
-map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
-map("n", "<leader>`", "<cmd>e #<cr>", { desc = "Switch to Other Buffer" })
 
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
@@ -65,27 +47,9 @@ map("i", ",", ",<c-g>u")
 map("i", ".", ".<c-g>u")
 map("i", ";", ";<c-g>u")
 
---keywordprg
-map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
-
 -- commenting
 map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Below" })
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add Comment Above" })
-
--- location list
-map("n", "<leader>xl", function()
-	local success, err = pcall(vim.fn.getloclist(0, { winid = 0 }).winid ~= 0 and vim.cmd.lclose or vim.cmd.lopen)
-	if not success and err then
-		vim.notify(err, vim.log.levels.ERROR)
-	end
-end, { desc = "Location List" })
--- quickfix list
-map("n", "<leader>xq", function()
-	local success, err = pcall(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and vim.cmd.cclose or vim.cmd.copen)
-	if not success and err then
-		vim.notify(err, vim.log.levels.ERROR)
-	end
-end, { desc = "Quickfix List" })
 
 map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
@@ -146,15 +110,6 @@ map("n", "<C-c>", ":%y+<CR>", opts)
 -- Stay in indent mode
 map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
-
--- Move live up or down
--- moving
-map("n", "<A-Down>", ":m .+1<CR>", opts)
-map("n", "<A-Up>", ":m .-2<CR>", opts)
-map("i", "<A-Down>", "<Esc>:m .+1<CR>==gi", opts)
-map("i", "<A-Up>", "<Esc>:m .-2<CR>==gi", opts)
-map("v", "<A-Down>", ":m '>+1<CR>gv=gv", opts)
-map("v", "<A-Up>", ":m '<-2<CR>gv=gv", opts)
 
 -- Fix Spell checking
 map("n", "z0", "1z=", {
