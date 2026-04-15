@@ -151,16 +151,9 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 	end,
 })
 
--- Set filetype for .env and .env.* files
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	group = augroup("env_filetype"),
-	pattern = { "*.env", ".env.*" },
-	callback = function()
-		vim.opt_local.filetype = "sh"
-	end,
-})
+-- Let the explicit vim.filetype.add rules in options.lua handle .env files.
 
--- Set filetype for .toml files
+-- Set filetype for TOML-like config files not covered by Neovim defaults
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	group = augroup("toml_filetype"),
 	pattern = { "*.tomg-config*" },

@@ -31,7 +31,7 @@ vim.keymap.set("i", "<C-h>", function()
 	require("copilot.suggestion").dismiss()
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>aa", "<cmd>Copilot auth<cr>", { desc = "Auth" })
+vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Auth" })
 vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Toggle" })
 vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Status" })
 
