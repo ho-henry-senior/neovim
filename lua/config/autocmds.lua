@@ -70,7 +70,8 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 	end,
 })
 
--- Treat kebab-case (foo-bar) as a single word for CSS/HTML-like filetypes
+-- Treat kebab-case (foo-bar) as a single word for CSS/HTML-like filetypes.
+-- Keep this grouped until those filetypes need distinct local behavior.
 vim.api.nvim_create_autocmd("FileType", {
 	group = augroup("iskeyword_kebab"),
 	pattern = { "css", "scss", "less", "html", "htmldjango", "blade", "typescriptreact", "javascriptreact" },
@@ -120,26 +121,6 @@ vim.api.nvim_create_autocmd("FileType", {
 				desc = "Quit buffer",
 			})
 		end)
-	end,
-})
-
--- wrap and check for spell in text filetypes
-vim.api.nvim_create_autocmd("FileType", {
-	group = augroup("wrap_spell"),
-	pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
-	callback = function()
-		vim.opt_local.wrap = true
-		vim.opt_local.spell = true
-		vim.opt_local.spelllang = "en_gb,en"
-	end,
-})
-
--- Disable conceal in JSON files so quotes and punctuation stay visible
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	group = augroup("json_conceal"),
-	pattern = { "json", "jsonc", "json5" },
-	callback = function()
-		vim.opt_local.conceallevel = 0
 	end,
 })
 
