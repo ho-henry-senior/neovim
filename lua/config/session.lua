@@ -16,6 +16,10 @@ local function get_last_session_file()
 	return session_dir .. "last_session.vim"
 end
 
+local function get_stop_file()
+	return session_dir .. ".stop_saving"
+end
+
 -- Auto-restore session when starting with no arguments
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
@@ -32,7 +36,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
 	callback = function()
-		local stop_file = session_dir .. ".stop_saving"
+		local stop_file = get_stop_file()
 		if vim.fn.filereadable(stop_file) == 1 then
 			vim.fn.delete(stop_file) -- Remove stop file for next time
 			return
@@ -102,7 +106,26 @@ end, { desc = "Select session to load" })
 
 -- Stop session saving (create a flag file)
 vim.keymap.set("n", "<leader>qd", function()
-	local stop_file = session_dir .. ".stop_saving"
+	local stop_file = get_stop_file()
 	vim.fn.writefile({}, stop_file)
 	print("Session saving stopped")
 end, { desc = "Stop session saving" })
+
+-- Clear the saved session for the current project and skip the next auto-save
+vim.keymap.set("n", "<leader>qx", function()
+	local session_file = get_session_file()
+	local deleted = false
+
+	if vim.fn.filereadable(session_file) == 1 then
+		vim.fn.delete(session_file)
+		deleted = true
+	end
+
+	vim.fn.writefile({}, get_stop_file())
+
+	if deleted then
+		print("Cleared session for current directory")
+	else
+		print("No session found; next auto-save skipped")
+	end
+end, { desc = "Clear session for current directory" })

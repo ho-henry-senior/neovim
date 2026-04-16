@@ -15,6 +15,7 @@ This file focuses on custom mappings and high-value workflow shortcuts from this
 - `<leader>ql`: load the most recent session overall.
 - `<leader>qS`: select a saved session.
 - `<leader>qd`: disable session saving for the current exit.
+- `<leader>qx`: delete the current project's saved session and skip the next auto-save.
 
 ## Shortcuts Easy to Miss
 
