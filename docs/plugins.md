@@ -1,6 +1,6 @@
 # Plugin Guide
 
-These are the plugins currently loaded by `lua/plugins/init.lua`.
+These are the plugins currently loaded by `lua/plugins/init.lua`. The list is intentionally short: the config relies on native Neovim features where they are good enough and uses plugins mainly for gaps that still feel worth filling.
 
 ## Editing and Completion
 
@@ -18,7 +18,7 @@ These are the plugins currently loaded by `lua/plugins/init.lua`.
 ## Navigation, Search, and UI
 
 - `folke/snacks.nvim`: the main UI/workflow plugin. It provides the picker, explorer, terminal, notifications, toggles, and big-file handling. The more ornamental UI features such as dimming, animation, and smooth scrolling are intentionally disabled.
-- `folke/which-key.nvim`: shows leader-key groupings and mapping hints.
+- `folke/which-key.nvim`: shows leader-key groupings and mapping hints. Useful for discoverability, especially when sharing the config.
 - `nvim-lualine/lualine.nvim`: statusline and tabline.
 - `nvim-tree/nvim-web-devicons`: file icons used by several UI plugins.
 

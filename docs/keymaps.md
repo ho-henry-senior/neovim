@@ -22,7 +22,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 | Normal | `<leader>e` | File explorer |
 | Normal | `<S-h>` / `<S-l>` | Previous / next buffer |
 | Normal / Visual | `j` / `k` | Move by display line when no count is given |
-| Normal | `<leader>cf` | Format buffer |
+| Normal | `<leader>cf` | Format Buffer |
 | Normal | `<leader>gg` | Open LazyGit |
 | Normal | `<leader>aa` | Explain current buffer |
 | Insert | `<C-l>` | Accept Copilot suggestion |
@@ -35,6 +35,26 @@ These are the mappings and behaviors worth learning first if you want to use the
 - `<leader>qS`: select a saved session.
 - `<leader>qd`: disable session saving for the current exit.
 - `<leader>qx`: delete the current project's saved session and skip the next auto-save.
+
+### Shortcuts Easy to Miss
+
+These are the mappings that are either outside the leader namespace or easy to forget because WhichKey does not surface them as clearly.
+
+| Mode | Shortcut | Action |
+| --- | --- | --- |
+| Insert | `<C-l>` | Accept Copilot suggestion |
+| Insert | `<C-j>` | Next Copilot suggestion |
+| Insert | `<C-k>` | Previous Copilot suggestion |
+| Insert | `<C-h>` | Dismiss Copilot suggestion |
+| Normal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows |
+| Terminal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows while in terminal |
+| Terminal | `<Esc><Esc>` | Leave terminal insert mode |
+| Normal | `<C-/>` | Toggle floating terminal |
+| Terminal | `<C-/>` | Close floating terminal |
+| Visual | `<A-j>` / `<A-k>` | Move selected lines down/up |
+| Normal | `z0` | Spell-fix word under cursor |
+| Visual | `p` | Paste without overwriting the unnamed register |
+| Normal | `<C-c>` | Copy entire file to system clipboard |
 
 ## Workflows
 
@@ -59,7 +79,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader>fg` | Find git files |
 | `<leader>fc` | Find config files |
 | `<leader>fr` | Recent files |
-| `<leader>fp` | Projects |
+| `<leader>fp` | Open project |
 | `<leader>sg` | Grep |
 | `<leader>sw` | Grep word or visual selection |
 | `<leader>sB` | Grep open buffers |
@@ -98,12 +118,12 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader>gD` | Diff staged changes |
 | `<leader>gf` | Diff current file |
 | `<leader>gF` | Diff current file against arbitrary ref |
-| `<leader>gH` | Git history for current file |
-| `<leader>gV` | File history view |
-| `<leader>gv` | Line history view |
+| `<leader>gH` | Show current file history |
+| `<leader>gV` | Open file history view |
+| `<leader>gv` | Open line history view |
 | `<leader>gc` | Compare against branch / commit / tag |
 | `<leader>gC` | Compare two refs |
-| `<leader>gm` | Open merge-conflict view |
+| `<leader>gm` | Resolve merge conflicts |
 | `<leader>gg` | Open LazyGit |
 | `<leader>gB` | Open current file/selection in remote |
 
@@ -111,10 +131,10 @@ These are the mappings and behaviors worth learning first if you want to use the
 
 | Shortcut | Action |
 | --- | --- |
-| `<leader>cf` | Format buffer |
-| `<leader>cF` | Format injected languages |
-| `<leader>cn` | Conform info |
-| `<leader>n` | Notification history |
+| `<leader>cf` | Format Buffer |
+| `<leader>cF` | Format Injected Languages |
+| `<leader>cn` | Show Formatter Info |
+| `<leader>n` | Notification History |
 | `<leader>un` | Dismiss notifications |
 | `<leader>uw` | Toggle wrap |
 | `<leader>uL` | Toggle relative number |
@@ -127,7 +147,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader>ub` | Toggle light/dark background |
 | `<leader>ug` | Toggle indent guides |
 | `<leader>uC` | Pick colorscheme |
-| `<leader>z` | Zoom current window |
+| `<leader>z` | Toggle Zoom |
 | `<leader>ur` | Clear search highlight and refresh |
 | `<leader>ci` | Inspect cursor position highlight data |
 | `<leader>cI` | Inspect Treesitter tree |
@@ -136,7 +156,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 
 | Shortcut | Action |
 | --- | --- |
-| `<leader>mm` | Toggle rendered Markdown |
+| `<leader>mm` | Toggle Markdown rendering |
 | `<leader>mp` | Toggle Markdown preview |
 
 Markdown, git commit, and other text-like buffers automatically:
@@ -146,26 +166,6 @@ Markdown, git commit, and other text-like buffers automatically:
 - prefer British English with fallback to English
 
 ## Reference
-
-### Shortcuts Easy to Miss
-
-These are the mappings that are either outside the leader namespace or easy to forget because WhichKey does not surface them as clearly.
-
-| Mode | Shortcut | Action |
-| --- | --- | --- |
-| Insert | `<C-l>` | Accept Copilot suggestion |
-| Insert | `<C-j>` | Next Copilot suggestion |
-| Insert | `<C-k>` | Previous Copilot suggestion |
-| Insert | `<C-h>` | Dismiss Copilot suggestion |
-| Normal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows |
-| Terminal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows while in terminal |
-| Terminal | `<Esc><Esc>` | Leave terminal insert mode |
-| Normal | `<C-/>` | Toggle floating terminal |
-| Terminal | `<C-/>` | Close floating terminal |
-| Visual | `<A-j>` / `<A-k>` | Move selected lines down/up |
-| Normal | `z0` | Spell-fix word under cursor |
-| Visual | `p` | Paste without overwriting the unnamed register |
-| Normal | `<C-c>` | Copy entire file to system clipboard |
 
 ### Filetype Notes
 

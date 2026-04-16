@@ -2,6 +2,8 @@
 
 This is a fast, keyboard-first Neovim setup built around stock Neovim 0.12 features, `vim.pack`, native LSP, and a small set of focused plugins.
 
+It is intended as a personal, opinionated Neovim config that is still simple enough to inspect, adapt, and share. It is not trying to be a general-purpose Neovim distribution or framework.
+
 ## Design Goals
 
 - Stay close to core Neovim rather than building around a large framework.
@@ -62,3 +64,11 @@ Then use:
 - [docs/tooling.md](docs/tooling.md) for installation, optional tooling, WezTerm, and troubleshooting
 - [docs/plugins.md](docs/plugins.md) for the plugin guide
 - [docs/lsp.md](docs/lsp.md) for language-server details
+
+## Who It Is For
+
+- People who want to stay close to stock Neovim rather than adopt a large distribution.
+- People who are happy to install external tooling such as language servers and formatters.
+- People who prefer a small number of well-used plugins over a broad feature surface.
+
+This config is probably not a good fit if you want a batteries-included Neovim distro with many preconfigured workflows out of the box.
