@@ -44,9 +44,28 @@ Notes:
 - `vim.pack` installs the plugins declared in this repo.
 - External language servers, formatters, and CLI tools still need to be installed separately.
 
+## Start Here
+
+If you are new to this config, focus on these first:
+
+- `<leader>ff` to find files
+- `<leader>sg` to grep
+- `<leader>e` to open the file explorer
+- `<leader>cf` to format the current buffer
+- `<leader>gg` for git via LazyGit
+- `<leader>aa` to explain the current buffer with Copilot Chat
+- start `nvim` in a project directory with no file arguments to restore that project's session
+
+Then use:
+
+- [docs/keymaps.md](docs/keymaps.md) for day-to-day shortcuts, organized from basics to deeper workflows
+- [docs/tooling.md](docs/tooling.md) for installation, optional tooling, WezTerm, and troubleshooting
+- [docs/plugins.md](docs/plugins.md) for the plugin guide
+- [docs/lsp.md](docs/lsp.md) for language-server details
+
 ## Documentation
 
+- [docs/keymaps.md](docs/keymaps.md): basics first, then workflows, then deeper reference material.
+- [docs/tooling.md](docs/tooling.md): required software, optional tools, advanced terminal setup, and troubleshooting.
 - [docs/plugins.md](docs/plugins.md): plugin guide and what each plugin is for.
-- [docs/tooling.md](docs/tooling.md): required vs optional software, verification commands, WezTerm, clipboard, and formatter notes.
-- [docs/keymaps.md](docs/keymaps.md): shortcut reference, especially mappings that are easy to miss.
 - [docs/lsp.md](docs/lsp.md): configured language servers, install guidance, and on-demand LSP setup.

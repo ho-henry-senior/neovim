@@ -41,7 +41,7 @@ npm install -g \
 
 ## Optional Software
 
-These unlock specific features but are not required for the config to load or for `just validate` to pass.
+These tools unlock specific workflows, but the config can still load and basic validation can still pass without them.
 
 ### Homebrew Formulae
 
@@ -56,13 +56,15 @@ These unlock specific features but are not required for the config to load or fo
 - `vscode-eslint-language-server`
 - `black` or `ruff`
 
-## Verification
+## Basics
+
+### Verification
 
 - `just check`: load Neovim headlessly and fail if the config or plugins error.
 - `just fmt-check`: verify Lua formatting with `stylua --check`.
 - `just validate`: run both checks.
 
-## Notes
+### Notes
 
 - `vscode-langservers-extracted` provides the CSS, HTML, and JSON LSP servers.
 - `prettier` is required for formatting JavaScript, TypeScript, JSON, CSS, HTML, Markdown, YAML, and related files.
@@ -71,7 +73,9 @@ These unlock specific features but are not required for the config to load or fo
 - A Nerd Font is recommended. The WezTerm example below uses `JetBrainsMono Nerd Font`.
 - GitHub Copilot access and authentication are required if you want inline suggestions and Copilot Chat.
 
-## WezTerm
+## Advanced
+
+### WezTerm
 
 This configuration assumes a terminal setup that makes a few keys reliable:
 
@@ -105,15 +109,15 @@ Why this matters:
 - This config uses that key for the `snacks` terminal.
 - Visual line movement uses Alt-based mappings.
 
-## Clipboard
+### Clipboard
 
 System clipboard sync is enabled via `unnamedplus` for local sessions. In SSH sessions it is disabled automatically by checking `SSH_TTY`, which avoids clipboard problems in remote terminals.
 
-## Prettier
+### Prettier
 
 Formatting prefers a project-local Prettier config if one exists. Otherwise it falls back to `~/.prettierrc`.
 
-## Failure Modes
+## Troubleshooting
 
 - Missing `ripgrep`: grep-based search and some picker workflows will degrade or fail.
 - Missing `fd`: file picking can fall back to slower behavior depending on source.

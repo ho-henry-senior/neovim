@@ -2,13 +2,32 @@
 
 This file focuses on custom mappings and high-value workflow shortcuts from this config, not every built-in Vim command.
 
-## Discoverability
+## Basics
+
+These are the mappings and behaviors worth learning first if you want to use the config effectively without memorizing everything.
+
+### Discoverability
 
 - WhichKey covers most leader mappings.
 - `<leader>?` shows buffer-local keymaps.
 - `:MapTable` opens a generated table of mappings.
 
-## Sessions
+### Core Navigation and Editing
+
+| Mode | Shortcut | Action |
+| --- | --- | --- |
+| Normal | `<leader><space>` | Smart file picker |
+| Normal | `<leader>ff` | Find files |
+| Normal | `<leader>sg` | Grep |
+| Normal | `<leader>e` | File explorer |
+| Normal | `<S-h>` / `<S-l>` | Previous / next buffer |
+| Normal / Visual | `j` / `k` | Move by display line when no count is given |
+| Normal | `<leader>cf` | Format buffer |
+| Normal | `<leader>gg` | Open LazyGit |
+| Normal | `<leader>aa` | Explain current buffer |
+| Insert | `<C-l>` | Accept Copilot suggestion |
+
+### Sessions
 
 - Start `nvim` in a project directory with no file arguments to restore the last session for that directory.
 - `<leader>qs`: load the session for the current working directory.
@@ -17,29 +36,9 @@ This file focuses on custom mappings and high-value workflow shortcuts from this
 - `<leader>qd`: disable session saving for the current exit.
 - `<leader>qx`: delete the current project's saved session and skip the next auto-save.
 
-## Shortcuts Easy to Miss
+## Workflows
 
-These are the mappings that are either outside the leader namespace or easy to forget because WhichKey does not surface them as clearly.
-
-| Mode | Shortcut | Action |
-| --- | --- | --- |
-| Insert | `<C-l>` | Accept Copilot suggestion |
-| Insert | `<C-j>` | Next Copilot suggestion |
-| Insert | `<C-k>` | Previous Copilot suggestion |
-| Insert | `<C-h>` | Dismiss Copilot suggestion |
-| Normal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows |
-| Terminal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows while in terminal |
-| Terminal | `<Esc><Esc>` | Leave terminal insert mode |
-| Normal | `<C-/>` | Toggle floating terminal |
-| Terminal | `<C-/>` | Close floating terminal |
-| Visual | `<A-j>` / `<A-k>` | Move selected lines down/up |
-| Normal | `<S-h>` / `<S-l>` | Previous / next buffer |
-| Normal / Visual | `j` / `k` | Move by display line when no count is given |
-| Normal | `z0` | Spell-fix word under cursor |
-| Visual | `p` | Paste without overwriting the unnamed register |
-| Normal | `<C-c>` | Copy entire file to system clipboard |
-
-## AI
+### AI
 
 | Mode | Shortcut | Action |
 | --- | --- | --- |
@@ -50,7 +49,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 | Normal | `<leader>aa` | Explain current buffer |
 | Visual | `<leader>aa` | Explain selection |
 
-## Files, Search, Explorer
+### Files, Search, Explorer
 
 | Shortcut | Action |
 | --- | --- |
@@ -69,7 +68,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>sa` | Autocmds |
 | `<leader>sc` | Command history |
 
-## Buffers, Tabs, Scratch
+### Buffers, Tabs, Scratch
 
 | Shortcut | Action |
 | --- | --- |
@@ -83,7 +82,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>S` | Select scratch buffer |
 | `<leader>U` | Undo tree |
 
-## Git
+### Git
 
 | Shortcut | Action |
 | --- | --- |
@@ -110,7 +109,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>gg` | Open LazyGit |
 | `<leader>gB` | Open current file/selection in remote |
 
-## Formatting, Diagnostics, and UI
+### Formatting, Diagnostics, and UI
 
 | Shortcut | Action |
 | --- | --- |
@@ -136,7 +135,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>ci` | Inspect cursor position highlight data |
 | `<leader>cI` | Inspect Treesitter tree |
 
-## Markdown and Writing
+### Markdown and Writing
 
 | Shortcut | Action |
 | --- | --- |
@@ -149,7 +148,29 @@ Markdown, git commit, and other text-like buffers automatically:
 - enable spell checking
 - prefer British English with fallback to English
 
-## Filetype Notes
+## Reference
+
+### Shortcuts Easy to Miss
+
+These are the mappings that are either outside the leader namespace or easy to forget because WhichKey does not surface them as clearly.
+
+| Mode | Shortcut | Action |
+| --- | --- | --- |
+| Insert | `<C-l>` | Accept Copilot suggestion |
+| Insert | `<C-j>` | Next Copilot suggestion |
+| Insert | `<C-k>` | Previous Copilot suggestion |
+| Insert | `<C-h>` | Dismiss Copilot suggestion |
+| Normal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows |
+| Terminal | `<C-h>` / `<C-j>` / `<C-k>` / `<C-l>` | Move between windows while in terminal |
+| Terminal | `<Esc><Esc>` | Leave terminal insert mode |
+| Normal | `<C-/>` | Toggle floating terminal |
+| Terminal | `<C-/>` | Close floating terminal |
+| Visual | `<A-j>` / `<A-k>` | Move selected lines down/up |
+| Normal | `z0` | Spell-fix word under cursor |
+| Visual | `p` | Paste without overwriting the unnamed register |
+| Normal | `<C-c>` | Copy entire file to system clipboard |
+
+### Filetype Notes
 
 - `.txt` files are treated as Markdown.
 - `.env` files are treated as dotenv files.
