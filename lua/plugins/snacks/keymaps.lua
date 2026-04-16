@@ -70,8 +70,6 @@ local keymaps = {
 	{ "<c-_>", function(Snacks) Snacks.terminal() end, desc = "which_key_ignore" },
 	{ "<leader>z", function(Snacks) Snacks.zen() end, desc = "Toggle Zen Mode" },
 	{ "<leader>Z", function(Snacks) Snacks.zen.zoom() end, desc = "Toggle Zoom" },
-	{ "<leader>.", function(Snacks) Snacks.scratch() end, desc = "Toggle Scratch Buffer" },
-	{ "<leader>S", function(Snacks) Snacks.scratch.select() end, desc = "Select Scratch Buffer" },
 	{ "<leader>cR", function(Snacks) Snacks.rename.rename_file() end, desc = "Rename File" },
 	{ "<leader>un", function(Snacks) Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 	{ "]r", function(Snacks) Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n" } },

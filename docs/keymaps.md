@@ -68,7 +68,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader>sa` | Autocmds |
 | `<leader>sc` | Command history |
 
-### Buffers, Tabs, Scratch
+### Buffers and Tabs
 
 | Shortcut | Action |
 | --- | --- |
@@ -78,8 +78,6 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader><tab><tab>` | New tab |
 | `<leader><tab>d` | Close tab |
 | `<leader><tab>[` / `<leader><tab>]` | Previous / next tab |
-| `<leader>.` | Toggle scratch buffer |
-| `<leader>S` | Select scratch buffer |
 | `<leader>U` | Undo tree |
 
 ### Git
