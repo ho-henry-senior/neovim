@@ -26,7 +26,7 @@ This is a fast, keyboard-first Neovim setup built around stock Neovim 0.12 featu
 - Completion uses `blink.cmp`.
 - Formatting uses `conform.nvim`.
 - GitHub Copilot suggestions are enabled in insert mode.
-- File navigation, grep, explorer, terminal, notifications, and Zen mode are provided by `snacks.nvim`.
+- File navigation, grep, explorer, terminal, and notifications are provided by `snacks.nvim`.
 - Treesitter powers highlighting, textobjects, and folding.
 - The active colorscheme is Neovim's built-in `default`, chosen for broad compatibility with core UI features and plugin highlight groups.
 

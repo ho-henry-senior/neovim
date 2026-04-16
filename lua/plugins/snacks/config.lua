@@ -68,7 +68,7 @@ M.options = {
 	terminal = { enabled = true }, -- Provides a built-in terminal emulator with features like floating windows, customizable keybindings, and integration with the rest of the Snacks ecosystem.
 	toggle = { enabled = true }, -- Provides a convenient way to toggle various editor features on and off with customizable keybindings.
 	words = { enabled = true }, -- Provides enhanced navigation for jumping between occurrences of the word under the cursor, with support for counting and direction.
-	zen = { enabled = true }, -- Provides a distraction-free writing mode that centers the text and dims the surroundings, with optional features like a zoomed-in view and customizable keybindings.
+	zen = { enabled = false }, -- Disable focus modes unless they prove useful enough to keep.
 	picker = {
 		sources = {
 			files = {

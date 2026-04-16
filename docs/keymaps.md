@@ -127,8 +127,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader>ub` | Toggle light/dark background |
 | `<leader>ug` | Toggle indent guides |
 | `<leader>uC` | Pick colorscheme |
-| `<leader>z` | Zen mode |
-| `<leader>Z` | Zoom current window |
+| `<leader>z` | Zoom current window |
 | `<leader>ur` | Clear search highlight and refresh |
 | `<leader>ci` | Inspect cursor position highlight data |
 | `<leader>cI` | Inspect Treesitter tree |
