@@ -11,12 +11,6 @@ map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
--- Resize windows/buffers with Ctrl+Cmd+arrow keys (macOS)
-map("n", "<C-S-Up>", "<cmd>resize +5<CR>", opts)
-map("n", "<C-S-Down>", "<cmd>resize -5<CR>", opts)
-map("n", "<C-S-Left>", "<cmd>vertical resize -5<CR>", opts)
-map("n", "<C-S-Right>", "<cmd>vertical resize +5<CR>", opts)
-
 -- Move Lines
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Up" })
