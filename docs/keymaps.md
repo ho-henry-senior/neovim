@@ -72,7 +72,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 
 | Shortcut | Action |
 | --- | --- |
-| `<leader>fb` | Buffer picker |
+| `<leader>bb` | Buffer picker |
 | `<leader>bd` | Delete current buffer |
 | `<leader>bo` | Delete other buffers |
 | `<leader><tab><tab>` | New tab |

@@ -7,7 +7,7 @@ local keymaps = {
 	{ "<leader>n", function(Snacks) Snacks.picker.notifications() end, desc = "Notification History" },
 	{ "<leader>e", function(Snacks) Snacks.explorer() end, desc = "File Explorer" },
 	{
-		"<leader>fb",
+		"<leader>bb",
 		function(Snacks)
 			Snacks.picker.buffers({
 				win = {
