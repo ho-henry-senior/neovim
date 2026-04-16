@@ -28,6 +28,12 @@ These are the plugins currently loaded by `lua/plugins/init.lua`. The list is in
 - `tduyng/vdiff.nvim`: side-by-side git diff and merge views.
 - `MagicDuck/grug-far.nvim`: search-and-replace UI for project-wide changes.
 
+## Testing
+
+- `nvim-neotest/neotest`: test runner framework and UI for running the nearest test, file, or project test suite from inside Neovim.
+- `nvim-neotest/neotest-jest`: Jest adapter for JavaScript and TypeScript projects.
+- `nvim-neotest/nvim-nio`: async dependency used by neotest.
+
 ## Writing and Markdown
 
 - `MeanderingProgrammer/render-markdown.nvim`: rich inline rendering for headings, callouts, code blocks, checkboxes, tables, and links.

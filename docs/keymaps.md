@@ -10,6 +10,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 
 - WhichKey covers most leader mappings.
 - `<leader>?` shows buffer-local keymaps.
+- Plugin-managed buffers often expose their own local help on `?`, including the neotest summary window.
 - `:MapTable` opens a generated table of mappings.
 
 ### Core Navigation and Editing
@@ -87,6 +88,16 @@ These are the mappings that are either outside the leader namespace or easy to f
 | `<leader>sk` | Keymaps |
 | `<leader>sa` | Autocmds |
 | `<leader>sc` | Command history |
+
+### Tests
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>tn` | Run nearest test |
+| `<leader>tf` | Run tests in current file |
+| `<leader>ta` | Run all tests from the current project |
+| `<leader>ts` | Toggle test summary |
+| `<leader>to` | Open test output |
 
 ### Buffers and Tabs
 
