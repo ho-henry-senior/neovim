@@ -63,7 +63,7 @@ local function open_undotree()
 	vim.cmd("packadd nvim.undotree")
 	require("undotree").open()
 end
-map("n", "<leader>U", open_undotree, { desc = "Undo Tree" })
+map("n", "<leader>uu", open_undotree, { desc = "Undo Tree" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })

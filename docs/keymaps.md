@@ -78,7 +78,7 @@ These are the mappings and behaviors worth learning first if you want to use the
 | `<leader><tab><tab>` | New tab |
 | `<leader><tab>d` | Close tab |
 | `<leader><tab>[` / `<leader><tab>]` | Previous / next tab |
-| `<leader>U` | Undo tree |
+| `<leader>uu` | Undo tree |
 
 ### Git
 
