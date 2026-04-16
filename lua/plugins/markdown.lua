@@ -13,9 +13,9 @@ vim.keymap.set("n", "<leader>mm", function()
 	else
 		rm.enable()
 	end
-end, { desc = "Toggle Render Markdown" })
+end, { desc = "Toggle Markdown Rendering" })
 
 vim.keymap.set("n", "<leader>mp", function()
 	vim.fn["mkdp#util#install"]()
 	vim.cmd("MarkdownPreviewToggle")
-end, { desc = "Markdown preview" })
+end, { desc = "Toggle Preview" })

@@ -66,7 +66,7 @@ vim.keymap.set("n", "<leader>qs", function()
 	else
 		print("No session found for current directory")
 	end
-end, { desc = "Load session for current directory" })
+end, { desc = "Load Project Session" })
 
 -- Load last session
 vim.keymap.set("n", "<leader>ql", function()
@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>ql", function()
 	else
 		print("No last session found")
 	end
-end, { desc = "Load last session" })
+end, { desc = "Load Last Session" })
 
 -- Select and load a session
 vim.keymap.set("n", "<leader>qS", function()
@@ -102,14 +102,14 @@ vim.keymap.set("n", "<leader>qS", function()
 			vim.cmd("source " .. vim.fn.fnameescape(session_file))
 		end
 	end)
-end, { desc = "Select session to load" })
+end, { desc = "Select Session" })
 
 -- Stop session saving (create a flag file)
 vim.keymap.set("n", "<leader>qd", function()
 	local stop_file = get_stop_file()
 	vim.fn.writefile({}, stop_file)
 	print("Session saving stopped")
-end, { desc = "Stop session saving" })
+end, { desc = "Skip Session Save" })
 
 -- Clear the saved session for the current project and skip the next auto-save
 vim.keymap.set("n", "<leader>qx", function()
@@ -128,4 +128,4 @@ vim.keymap.set("n", "<leader>qx", function()
 	else
 		print("No session found; next auto-save skipped")
 	end
-end, { desc = "Clear session for current directory" })
+end, { desc = "Clear Project Session" })

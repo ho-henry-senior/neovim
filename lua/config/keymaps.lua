@@ -22,7 +22,7 @@ map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move Down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move Up" })
 
 -- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Prev Buffer" })
+map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous Buffer" })
 map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next Buffer" })
 
 -- Clear search, diff update and redraw
@@ -38,9 +38,9 @@ map(
 map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next Search Result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
 map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next Search Result" })
-map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev Search Result" })
-map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
-map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev Search Result" })
+map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Previous Search Result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Previous Search Result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Previous Search Result" })
 
 -- Add undo break-points
 map("i", ",", ",<c-g>u")
@@ -55,8 +55,8 @@ map("n", "[q", vim.cmd.cprev, { desc = "Previous Quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 
 -- highlights under cursor
-map("n", "<leader>ci", vim.show_pos, { desc = "Inspect Pos" })
-map("n", "<leader>cI", "<cmd>InspectTree<cr>", { desc = "Inspect Tree" })
+map("n", "<leader>ci", vim.show_pos, { desc = "Inspect Position" })
+map("n", "<leader>cI", "<cmd>InspectTree<cr>", { desc = "Inspect Syntax Tree" })
 
 -- Undo tree
 local function open_undotree()

@@ -31,11 +31,11 @@ vim.keymap.set("i", "<C-h>", function()
 	require("copilot.suggestion").dismiss()
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Auth" })
-vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Toggle" })
-vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Status" })
+vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Authenticate" })
+vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Toggle Copilot" })
+vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Show Status" })
 
-vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Chat" })
+vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Open Chat" })
 
 vim.keymap.set("n", "<leader>aa", function()
 	require("CopilotChat").ask("Explain this code", {

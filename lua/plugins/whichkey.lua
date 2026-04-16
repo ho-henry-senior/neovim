@@ -17,9 +17,9 @@ wk.add({
 	{ "<leader>c", group = "code" },
 	{ "<leader>d", group = "debug" },
 	{ "<leader>f", group = "files" },
-	{ "<leader>fC", group = "copy path" },
+	{ "<leader>fC", group = "path" },
 	{ "<leader>g", group = "git" },
-	{ "<leader>gh", group = "git hunks" },
+	{ "<leader>gh", group = "hunks" },
 	{ "<leader>m", group = "markdown" },
 	{ "<leader>p", group = "plugins" },
 	{ "<leader>q", group = "session" },
@@ -32,7 +32,7 @@ wk.add({
 
 -- mappings
 wk.add({
-	{ "gx", desc = "Open with system app" },
+	{ "gx", desc = "Open With System App" },
 
 	{
 		"<leader>fCf",
@@ -41,7 +41,7 @@ wk.add({
 			vim.fn.setreg("+", p)
 			vim.notify("Copied full file path: " .. p)
 		end,
-		desc = "Copy full path",
+		desc = "Copy Full Path",
 	},
 	{
 		"<leader>fCn",
@@ -50,7 +50,7 @@ wk.add({
 			vim.fn.setreg("+", n)
 			vim.notify("Copied file name: " .. n)
 		end,
-		desc = "Copy file name",
+		desc = "Copy File Name",
 	},
 	{
 		"<leader>fCr",
@@ -61,7 +61,7 @@ wk.add({
 			vim.fn.setreg("+", rel)
 			vim.notify("Copied relative path: " .. rel)
 		end,
-		desc = "Copy relative path",
+		desc = "Copy Relative Path",
 	},
 
 	{
@@ -69,6 +69,6 @@ wk.add({
 		function()
 			wk.show({ global = false })
 		end,
-		desc = "Buffer keymaps",
+		desc = "Show Buffer Keymaps",
 	},
 })
