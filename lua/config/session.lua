@@ -1,4 +1,4 @@
-vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.opt.sessionoptions = "buffers,curdir,folds,help,tabpages,winsize,winpos,localoptions"
 
 -- Create sessions directory if it doesn't exist
 local session_dir = vim.fn.stdpath("state") .. "/sessions/"
