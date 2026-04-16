@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>mm", function()
 end, { desc = "Toggle Markdown Rendering" })
 
 vim.keymap.set("n", "<leader>mp", function()
-	vim.fn["mkdp#util#install"]()
+	vim.cmd("packadd markdown-preview.nvim")
+	vim.cmd("doautocmd <nomodeline> BufEnter")
 	vim.cmd("MarkdownPreviewToggle")
 end, { desc = "Toggle Preview" })
