@@ -32,6 +32,7 @@ These are the plugins currently loaded by `lua/plugins/init.lua`. The list is in
 
 - `nvim-neotest/neotest`: test runner framework and UI for running the nearest test, file, or project test suite from inside Neovim.
 - `nvim-neotest/neotest-jest`: Jest adapter for JavaScript and TypeScript projects.
+- local Mocha adapter: JavaScript test support for Mocha projects, kept in-repo under `lua/plugins/neotest/`.
 - `nvim-neotest/nvim-nio`: async dependency used by neotest.
 
 ## Writing and Markdown

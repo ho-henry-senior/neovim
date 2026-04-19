@@ -59,6 +59,7 @@ These tools unlock specific workflows, but the config can still load and basic v
 Optional project-local tools:
 
 - `jest`: required inside a JavaScript or TypeScript project if you want to use the built-in test mappings through `neotest-jest`
+- `mocha`: required inside a JavaScript project if you want to use the built-in test mappings for Mocha projects
 
 ## Basics
 
@@ -74,8 +75,8 @@ Optional project-local tools:
 - `prettier` is required for formatting JavaScript, TypeScript, JSON, CSS, HTML, Markdown, YAML, and related files.
 - Python formatting uses `ruff_format` or `black`, so at least one of those should exist if you want Python formatting.
 - Terraform formatting uses `terraform fmt`, so install `terraform` if you edit Terraform regularly.
-- JavaScript and TypeScript test support uses `neotest-jest`, so the project itself needs a working Jest setup.
-- Test runs also load `.env`, `.env.local`, `.env.test`, and `.env.test.local` from the nearest project root, with more specific files overriding more general ones.
+- JavaScript and TypeScript test support uses `neotest-jest` for Jest projects and a local neotest adapter for Mocha projects.
+- Jest test runs also load `.env`, `.env.local`, `.env.test`, and `.env.test.local` from the nearest project root, with more specific files overriding more general ones.
 - A Nerd Font is recommended. The WezTerm example below uses `JetBrainsMono Nerd Font`.
 - GitHub Copilot access and authentication are required if you want inline suggestions and Copilot Chat.
 

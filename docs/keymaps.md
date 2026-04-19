@@ -91,8 +91,11 @@ These are the mappings that are either outside the leader namespace or easy to f
 
 ### Tests
 
+These mappings are always listed under `<leader>t`, but they only run in supported JavaScript/TypeScript test files inside projects that use Jest or Mocha.
+
 | Shortcut | Action |
 | --- | --- |
+| `<leader>t?` | Explain when test mappings are available |
 | `<leader>tn` | Run nearest test |
 | `<leader>tf` | Run tests in current file |
 | `<leader>ta` | Run all tests from the current project |
