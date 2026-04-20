@@ -33,6 +33,10 @@
       "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
+    "mini.nvim": {
+      "rev": "418ef4930ddabe80f449c6f1323f8b6abb172d1c",
+      "src": "https://github.com/echasnovski/mini.nvim"
+    },
     "neotest": {
       "rev": "fd0b7986dd0ae04e38ec7dc0c78a432e3820839c",
       "src": "https://github.com/nvim-neotest/neotest"
