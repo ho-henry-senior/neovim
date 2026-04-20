@@ -58,7 +58,7 @@ In practice that means setting it early in `init.lua` or another module loaded b
 
 ## Default LSP Mappings
 
-These are the extra mappings this config adds on top of Neovim's built-in LSP behavior.
+These are the extra mappings this config adds on top of Neovim's built-in LSP behaviour.
 
 - `gd`: go to definition
 - `K`: hover

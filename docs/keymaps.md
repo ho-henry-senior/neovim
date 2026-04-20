@@ -4,7 +4,7 @@ This file focuses on custom mappings and high-value workflow shortcuts from this
 
 ## Basics
 
-These are the mappings and behaviors worth learning first if you want to use the config effectively without memorizing everything.
+These are the mappings and behaviours worth learning first if you want to use the config effectively without memorising everything.
 
 ### Discoverability
 
@@ -165,13 +165,6 @@ These mappings are always listed under `<leader>t`, but they only run in support
 | `<leader>ur` | Clear search highlight and refresh |
 | `<leader>ci` | Inspect cursor position highlight data |
 | `<leader>cI` | Inspect Treesitter tree |
-
-### Markdown and Writing
-
-| Shortcut | Action |
-| --- | --- |
-| `<leader>mm` | Toggle Markdown rendering |
-| `<leader>mp` | Toggle Markdown preview |
 
 Markdown, git commit, and other text-like buffers automatically:
 

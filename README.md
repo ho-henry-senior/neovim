@@ -10,12 +10,12 @@ It is intended as a personal, opinionated Neovim config that is still simple eno
 - Keep startup and mental overhead low.
 - Use native Neovim features where they are good enough now: LSP, sessions, package management, diagnostics.
 - Prefer strong editing defaults for software work and pleasant writing defaults for Markdown and prose.
-- Keep the configuration inspectable: most behavior lives in a small number of files under `lua/config` and `lua/plugins`.
+- Keep the configuration inspectable: most behaviour lives in a small number of files under `lua/config` and `lua/plugins`.
 
 ## Layout
 
 - `init.lua`: entrypoint, sets leader and loads config and plugins.
-- `lua/config`: core editor behavior such as options, keymaps, diagnostics, autocmds, sessions, and LSP wiring.
+- `lua/config`: core editor behaviour such as options, keymaps, diagnostics, autocmds, sessions, and LSP wiring.
 - `lua/plugins`: plugin install and setup files, one file per feature area.
 - `lsp`: per-server native LSP configs.
 - `nvim-pack-lock.json`: plugin lock file used by `vim.pack`.
@@ -60,7 +60,8 @@ If you are new to this config, focus on these first:
 
 Then use:
 
-- [docs/keymaps.md](docs/keymaps.md) for day-to-day shortcuts, organized from basics to deeper workflows
+- [docs/keymaps.md](docs/keymaps.md) for day-to-day shortcuts, organised from basics to deeper workflows
+- [docs/markdown.md](docs/markdown.md) for Markdown and prose support
 - [docs/tooling.md](docs/tooling.md) for installation, optional tooling, WezTerm, and troubleshooting
 - [docs/plugins.md](docs/plugins.md) for the plugin guide
 - [docs/lsp.md](docs/lsp.md) for language-server details

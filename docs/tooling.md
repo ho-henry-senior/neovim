@@ -127,7 +127,7 @@ Formatting prefers a project-local Prettier config if one exists. Otherwise it f
 ## Troubleshooting
 
 - Missing `ripgrep`: grep-based search and some picker workflows will degrade or fail.
-- Missing `fd`: file picking can fall back to slower behavior depending on source.
+- Missing `fd`: file picking can fall back to slower behaviour depending on source.
 - Missing `prettier`: JavaScript, TypeScript, JSON, HTML, CSS, Markdown, YAML, and similar formatting will not run.
 - Missing `stylua`: `just fmt`, `just fmt-check`, and Lua formatting support will fail.
 - Missing `lazygit`: `<leader>gg` will not work.
