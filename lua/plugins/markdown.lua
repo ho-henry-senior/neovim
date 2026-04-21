@@ -76,12 +76,12 @@ vim.keymap.set("x", "<leader>mc", 'c`<C-r>"`<Esc>', { desc = "Code Selection", s
 vim.keymap.set("x", "<leader>ml", 'c[<C-r>"]()<Esc>F(a', { desc = "Link Selection", silent = true })
 
 vim.keymap.set("n", "<leader>m<", function()
-	adjust_heading_level(1)
-end, { desc = "Promote Heading" })
+	adjust_heading_level(-1)
+end, { desc = "Increase Heading Level" })
 
 vim.keymap.set("n", "<leader>m>", function()
-	adjust_heading_level(-1)
-end, { desc = "Demote Heading" })
+	adjust_heading_level(1)
+end, { desc = "Decrease Heading Level" })
 
 vim.keymap.set("n", "<leader>mh", insert_horizontal_rule, { desc = "Insert Horizontal Rule" })
 vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Toggle Checkbox" })

@@ -38,8 +38,8 @@ Visual mode:
 
 Normal mode:
 
-- `<leader>m<`: promote the current heading by one level
-- `<leader>m>`: demote the current heading by one level
+- `<leader>m<`: increase the current heading level
+- `<leader>m>`: decrease the current heading level
 - `<leader>mh`: insert a horizontal rule
 - `<leader>mx`: toggle a checkbox on the current line
 
