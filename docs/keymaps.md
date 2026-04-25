@@ -135,8 +135,10 @@ These mappings are always listed under `<leader>t`. Nearest, file, and output ma
 | `<leader>gH` | Show current file history |
 | `<leader>gV` | Open file history view |
 | `<leader>gv` | Open line history view |
+| `<leader>gx` | Close all diff views |
 | `<leader>gc` | Compare against branch / commit / tag |
 | `<leader>gC` | Compare two refs |
+| `<leader>g2` | Compare two arbitrary files |
 | `<leader>gm` | Resolve merge conflicts |
 | `<leader>gg` | Open LazyGit |
 | `<leader>gB` | Open current file/selection in remote |

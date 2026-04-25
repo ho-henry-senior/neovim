@@ -30,6 +30,12 @@ The per-server configs live under `lsp/`.
 - TypeScript / JavaScript: `npm install -g typescript typescript-language-server`
 - YAML: `npm install -g yaml-language-server`
 
+For C# / .NET, ensure global dotnet tools are on `PATH`:
+
+```sh
+export PATH="$HOME/.dotnet/tools:$PATH"
+```
+
 ### Writing-Focused Servers
 
 - Markdown: `brew install marksman`

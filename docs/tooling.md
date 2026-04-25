@@ -2,7 +2,7 @@
 
 ## Required Software
 
-These are the tools needed for the core config and the default validation flow.
+These are the tools needed for the core config and the default validation flow. Workflow-specific language tools are listed separately below.
 
 ### Homebrew Formulae
 
@@ -15,7 +15,6 @@ These are the tools needed for the core config and the default validation flow.
 - `python`
 - `stylua`
 - `marksman`
-- `dotnet`
 
 ### npm Packages
 
@@ -50,6 +49,12 @@ Example:
 dotnet tool install --global csharp-ls
 ```
 
+Make sure the .NET tools directory is on `PATH`:
+
+```sh
+export PATH="$HOME/.dotnet/tools:$PATH"
+```
+
 ## Optional Software
 
 These tools unlock specific workflows, but the config can still load and basic validation can still pass without them.
@@ -60,11 +65,15 @@ These tools unlock specific workflows, but the config can still load and basic v
 - `terraform-ls`
 - `harper-ls`
 - `terraform`
+- `dotnet`
 
 ### npm Packages
 
 - `eslint`
 - `vscode-eslint-language-server`
+
+### Python Packages
+
 - `black` or `ruff`
 
 Optional project-local tools:
@@ -72,6 +81,7 @@ Optional project-local tools:
 - `jest`: required inside a JavaScript or TypeScript project if you want to use the built-in test mappings through `neotest-jest`
 - `mocha`: required inside a JavaScript project if you want to use the built-in test mappings for Mocha projects
 - `dotnet`: required for C# language support and .NET test mappings
+- Python test mappings expect a valid project-local `.venv` or `venv` when project dependencies are not available from `python`.
 
 ## Basics
 
@@ -79,7 +89,7 @@ Optional project-local tools:
 
 - `just check`: load Neovim headlessly and fail if the config or plugins error.
 - `just fmt-check`: verify Lua formatting with `stylua --check`.
-- `just validate`: run both checks.
+- `just validate`: run both checks. This may also install missing `vim.pack` plugins declared by the config.
 
 ### Notes
 
@@ -88,6 +98,7 @@ Optional project-local tools:
 - Python formatting uses `ruff_format` or `black`, so at least one of those should exist if you want Python formatting.
 - Terraform formatting uses `terraform fmt`, so install `terraform` if you edit Terraform regularly.
 - JavaScript and TypeScript test support uses `neotest-jest` for Jest projects and a local neotest adapter for Mocha projects.
+- Python test support uses `neotest-python`, configured for `unittest` projects.
 - .NET test support uses `neotest-dotnet` for C# test projects using xUnit, NUnit, or MSTest.
 - Jest test runs also load `.env`, `.env.local`, `.env.test`, and `.env.test.local` from the nearest project root, with more specific files overriding more general ones.
 - A Nerd Font is recommended. The WezTerm example below uses `JetBrainsMono Nerd Font`.
@@ -147,4 +158,5 @@ Formatting prefers a project-local Prettier config if one exists. Otherwise it f
 - Missing `terraform` or `terraform-ls`: Terraform formatting or LSP support will be unavailable.
 - Missing `harper-ls`: prose and spell/style LSP checks for Markdown and text buffers will be unavailable.
 - Missing `dotnet` or `csharp-ls`: C# LSP and .NET test support will be unavailable.
+- Missing or broken Python project venv: Python tests may be discovered but fail at runtime because project dependencies cannot import.
 - Missing Copilot auth: AI mappings load, but Copilot suggestions and Copilot Chat will not be usable.

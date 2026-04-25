@@ -27,6 +27,7 @@ It is intended as a personal, opinionated Neovim config that is still simple eno
 - Sessions are saved automatically on exit if real file buffers were open.
 - Completion uses `blink.cmp`.
 - Formatting uses `conform.nvim`.
+- Test workflows use `neotest` for JavaScript/TypeScript Jest and Mocha projects, Python `unittest` projects, and .NET test projects.
 - GitHub Copilot suggestions are enabled in insert mode.
 - File navigation, grep, explorer, terminal, and notifications are provided by `snacks.nvim`.
 - Treesitter powers highlighting, textobjects, and folding.
