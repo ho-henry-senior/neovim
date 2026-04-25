@@ -2,13 +2,14 @@ vim.pack.add({
 	"https://github.com/nvim-neotest/nvim-nio",
 	"https://github.com/nvim-neotest/neotest",
 	"https://github.com/nvim-neotest/neotest-jest",
+	"https://github.com/nvim-neotest/neotest-python",
 })
 
 vim.cmd.packadd("nvim-nio")
 
 local neotest = require("neotest")
 local nio = require("nio")
-local javascript = require("plugins.neotest.javascript")
+local tests = require("plugins.neotest.tests")
 
 local function get_neotest_client()
 	local _, client = debug.getupvalue(neotest.run.get_tree_from_args, 1)
@@ -77,7 +78,7 @@ end
 local function run_project_tests()
 	nio.run(function()
 		local file_path = vim.fn.expand("%:p")
-		local root = javascript.project_root(file_path) or vim.fn.getcwd()
+		local root = tests.project_root(file_path) or vim.fn.getcwd()
 		local adapter_id = ensure_project_positions(root, file_path)
 		neotest.run.run({ root, adapter = adapter_id })
 	end)
@@ -85,7 +86,9 @@ end
 
 local function toggle_test_summary()
 	nio.run(function()
-		ensure_test_positions(vim.fn.expand("%:p"))
+		local file_path = vim.fn.expand("%:p")
+		local root = tests.project_root(file_path) or vim.fn.getcwd()
+		ensure_project_positions(root, file_path)
 		neotest.summary.toggle()
 	end)
 end
@@ -93,8 +96,26 @@ end
 local function with_test_support(fn)
 	return function()
 		local file_path = vim.fn.expand("%:p")
-		if not javascript.is_test_file(file_path) then
-			vim.notify("Test mappings are only available in supported Jest or Mocha test buffers.", vim.log.levels.INFO)
+		if not tests.is_test_file(file_path) then
+			vim.notify(
+				"Test mappings are only available in supported JavaScript, TypeScript, or Python test buffers.",
+				vim.log.levels.INFO
+			)
+			return
+		end
+
+		fn()
+	end
+end
+
+local function with_project_support(fn)
+	return function()
+		local file_path = vim.fn.expand("%:p")
+		if not tests.project_root(file_path) then
+			vim.notify(
+				"Run-all is only available in supported JavaScript, TypeScript, or Python test projects.",
+				vim.log.levels.INFO
+			)
 			return
 		end
 
@@ -103,12 +124,12 @@ local function with_test_support(fn)
 end
 
 vim.keymap.set("n", "<leader>t?", function()
-	vim.notify("Test mappings are available in supported JavaScript/TypeScript test buffers for Jest or Mocha projects.")
+	vim.notify("Test mappings are available in supported JavaScript, TypeScript, or Python test buffers.")
 end, { desc = "Test Mapping Help" })
 vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = "Run Nearest Test" })
 vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run File Tests" })
-vim.keymap.set("n", "<leader>ta", with_test_support(run_project_tests), { desc = "Run All Tests" })
-vim.keymap.set("n", "<leader>ts", with_test_support(toggle_test_summary), { desc = "Toggle Test Summary" })
+vim.keymap.set("n", "<leader>ta", with_project_support(run_project_tests), { desc = "Run All Tests" })
+vim.keymap.set("n", "<leader>ts", with_project_support(toggle_test_summary), { desc = "Toggle Test Summary" })
 vim.keymap.set(
 	"n",
 	"<leader>to",
@@ -142,5 +163,5 @@ neotest.setup({
 			help = "?",
 		},
 	},
-	adapters = javascript.adapters(),
+	adapters = tests.adapters(),
 })
