@@ -79,14 +79,17 @@ local function get_string_from_template_literal(value)
 		return value
 	end
 
-	return (matched:gsub("%${.*}", ".*")
-		:gsub("%%s", "\\w*")
-		:gsub("%%i", "\\d*")
-		:gsub("%%d", ".*")
-		:gsub("%%f", ".*")
-		:gsub("%%j", ".*")
-		:gsub("%%o", ".*")
-		:gsub("%%#", "\\d*"))
+	return (
+		matched
+			:gsub("%${.*}", ".*")
+			:gsub("%%s", "\\w*")
+			:gsub("%%i", "\\d*")
+			:gsub("%%d", ".*")
+			:gsub("%%f", ".*")
+			:gsub("%%j", ".*")
+			:gsub("%%o", ".*")
+			:gsub("%%#", "\\d*")
+	)
 end
 
 function Adapter.discover_positions(file_path)

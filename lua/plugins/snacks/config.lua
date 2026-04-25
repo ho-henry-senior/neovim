@@ -45,7 +45,12 @@ M.options = {
 				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 				{ icon = " ", key = "g", desc = "Find Text", action = ":lua Snacks.dashboard.pick('grep')" },
 				{ icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('recent')" },
-				{ icon = " ", key = "c", desc = "Config", action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})" },
+				{
+					icon = " ",
+					key = "c",
+					desc = "Config",
+					action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+				},
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
 		},

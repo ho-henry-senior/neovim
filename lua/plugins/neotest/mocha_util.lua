@@ -3,11 +3,7 @@ local lib = require("neotest.lib")
 local M = {}
 
 local function normalize_test_title(value)
-	return value
-		:gsub("\r", "\\r")
-		:gsub("\n", "\\n")
-		:gsub("\t", "\\t")
-		:gsub("\\\\", "\\")
+	return value:gsub("\r", "\\r"):gsub("\n", "\\n"):gsub("\t", "\\t"):gsub("\\\\", "\\")
 end
 
 local function normalize_segment(value)
@@ -68,17 +64,20 @@ function M.get_mocha_command_args(context)
 end
 
 function M.escape_test_pattern(value)
-	return (value:gsub("%(", "%\\(")
-		:gsub("%)", "%\\)")
-		:gsub("%]", "%\\]")
-		:gsub("%[", "%\\[")
-		:gsub("%*", "%\\*")
-		:gsub("%+", "%\\+")
-		:gsub("%-", "%\\-")
-		:gsub("%?", "%\\?")
-		:gsub("%$", "%\\$")
-		:gsub("%^", "%\\^")
-		:gsub("%/", "%\\/"))
+	return (
+		value
+			:gsub("%(", "%\\(")
+			:gsub("%)", "%\\)")
+			:gsub("%]", "%\\]")
+			:gsub("%[", "%\\[")
+			:gsub("%*", "%\\*")
+			:gsub("%+", "%\\+")
+			:gsub("%-", "%\\-")
+			:gsub("%?", "%\\?")
+			:gsub("%$", "%\\$")
+			:gsub("%^", "%\\^")
+			:gsub("%/", "%\\/")
+	)
 end
 
 function M.get_strategy_config(strategy, command, cwd)
@@ -107,7 +106,8 @@ function M.get_cwd(_)
 end
 
 function M.clean_ansi(value)
-	return value:gsub("\x1b%[%d+;%d+;%d+;%d+;%d+m", "")
+	return value
+		:gsub("\x1b%[%d+;%d+;%d+;%d+;%d+m", "")
 		:gsub("\x1b%[%d+;%d+;%d+;%d+m", "")
 		:gsub("\x1b%[%d+;%d+;%d+m", "")
 		:gsub("\x1b%[%d+;%d+m", "")

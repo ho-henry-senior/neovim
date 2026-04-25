@@ -1,8 +1,10 @@
 vim.pack.add({
+	"https://github.com/nvim-neotest/nvim-nio",
 	"https://github.com/nvim-neotest/neotest",
 	"https://github.com/nvim-neotest/neotest-jest",
-	"https://github.com/nvim-neotest/nvim-nio",
 })
+
+vim.cmd.packadd("nvim-nio")
 
 local neotest = require("neotest")
 local nio = require("nio")
@@ -317,9 +319,14 @@ vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = 
 vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run File Tests" })
 vim.keymap.set("n", "<leader>ta", with_test_support(run_project_tests), { desc = "Run All Tests" })
 vim.keymap.set("n", "<leader>ts", with_test_support(toggle_test_summary), { desc = "Toggle Test Summary" })
-vim.keymap.set("n", "<leader>to", with_test_support(function()
-	neotest.output.open({ enter = true })
-end), { desc = "Open Test Output" })
+vim.keymap.set(
+	"n",
+	"<leader>to",
+	with_test_support(function()
+		neotest.output.open({ enter = true })
+	end),
+	{ desc = "Open Test Output" }
+)
 
 neotest.setup({
 	summary = {
