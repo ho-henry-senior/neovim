@@ -1,10 +1,12 @@
 local javascript = require("plugins.neotest.javascript")
+local dotnet = require("plugins.neotest.dotnet")
 local python = require("plugins.neotest.python")
 
 local M = {}
 
 local languages = {
 	javascript,
+	dotnet,
 	python,
 }
 

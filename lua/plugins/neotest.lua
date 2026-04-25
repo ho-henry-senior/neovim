@@ -3,6 +3,7 @@ vim.pack.add({
 	"https://github.com/nvim-neotest/neotest",
 	"https://github.com/nvim-neotest/neotest-jest",
 	"https://github.com/nvim-neotest/neotest-python",
+	"https://github.com/Issafalcon/neotest-dotnet",
 })
 
 vim.cmd.packadd("nvim-nio")

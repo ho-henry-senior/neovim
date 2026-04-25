@@ -21,6 +21,7 @@ require("nvim-treesitter").setup({})
 require("nvim-treesitter").install({
 	"bash",
 	"css",
+	"c_sharp",
 	"diff",
 	"dockerfile",
 	"gitcommit",

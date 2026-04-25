@@ -91,7 +91,7 @@ These are the mappings that are either outside the leader namespace or easy to f
 
 ### Tests
 
-These mappings are always listed under `<leader>t`. Nearest, file, and output mappings run in supported test buffers; run-all and summary mappings run in supported JavaScript, TypeScript, or Python test projects.
+These mappings are always listed under `<leader>t`. Nearest, file, and output mappings run in supported test buffers; run-all and summary mappings run in supported JavaScript, TypeScript, Python, or .NET test projects.
 
 | Shortcut | Action |
 | --- | --- |

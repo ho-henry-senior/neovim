@@ -15,6 +15,7 @@ These are the tools needed for the core config and the default validation flow.
 - `python`
 - `stylua`
 - `marksman`
+- `dotnet`
 
 ### npm Packages
 
@@ -39,6 +40,16 @@ npm install -g \
   prettier
 ```
 
+### .NET Tools
+
+- `csharp-ls`
+
+Example:
+
+```sh
+dotnet tool install --global csharp-ls
+```
+
 ## Optional Software
 
 These tools unlock specific workflows, but the config can still load and basic validation can still pass without them.
@@ -60,6 +71,7 @@ Optional project-local tools:
 
 - `jest`: required inside a JavaScript or TypeScript project if you want to use the built-in test mappings through `neotest-jest`
 - `mocha`: required inside a JavaScript project if you want to use the built-in test mappings for Mocha projects
+- `dotnet`: required for C# language support and .NET test mappings
 
 ## Basics
 
@@ -76,6 +88,7 @@ Optional project-local tools:
 - Python formatting uses `ruff_format` or `black`, so at least one of those should exist if you want Python formatting.
 - Terraform formatting uses `terraform fmt`, so install `terraform` if you edit Terraform regularly.
 - JavaScript and TypeScript test support uses `neotest-jest` for Jest projects and a local neotest adapter for Mocha projects.
+- .NET test support uses `neotest-dotnet` for C# test projects using xUnit, NUnit, or MSTest.
 - Jest test runs also load `.env`, `.env.local`, `.env.test`, and `.env.test.local` from the nearest project root, with more specific files overriding more general ones.
 - A Nerd Font is recommended. The WezTerm example below uses `JetBrainsMono Nerd Font`.
 - GitHub Copilot access and authentication are required if you want inline suggestions and Copilot Chat.
@@ -133,4 +146,5 @@ Formatting prefers a project-local Prettier config if one exists. Otherwise it f
 - Missing `lazygit`: `<leader>gg` will not work.
 - Missing `terraform` or `terraform-ls`: Terraform formatting or LSP support will be unavailable.
 - Missing `harper-ls`: prose and spell/style LSP checks for Markdown and text buffers will be unavailable.
+- Missing `dotnet` or `csharp-ls`: C# LSP and .NET test support will be unavailable.
 - Missing Copilot auth: AI mappings load, but Copilot suggestions and Copilot Chat will not be usable.

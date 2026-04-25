@@ -3,6 +3,7 @@
 ## Configured by Default
 
 - Bash
+- C# / .NET
 - CSS / SCSS / LESS
 - Harper for prose, spell, and style checks
 - HTML
@@ -21,6 +22,7 @@ The per-server configs live under `lsp/`.
 ### Code-Focused Servers
 
 - Bash: `npm install -g bash-language-server`
+- C# / .NET: `dotnet tool install --global csharp-ls`
 - CSS / HTML / JSON: `npm install -g vscode-langservers-extracted`
 - Lua: `brew install lua-language-server`
 - Python: `npm install -g pyright`
