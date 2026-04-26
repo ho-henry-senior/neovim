@@ -12,6 +12,55 @@ local neotest = require("neotest")
 local nio = require("nio")
 local tests = require("plugins.neotest.tests")
 
+local function patch_subprocess_treesitter_paths()
+	local subprocess = require("neotest.lib.subprocess")
+	if subprocess._user_treesitter_paths_patched then
+		return
+	end
+
+	local ok, treesitter = pcall(require, "nvim-treesitter")
+	if not ok or type(treesitter.setup) ~= "function" then
+		return
+	end
+
+	local treesitter_root = subprocess.resolve_plugin_root(treesitter.setup)
+	local treesitter_runtime = treesitter_root and (treesitter_root .. "/runtime") or nil
+	local original_add_paths_to_rtp = subprocess.add_paths_to_rtp
+
+	if not subprocess.add_to_rtp then
+		subprocess.add_to_rtp = function(plugin_funcs)
+			local paths = {}
+			for _, plugin_func in ipairs(plugin_funcs) do
+				local root = subprocess.resolve_plugin_root(plugin_func)
+				if root and not vim.tbl_contains(paths, root) then
+					table.insert(paths, root)
+				end
+			end
+
+			return subprocess.add_paths_to_rtp(paths)
+		end
+	end
+
+	subprocess.add_paths_to_rtp = function(paths)
+		if treesitter_root and not vim.tbl_contains(paths, treesitter_root) then
+			table.insert(paths, treesitter_root)
+		end
+		if
+			treesitter_runtime
+			and vim.uv.fs_stat(treesitter_runtime)
+			and not vim.tbl_contains(paths, treesitter_runtime)
+		then
+			table.insert(paths, treesitter_runtime)
+		end
+
+		return original_add_paths_to_rtp(paths)
+	end
+
+	subprocess._user_treesitter_paths_patched = true
+end
+
+patch_subprocess_treesitter_paths()
+
 local function get_neotest_client()
 	local _, client = debug.getupvalue(neotest.run.get_tree_from_args, 1)
 	return client

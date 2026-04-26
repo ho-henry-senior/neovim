@@ -7,6 +7,36 @@ local test_package_patterns = {
 	"Microsoft.NET.Test.Sdk",
 }
 
+local function patch_treesitter_compat()
+	if vim.g.user_neotest_dotnet_treesitter_compat_patched then
+		return
+	end
+
+	local original_get_node_text = vim.treesitter.get_node_text
+	vim.treesitter.get_node_text = function(node, source, opts)
+		if type(node) == "table" and node[1] then
+			node = node[1]
+		end
+
+		return original_get_node_text(node, source, opts)
+	end
+
+	local treesitter = require("neotest.lib").treesitter
+	local original_parse_positions = treesitter.parse_positions
+	treesitter.parse_positions = function(file_path, query, opts)
+		if opts and opts.build_position == "require('neotest-dotnet')._build_position" then
+			opts = vim.tbl_extend("force", opts, {
+				build_position = require("neotest-dotnet")._build_position,
+				position_id = require("neotest-dotnet")._position_id,
+			})
+		end
+
+		return original_parse_positions(file_path, query, opts)
+	end
+
+	vim.g.user_neotest_dotnet_treesitter_compat_patched = true
+end
+
 local function find_upward(file_path, predicate)
 	if not file_path or file_path == "" then
 		return nil
@@ -42,9 +72,9 @@ end
 
 function M.project_root(file_path)
 	local marker = find_upward(file_path, function(name)
-		return name:match("%.slnx?$") ~= nil
-	end) or find_upward(file_path, function(name)
 		return name:match("%.csproj$") ~= nil
+	end) or find_upward(file_path, function(name)
+		return name:match("%.slnx?$") ~= nil
 	end) or find_upward(file_path, function(name)
 		return name == ".git"
 	end)
@@ -85,9 +115,11 @@ function M.is_test_file(file_path)
 end
 
 function M.adapters()
+	patch_treesitter_compat()
+
 	return {
 		require("neotest-dotnet")({
-			discovery_root = "solution",
+			discovery_root = "project",
 		}),
 	}
 end
