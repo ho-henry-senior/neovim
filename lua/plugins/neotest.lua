@@ -99,7 +99,7 @@ local function with_test_support(fn)
 		local file_path = vim.fn.expand("%:p")
 		if not tests.is_test_file(file_path) then
 			vim.notify(
-				"Test mappings are only available in supported JavaScript, TypeScript, or Python test buffers.",
+				"Test mappings are only available in supported JavaScript, TypeScript, Python, or C# test buffers.",
 				vim.log.levels.INFO
 			)
 			return
@@ -114,7 +114,7 @@ local function with_project_support(fn)
 		local file_path = vim.fn.expand("%:p")
 		if not tests.project_root(file_path) then
 			vim.notify(
-				"Run-all is only available in supported JavaScript, TypeScript, or Python test projects.",
+				"Run-all is only available in supported JavaScript, TypeScript, Python, or .NET test projects.",
 				vim.log.levels.INFO
 			)
 			return
@@ -125,7 +125,7 @@ local function with_project_support(fn)
 end
 
 vim.keymap.set("n", "<leader>t?", function()
-	vim.notify("Test mappings are available in supported JavaScript, TypeScript, or Python test buffers.")
+	vim.notify("Test mappings are available in supported JavaScript, TypeScript, Python, or C# test buffers.")
 end, { desc = "Test Mapping Help" })
 vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = "Run Nearest Test" })
 vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run File Tests" })
