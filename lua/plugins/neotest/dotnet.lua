@@ -13,13 +13,13 @@ local function patch_treesitter_compat()
 	end
 
 	local original_get_node_text = vim.treesitter.get_node_text
-	vim.treesitter.get_node_text = function(node, source, opts)
+	rawset(vim.treesitter, "get_node_text", function(node, source, opts)
 		if type(node) == "table" and node[1] then
 			node = node[1]
 		end
 
 		return original_get_node_text(node, source, opts)
-	end
+	end)
 
 	local treesitter = require("neotest.lib").treesitter
 	local original_parse_positions = treesitter.parse_positions
