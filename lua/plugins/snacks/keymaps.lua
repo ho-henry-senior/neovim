@@ -157,7 +157,7 @@ local keymaps = {
 	{
 		"<leader>sg",
 		function(Snacks)
-			Snacks.picker.grep()
+			Snacks.picker.grep({ cwd = Snacks.git.get_root() or vim.fn.getcwd(0) })
 		end,
 		desc = "Grep",
 	},
