@@ -20,8 +20,21 @@ local lsp = {
 	show_name = true,
 }
 
+local function has_window_splits()
+	local normal_windows = 0
+
+	for _, win in ipairs(vim.api.nvim_tabpage_list_wins(0)) do
+		if vim.api.nvim_win_get_config(win).relative == "" then
+			normal_windows = normal_windows + 1
+		end
+	end
+
+	return normal_windows > 1
+end
+
 local winbar_filename = {
 	"filename",
+	cond = has_window_splits,
 	file_status = true,
 	newfile_status = true,
 	path = 1,
@@ -66,6 +79,8 @@ require("lualine").setup({
 				"FileChangedShellPost",
 				"VimResized",
 				"Filetype",
+				"WinClosed",
+				"WinNew",
 				"CursorMoved",
 				"CursorMovedI",
 				"ModeChanged",
@@ -112,6 +127,7 @@ require("lualine").setup({
 		lualine_x = {
 			{
 				"diagnostics",
+				cond = has_window_splits,
 				sections = { "error", "warn", "info", "hint" },
 				symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
 				colored = true,
@@ -119,6 +135,7 @@ require("lualine").setup({
 			},
 			{
 				"filetype",
+				cond = has_window_splits,
 				icon_only = true,
 				padding = { left = 1, right = 0 },
 			},
@@ -133,6 +150,7 @@ require("lualine").setup({
 		lualine_x = {
 			{
 				"filetype",
+				cond = has_window_splits,
 				icon_only = true,
 				padding = { left = 1, right = 0 },
 				color = "StatusLineNC",
