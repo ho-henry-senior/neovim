@@ -20,6 +20,25 @@ local lsp = {
 	show_name = true,
 }
 
+local winbar_filename = {
+	"filename",
+	file_status = true,
+	newfile_status = true,
+	path = 1,
+	shorting_target = 40,
+	symbols = {
+		modified = " ●",
+		readonly = " ",
+		unnamed = "[No Name]",
+		newfile = " [New]",
+	},
+}
+
+local inactive_winbar_filename = vim.tbl_extend("force", winbar_filename, {
+	shorting_target = 20,
+	color = "StatusLineNC",
+})
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -89,11 +108,38 @@ require("lualine").setup({
 	winbar = {
 		lualine_a = {},
 		lualine_b = {},
-		lualine_c = { "filename" },
-		lualine_x = {},
+		lualine_c = { winbar_filename },
+		lualine_x = {
+			{
+				"diagnostics",
+				sections = { "error", "warn", "info", "hint" },
+				symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
+				colored = true,
+				update_in_insert = false,
+			},
+			{
+				"filetype",
+				icon_only = true,
+				padding = { left = 1, right = 0 },
+			},
+		},
 		lualine_y = {},
 		lualine_z = {},
 	},
-	inactive_winbar = {},
+	inactive_winbar = {
+		lualine_a = {},
+		lualine_b = {},
+		lualine_c = { inactive_winbar_filename },
+		lualine_x = {
+			{
+				"filetype",
+				icon_only = true,
+				padding = { left = 1, right = 0 },
+				color = "StatusLineNC",
+			},
+		},
+		lualine_y = {},
+		lualine_z = {},
+	},
 	extensions = {},
 })

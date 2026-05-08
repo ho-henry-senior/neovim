@@ -52,6 +52,23 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 	end,
 })
 
+-- Show relative line numbers only in the active window
+vim.api.nvim_create_autocmd({ "WinEnter", "BufWinEnter" }, {
+	group = augroup("active_window_numbers"),
+	callback = function()
+		vim.opt_local.number = true
+		vim.opt_local.relativenumber = true
+	end,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+	group = augroup("inactive_window_numbers"),
+	callback = function()
+		vim.opt_local.number = true
+		vim.opt_local.relativenumber = false
+	end,
+})
+
 -- go to last loc when opening a buffer
 vim.api.nvim_create_autocmd("BufReadPost", {
 	group = augroup("last_loc"),
