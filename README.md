@@ -63,6 +63,7 @@ Then use:
 
 - [docs/keymaps.md](docs/keymaps.md) for day-to-day shortcuts, organised from basics to deeper workflows
 - [docs/markdown.md](docs/markdown.md) for Markdown and prose support
+- [docs/ui.md](docs/ui.md) for statusline, tabline, and window label goals
 - [docs/tooling.md](docs/tooling.md) for installation, optional tooling, WezTerm, and troubleshooting
 - [docs/plugins.md](docs/plugins.md) for the plugin guide
 - [docs/lsp.md](docs/lsp.md) for language-server details
