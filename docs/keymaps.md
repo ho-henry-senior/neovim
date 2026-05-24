@@ -112,7 +112,6 @@ These mappings are always listed under `<leader>t`. Nearest, file, and output ma
 | `<leader><tab><tab>` | New tab |
 | `<leader><tab>d` | Close tab |
 | `<leader><tab>[` / `<leader><tab>]` | Previous / next tab |
-| `<leader>uu` | Undo tree |
 
 ### Git
 
