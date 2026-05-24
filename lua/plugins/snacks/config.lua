@@ -69,7 +69,7 @@ M.options = {
 	notifier = { enabled = true }, -- Provides a unified interface for displaying notifications, with support for different backends (e.g., native, telescope) and customizable formatting and behavior.
 	scope = { enabled = true }, -- Provides a way to define and manage custom scopes (e.g., project, git branch, filetype) that can be used to filter and organize various Snacks features like pickers and explorers.
 	scroll = { enabled = false }, -- Prefer stock scrolling behavior.
-	statuscolumn = { enabled = true }, -- Enhances the status column (the area to the left of the line numbers) with additional features like diagnostics, git signs, and more.
+	statuscolumn = { enabled = false }, -- Use stock Neovim sign/number columns.
 	terminal = { enabled = true }, -- Provides a built-in terminal emulator with features like floating windows, customizable keybindings, and integration with the rest of the Snacks ecosystem.
 	toggle = { enabled = true }, -- Provides a convenient way to toggle various editor features on and off with customizable keybindings.
 	words = { enabled = true }, -- Provides enhanced navigation for jumping between occurrences of the word under the cursor, with support for counting and direction.
