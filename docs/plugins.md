@@ -40,4 +40,3 @@ These are the plugins currently loaded by `lua/plugins/init.lua`. The list is in
 ## Writing and Markdown
 
 - `MeanderingProgrammer/render-markdown.nvim`: rich inline rendering for headings, callouts, code blocks, checkboxes, tables, and links.
-- `iamcco/markdown-preview.nvim`: browser preview for Markdown.

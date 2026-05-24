@@ -17,15 +17,9 @@ Related filetype behaviour:
 
 ## Mappings
 
-### Rendering and Preview
+### Rendering
 
 - `<leader>mm`: toggle inline Markdown rendering
-- `<leader>mp`: toggle browser preview
-
-These are different tools:
-
-- rendering stays inside Neovim and improves readability while editing
-- preview opens the Markdown preview plugin for a browser-style view
 
 ### Editing Helpers
 
@@ -54,7 +48,6 @@ Checkbox behaviour:
 Markdown support currently uses:
 
 - `render-markdown.nvim` for inline rendering
-- `markdown-preview.nvim` for browser preview
 
 ## Notes
 

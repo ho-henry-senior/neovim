@@ -35,7 +35,7 @@ M.options = {
 	input = { enabled = true }, -- Provides a consistent and extensible interface for handling user input across various Snacks features, with support for customizable keybindings, input validation, and integration with the rest of the Snacks ecosystem.
 	layout = { enabled = true }, -- Provides a flexible and customizable layout system for arranging and resizing various Snacks UI components (e.g., pickers, explorers, terminals) with support for different screen sizes and orientations.
 	notifier = { enabled = true }, -- Provides a unified interface for displaying notifications, with support for different backends (e.g., native, telescope) and customizable formatting and behavior.
-	scope = { enabled = true }, -- Provides a way to define and manage custom scopes (e.g., project, git branch, filetype) that can be used to filter and organize various Snacks features like pickers and explorers.
+	scope = { enabled = false }, -- Disable scope textobjects/jumps; keep indent guides enabled separately.
 	scroll = { enabled = false }, -- Prefer stock scrolling behavior.
 	statuscolumn = { enabled = false }, -- Use stock Neovim sign/number columns.
 	terminal = { enabled = true }, -- Provides a built-in terminal emulator with features like floating windows, customizable keybindings, and integration with the rest of the Snacks ecosystem.

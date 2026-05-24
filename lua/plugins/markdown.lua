@@ -1,6 +1,5 @@
 vim.pack.add({
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
-	"https://github.com/iamcco/markdown-preview.nvim",
 })
 
 require("render-markdown").setup(require("plugins.markdown.render_opts"))
@@ -63,12 +62,6 @@ vim.keymap.set("n", "<leader>mm", function()
 		rm.enable()
 	end
 end, { desc = "Toggle Markdown Rendering" })
-
-vim.keymap.set("n", "<leader>mp", function()
-	vim.cmd("packadd markdown-preview.nvim")
-	vim.cmd("doautocmd <nomodeline> BufEnter")
-	vim.cmd("MarkdownPreviewToggle")
-end, { desc = "Toggle Preview" })
 
 vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold Selection", silent = true })
 vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic Selection", silent = true })
