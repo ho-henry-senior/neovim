@@ -52,13 +52,6 @@ map("n", "]q", vim.cmd.cnext, { desc = "Next Quickfix" })
 map("n", "<leader>ci", vim.show_pos, { desc = "Inspect Position" })
 map("n", "<leader>cI", "<cmd>InspectTree<cr>", { desc = "Inspect Syntax Tree" })
 
--- Undo tree
-local function open_undotree()
-	vim.cmd("packadd nvim.undotree")
-	require("undotree").open()
-end
-map("n", "<leader>uu", open_undotree, { desc = "Undo Tree" })
-
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter Normal Mode" })
 map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to Left Window" })
