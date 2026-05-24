@@ -275,13 +275,6 @@ local keymaps = {
 		desc = "Man Pages",
 	},
 	{
-		"<leader>sp",
-		function(Snacks)
-			Snacks.picker.lazy()
-		end,
-		desc = "Search Plugin Specs",
-	},
-	{
 		"<leader>sq",
 		function(Snacks)
 			Snacks.picker.qflist()
@@ -361,13 +354,6 @@ local keymaps = {
 			Snacks.terminal()
 		end,
 		desc = "which_key_ignore",
-	},
-	{
-		"<leader>z",
-		function(Snacks)
-			Snacks.zen.zoom()
-		end,
-		desc = "Toggle Zoom",
 	},
 	{
 		"<leader>cR",

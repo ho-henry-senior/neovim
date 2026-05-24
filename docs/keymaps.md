@@ -162,7 +162,6 @@ These mappings are always listed under `<leader>t`. Nearest, file, and output ma
 | `<leader>ub` | Toggle light/dark background |
 | `<leader>ug` | Toggle indent guides |
 | `<leader>uC` | Pick colorscheme |
-| `<leader>z` | Toggle Zoom |
 | `<leader>ur` | Clear search highlight and refresh |
 | `<leader>ci` | Inspect cursor position highlight data |
 | `<leader>cI` | Inspect Treesitter tree |
