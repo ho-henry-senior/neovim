@@ -100,7 +100,8 @@ vim.keymap.set("n", "<leader>gc", function()
 	vim.ui.input({
 		prompt = "Compare with (branch/commit/tag/HEAD~N, empty=working): ",
 	}, function(ref)
-		vim.cmd("VDiffCompare " .. (ref or ""))
+		local args = ref and ref:match("%S") and { ref } or {}
+		vim.cmd({ cmd = "VDiffCompare", args = args })
 	end)
 end, { desc = "Compare Refs" })
 
@@ -111,7 +112,11 @@ vim.keymap.set("n", "<leader>gC", function()
 			ref1 = "HEAD"
 		end
 		vim.ui.input({ prompt = "Compare ref2: " }, function(ref2)
-			vim.cmd("VDiffCompareRefs " .. ref1 .. " " .. (ref2 or ""))
+			local args = { ref1 }
+			if ref2 and ref2:match("%S") then
+				table.insert(args, ref2)
+			end
+			vim.cmd({ cmd = "VDiffCompareRefs", args = args })
 		end)
 	end)
 end, { desc = "Compare Two Refs" })
@@ -130,7 +135,8 @@ vim.keymap.set("n", "<leader>gm", "<Cmd>VMerge<CR>", { desc = "Resolve Merge Con
 vim.keymap.set("n", "<leader>gf", "<Cmd>VDiff<CR>", { desc = "Diff File Against HEAD" })
 vim.keymap.set("n", "<leader>gF", function()
 	vim.ui.input({ prompt = "Diff file with (ref, empty=HEAD): " }, function(ref)
-		vim.cmd("VDiff " .. (ref or ""))
+		local args = ref and ref:match("%S") and { ref } or {}
+		vim.cmd({ cmd = "VDiff", args = args })
 	end)
 end, { desc = "Diff File Against Ref" })
 
@@ -142,7 +148,11 @@ vim.keymap.set("n", "<leader>g2", function()
 		end
 		vim.ui.input({ prompt = "Second file: " }, function(file2)
 			if file2 and file2:match("%S") then
-				vim.cmd(("tabnew | e %s | diffthis | vsplit %s | diffthis"):format(file1, file2))
+				vim.cmd.tabnew()
+				vim.cmd.edit(vim.fn.fnameescape(file1))
+				vim.cmd.diffthis()
+				vim.cmd.vsplit(vim.fn.fnameescape(file2))
+				vim.cmd.diffthis()
 			end
 		end)
 	end)
