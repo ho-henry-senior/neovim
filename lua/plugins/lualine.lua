@@ -3,6 +3,8 @@ vim.pack.add({
 	"https://github.com/nvim-lualine/lualine.nvim",
 })
 
+local lualine = require("lualine")
+
 local lsp = {
 	"lsp_status",
 	icon = "", -- f013
@@ -32,9 +34,13 @@ local function has_window_splits()
 	return normal_windows > 1
 end
 
+local function show_winbar()
+	return has_window_splits() and vim.api.nvim_buf_get_name(0) ~= "kulala://ui"
+end
+
 local winbar_filename = {
 	"filename",
-	cond = has_window_splits,
+	cond = show_winbar,
 	file_status = true,
 	newfile_status = true,
 	path = 1,
@@ -52,7 +58,7 @@ local inactive_winbar_filename = vim.tbl_extend("force", winbar_filename, {
 	color = "StatusLineNC",
 })
 
-require("lualine").setup({
+lualine.setup({
 	options = {
 		icons_enabled = true,
 		theme = "auto",
@@ -127,7 +133,7 @@ require("lualine").setup({
 		lualine_x = {
 			{
 				"diagnostics",
-				cond = has_window_splits,
+				cond = show_winbar,
 				sections = { "error", "warn", "info", "hint" },
 				symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
 				colored = true,
@@ -135,7 +141,7 @@ require("lualine").setup({
 			},
 			{
 				"filetype",
-				cond = has_window_splits,
+				cond = show_winbar,
 				icon_only = true,
 				padding = { left = 1, right = 0 },
 			},
@@ -150,7 +156,7 @@ require("lualine").setup({
 		lualine_x = {
 			{
 				"filetype",
-				cond = has_window_splits,
+				cond = show_winbar,
 				icon_only = true,
 				padding = { left = 1, right = 0 },
 				color = "StatusLineNC",
@@ -161,3 +167,13 @@ require("lualine").setup({
 	},
 	extensions = {},
 })
+
+local lualine_winbar = lualine.winbar
+
+lualine.winbar = function(...)
+	if vim.api.nvim_buf_get_name(0) == "kulala://ui" then
+		return vim.wo.winbar
+	end
+
+	return lualine_winbar(...)
+end
