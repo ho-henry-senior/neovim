@@ -33,7 +33,4 @@ require("kulala").setup({
 	global_keymaps = true,
 	global_keymaps_prefix = "<leader>r",
 	kulala_keymaps_prefix = "",
-	ui = {
-		default_winbar_panes = { "body", "headers", "headers_body", "verbose", "stats", "script_output", "report", "help" },
-	},
 })
