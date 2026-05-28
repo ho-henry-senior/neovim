@@ -28,6 +28,7 @@ It is intended as a personal, opinionated Neovim config that is still simple eno
 - Completion uses `blink.cmp`.
 - Formatting uses `conform.nvim`.
 - Test workflows use `neotest` for JavaScript/TypeScript Jest and Mocha projects, Python `unittest` projects, and .NET test projects.
+- HTTP request files (`.http` and `.rest`) are supported through `kulala.nvim`.
 - GitHub Copilot suggestions are enabled in insert mode.
 - File navigation, grep, explorer, terminal, and notifications are provided by `snacks.nvim`.
 - Treesitter powers highlighting, textobjects, and folding.

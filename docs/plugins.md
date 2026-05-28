@@ -6,6 +6,7 @@ These are the plugins currently loaded by `lua/plugins/init.lua`. The list is in
 
 - `saghen/blink.cmp`: completion UI and completion source integration. This is the main completion engine.
 - `stevearc/conform.nvim`: formatting runner. It chooses formatters by filetype and handles format-on-save.
+- `mistweaverco/kulala.nvim`: REST client support for `.http` and `.rest` request files, including request execution and response views.
 - `nvim-treesitter/nvim-treesitter`: Treesitter parser support for highlighting, folds, and structure-aware editing.
 - `nvim-treesitter/nvim-treesitter-textobjects`: textobjects and structural motions such as functions, classes, parameters, loops, and statements.
 

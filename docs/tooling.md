@@ -94,6 +94,7 @@ Optional project-local tools:
 ### Notes
 
 - `vscode-langservers-extracted` provides the CSS, HTML, and JSON LSP servers.
+- `tree-sitter-cli` is used to build Kulala's `kulala_http` parser for `.http` and `.rest` request files when the parser binary is missing.
 - `prettier` is required for formatting JavaScript, TypeScript, JSON, CSS, HTML, Markdown, YAML, and related files.
 - Python formatting uses `ruff_format` or `black`, so at least one of those should exist if you want Python formatting.
 - Terraform formatting uses `terraform fmt`, so install `terraform` if you edit Terraform regularly.
@@ -154,6 +155,7 @@ Formatting prefers a project-local Prettier config if one exists. Otherwise it f
 - Missing `fd`: file picking can fall back to slower behaviour depending on source.
 - Missing `prettier`: JavaScript, TypeScript, JSON, HTML, CSS, Markdown, YAML, and similar formatting will not run.
 - Missing `stylua`: `just fmt`, `just fmt-check`, and Lua formatting support will fail.
+- Missing `tree-sitter-cli`: `.http` and `.rest` request files may fail to start Kulala Treesitter highlighting until the `kulala_http` parser has already been built.
 - Missing `lazygit`: `<leader>gg` will not work.
 - Missing `terraform` or `terraform-ls`: Terraform formatting or LSP support will be unavailable.
 - Missing `harper-ls`: prose and spell/style LSP checks for Markdown and text buffers will be unavailable.
