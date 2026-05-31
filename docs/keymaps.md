@@ -60,7 +60,7 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | Mode | Shortcut | Action |
 | --- | --- | --- |
 | Normal | `<leader>aA` | Copilot auth |
-| Normal | `<leader>at` | Toggle Copilot |
+| Normal | `<leader>at` | Copilot toggle |
 | Normal | `<leader>as` | Copilot status |
 | Normal | `<leader>ac` | Open Copilot Chat |
 | Normal / Visual | `<leader>aa` | Explain buffer or selection |
@@ -96,7 +96,7 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | `<leader>tn` | Run nearest test |
 | `<leader>tf` | Run tests in current file |
 | `<leader>ta` | Run all tests in project |
-| `<leader>ts` | Toggle test summary |
+| `<leader>ts` | Test summary toggle |
 | `<leader>to` | Open test output |
 
 ### Buffers and Tabs
@@ -128,7 +128,7 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>ghp` | Preview hunk inline |
 | `<leader>ghb` | Blame line |
 | `<leader>ghB` | Blame buffer |
-| `<leader>ght` | Toggle deleted lines |
+| `<leader>ght` | Deleted toggle |
 | `<leader>ghd` | Diff against index |
 | `<leader>ghD` | Diff against previous commit |
 | `<leader>gd` | Diff working tree |
@@ -158,10 +158,10 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>cF` | Format injected languages |
 | `<leader>cn` | Show formatter info |
 | `<leader>n` | Notification history |
-| `<leader>ud` | Toggle diagnostics |
-| `<leader>uv` | Toggle diagnostic virtual text |
-| `<leader>uT` | Toggle Treesitter highlighting |
-| `<leader>ug` | Toggle indent guides |
+| `<leader>ud` | Diagnostics toggle |
+| `<leader>uv` | Diagnostic virtual text toggle |
+| `<leader>ut` | Treesitter toggle |
+| `<leader>ug` | Indent guides toggle |
 | `<leader>ur` | Clear search highlight and refresh |
 | `<leader>ci` | Inspect highlight groups at cursor |
 | `<leader>cI` | Inspect Treesitter tree |

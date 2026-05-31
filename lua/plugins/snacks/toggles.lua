@@ -12,8 +12,8 @@ function M.setup(Snacks)
 						on = vim.o.showtabline > 0 and vim.o.showtabline or 2,
 						name = "Tabline",
 					})
-					:map("<leader>uA")
-				Snacks.toggle.treesitter():map("<leader>uT")
+					:map("<leader>ua")
+				Snacks.toggle.treesitter():map("<leader>ut")
 				Snacks.toggle.option("background", { off = "light", on = "dark", name = "Dark Background" }):map("<leader>ub")
 				Snacks.toggle.indent():map("<leader>ug")
 			end)

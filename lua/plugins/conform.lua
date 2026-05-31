@@ -94,7 +94,7 @@ vim.keymap.set("n", "<leader>uf", function()
 	else
 		vim.cmd("FormatDisable")
 	end
-end, { desc = "Toggle Autoformat" })
+end, { desc = "Autoformat Toggle" })
 
 vim.keymap.set({ "n", "v" }, "<leader>cn", "<cmd>ConformInfo<cr>", { desc = "Show Formatter Info" })
 

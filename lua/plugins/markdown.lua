@@ -61,7 +61,7 @@ vim.keymap.set("n", "<leader>mt", function()
 	else
 		rm.enable()
 	end
-end, { desc = "Toggle Markdown Rendering" })
+end, { desc = "Markdown Rendering Toggle" })
 
 vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold Selection", silent = true })
 vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic Selection", silent = true })
@@ -77,4 +77,4 @@ vim.keymap.set("n", "<leader>m>", function()
 end, { desc = "Decrease Heading Level" })
 
 vim.keymap.set("n", "<leader>mh", insert_horizontal_rule, { desc = "Insert Horizontal Rule" })
-vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Toggle Checkbox" })
+vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Checkbox Toggle" })

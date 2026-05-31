@@ -29,6 +29,20 @@ wk.add({
 })
 
 -- dynamic group
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		vim.schedule(function()
+			wk.add({
+				{ "<leader>ud", desc = "Diagnostics Toggle" },
+				{ "<leader>ua", desc = "Tabline Toggle" },
+				{ "<leader>ut", desc = "Treesitter Toggle" },
+				{ "<leader>ub", desc = "Dark Background Toggle" },
+				{ "<leader>ug", desc = "Indent Guides Toggle" },
+			})
+		end)
+	end,
+})
 
 -- mappings
 wk.add({

@@ -76,7 +76,7 @@ require("gitsigns").setup({
 		map("n", "<leader>ghB", function()
 			gs.blame()
 		end, "Blame Buffer")
-		map("n", "<leader>ght", gs.toggle_deleted, "Toggle Deleted")
+		map("n", "<leader>ght", gs.toggle_deleted, "Deleted Toggle")
 		map("n", "<leader>ghd", gs.diffthis, "Diff This")
 		map("n", "<leader>ghD", function()
 			gs.diffthis("~")

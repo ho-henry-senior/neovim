@@ -179,7 +179,7 @@ end, { desc = "Test Mapping Help" })
 vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = "Run Nearest Test" })
 vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run File Tests" })
 vim.keymap.set("n", "<leader>ta", with_project_support(run_project_tests), { desc = "Run All Tests" })
-vim.keymap.set("n", "<leader>ts", with_project_support(toggle_test_summary), { desc = "Toggle Test Summary" })
+vim.keymap.set("n", "<leader>ts", with_project_support(toggle_test_summary), { desc = "Test Summary Toggle" })
 vim.keymap.set(
 	"n",
 	"<leader>to",
