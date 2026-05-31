@@ -20,6 +20,13 @@ local function get_stop_file()
 	return session_dir .. ".stop_saving"
 end
 
+local function load_session(session_file)
+	vim.cmd("source " .. vim.fn.fnameescape(session_file))
+	vim.cmd("filetype detect")
+	vim.cmd("doautocmd BufEnter")
+	vim.api.nvim_exec_autocmds("SessionLoadPost", {})
+end
+
 -- Auto-restore session when starting with no arguments
 vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
@@ -28,7 +35,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 			local session_file = get_session_file()
 			if vim.fn.filereadable(session_file) == 1 then
 				vim.cmd("silent! set winminwidth=1 winwidth=1 winminheight=1 winheight=1")
-				vim.cmd("source " .. vim.fn.fnameescape(session_file))
+				load_session(session_file)
 			end
 		end
 	end,
@@ -62,7 +69,7 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 vim.keymap.set("n", "<leader>qs", function()
 	local session_file = get_session_file()
 	if vim.fn.filereadable(session_file) == 1 then
-		vim.cmd("source " .. vim.fn.fnameescape(session_file))
+		load_session(session_file)
 	else
 		print("No session found for current directory")
 	end
@@ -72,7 +79,7 @@ end, { desc = "Load project session" })
 vim.keymap.set("n", "<leader>ql", function()
 	local last_session = get_last_session_file()
 	if vim.fn.filereadable(last_session) == 1 then
-		vim.cmd("source " .. vim.fn.fnameescape(last_session))
+		load_session(last_session)
 	else
 		print("No last session found")
 	end
@@ -99,7 +106,7 @@ vim.keymap.set("n", "<leader>qS", function()
 	}, function(choice)
 		if choice then
 			local session_file = session_dir .. choice:gsub("/", "%%") .. ".vim"
-			vim.cmd("source " .. vim.fn.fnameescape(session_file))
+			load_session(session_file)
 		end
 	end)
 end, { desc = "Select session" })
