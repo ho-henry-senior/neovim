@@ -179,10 +179,6 @@ return {
 			reddit = { pattern = "reddit%.com", icon = "󰑍 " },
 		},
 	},
-	latex = {
-		-- Disable formula rendering to avoid optional parser/converter warnings.
-		enabled = false,
-	},
 	sign = {
 		enabled = true,
 		highlight = "RenderMarkdownSign",
