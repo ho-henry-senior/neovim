@@ -133,23 +133,16 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `ih` | Select hunk (visual and operator mode) |
 | `<leader>ghs` | Stage hunk |
 | `<leader>ghr` | Reset hunk |
-| `<leader>ghS` | Stage buffer |
-| `<leader>ghu` | Undo stage hunk |
-| `<leader>ghR` | Reset buffer |
 | `<leader>ghp` | Preview hunk inline |
 | `<leader>ghb` | Blame line |
-| `<leader>ghB` | Blame buffer |
-| `<leader>ght` | Deleted toggle |
 | `<leader>ghd` | Diff against index |
-| `<leader>ghD` | Diff against previous commit |
-| `<leader>gH` | Current file history in log picker |
-| `<leader>g2` | Diff two arbitrary files |
+| `<leader>gf` | Current file history in log picker |
 | `<leader>gg` | Open LazyGit |
 | `<leader>gb` | Git branches picker |
 | `<leader>gl` | Git log picker |
 | `<leader>gs` | Git status picker |
 | `<leader>gS` | Git stash picker |
-| `<leader>gB` | Open file or selection in remote |
+| `<leader>gr` | Open file or selection in remote |
 
 ### Formatting, Diagnostics, and UI
 

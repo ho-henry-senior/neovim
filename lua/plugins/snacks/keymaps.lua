@@ -119,21 +119,14 @@ local keymaps = {
 		desc = "Git diff picker (hunks)",
 	},
 	{
-		"<leader>gP",
-		function(Snacks)
-			Snacks.picker.git_diff({ base = "origin" })
-		end,
-		desc = "Git diff picker (origin)",
-	},
-	{
-		"<leader>gH",
+		"<leader>gf",
 		function(Snacks)
 			Snacks.picker.git_log_file()
 		end,
 		desc = "Git log file",
 	},
 	{
-		"<leader>gB",
+		"<leader>gr",
 		function(Snacks)
 			Snacks.gitbrowse()
 		end,
