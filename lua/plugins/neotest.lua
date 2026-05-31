@@ -175,18 +175,18 @@ end
 
 vim.keymap.set("n", "<leader>t?", function()
 	vim.notify("Test mappings are available in supported JavaScript, TypeScript, Python, or C# test buffers.")
-end, { desc = "Test Mapping Help" })
-vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = "Run Nearest Test" })
-vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run File Tests" })
-vim.keymap.set("n", "<leader>ta", with_project_support(run_project_tests), { desc = "Run All Tests" })
-vim.keymap.set("n", "<leader>ts", with_project_support(toggle_test_summary), { desc = "Test Summary Toggle" })
+end, { desc = "Test mapping help" })
+vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = "Run nearest test" })
+vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run file tests" })
+vim.keymap.set("n", "<leader>ta", with_project_support(run_project_tests), { desc = "Run all tests" })
+vim.keymap.set("n", "<leader>ts", with_project_support(toggle_test_summary), { desc = "Test summary toggle" })
 vim.keymap.set(
 	"n",
 	"<leader>to",
 	with_test_support(function()
 		neotest.output.open({ enter = true })
 	end),
-	{ desc = "Open Test Output" }
+	{ desc = "Open test output" }
 )
 
 neotest.setup({

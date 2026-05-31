@@ -32,17 +32,17 @@ vim.keymap.set("i", "<C-h>", function()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Authenticate" })
-vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Copilot Toggle" })
-vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Show Status" })
+vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Copilot toggle" })
+vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Show status" })
 
-vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Open Chat" })
+vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Open chat" })
 
 vim.keymap.set("n", "<leader>aa", function()
 	require("CopilotChat").ask("Explain this code", {
 		sticky = { "#buffer" },
 	})
-end, { desc = "Explain Buffer" })
+end, { desc = "Explain buffer" })
 
 vim.keymap.set("v", "<leader>aa", function()
 	require("CopilotChat").ask("Explain this code")
-end, { desc = "Explain Selection" })
+end, { desc = "Explain selection" })

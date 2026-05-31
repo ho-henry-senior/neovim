@@ -8,21 +8,21 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.smart()
 		end,
-		desc = "Smart Find Files",
+		desc = "Smart find files",
 	},
 	{
 		"<leader>n",
 		function(Snacks)
 			Snacks.picker.notifications()
 		end,
-		desc = "Notification History",
+		desc = "Notification history",
 	},
 	{
 		"<leader>e",
 		function(Snacks)
 			Snacks.explorer()
 		end,
-		desc = "File Explorer",
+		desc = "File explorer",
 	},
 	{
 		"<leader>bb",
@@ -46,98 +46,98 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
 		end,
-		desc = "Find Config File",
+		desc = "Find config file",
 	},
 	{
 		"<leader>ff",
 		function(Snacks)
 			Snacks.picker.files()
 		end,
-		desc = "Find Files",
+		desc = "Find files",
 	},
 	{
 		"<leader>fg",
 		function(Snacks)
 			Snacks.picker.git_files()
 		end,
-		desc = "Find Git Files",
+		desc = "Find git files",
 	},
 	{
 		"<leader>fp",
 		function(Snacks)
 			Snacks.picker.projects()
 		end,
-		desc = "Open Project",
+		desc = "Open project",
 	},
 	{
 		"<leader>fr",
 		function(Snacks)
 			Snacks.picker.recent()
 		end,
-		desc = "Recent Files",
+		desc = "Recent files",
 	},
 	{
 		"<leader>gb",
 		function(Snacks)
 			Snacks.picker.git_branches()
 		end,
-		desc = "Git Branches",
+		desc = "Git branches",
 	},
 	{
 		"<leader>gl",
 		function(Snacks)
 			Snacks.picker.git_log()
 		end,
-		desc = "Git Log",
+		desc = "Git log",
 	},
 	{
 		"<leader>gL",
 		function(Snacks)
 			Snacks.picker.git_log_line()
 		end,
-		desc = "Git Log Line",
+		desc = "Git log line",
 	},
 	{
 		"<leader>gs",
 		function(Snacks)
 			Snacks.picker.git_status()
 		end,
-		desc = "Git Status",
+		desc = "Git status",
 	},
 	{
 		"<leader>gS",
 		function(Snacks)
 			Snacks.picker.git_stash()
 		end,
-		desc = "Git Stash",
+		desc = "Git stash",
 	},
 	{
 		"<leader>gp",
 		function(Snacks)
 			Snacks.picker.git_diff()
 		end,
-		desc = "Git Diff Picker (Hunks)",
+		desc = "Git diff picker (hunks)",
 	},
 	{
 		"<leader>gP",
 		function(Snacks)
 			Snacks.picker.git_diff({ base = "origin" })
 		end,
-		desc = "Git Diff Picker (origin)",
+		desc = "Git diff picker (origin)",
 	},
 	{
 		"<leader>gH",
 		function(Snacks)
 			Snacks.picker.git_log_file()
 		end,
-		desc = "Git Log File",
+		desc = "Git log file",
 	},
 	{
 		"<leader>gB",
 		function(Snacks)
 			Snacks.gitbrowse()
 		end,
-		desc = "Open in Remote",
+		desc = "Open in remote",
 		mode = { "n", "v" },
 	},
 	{
@@ -152,7 +152,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.grep_buffers()
 		end,
-		desc = "Grep Open Buffers",
+		desc = "Grep open buffers",
 	},
 	{
 		"<leader>sg",
@@ -166,7 +166,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.grep_word()
 		end,
-		desc = "Grep Selection or Word",
+		desc = "Grep selection or word",
 		mode = { "n", "x" },
 	},
 	{
@@ -181,7 +181,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.search_history()
 		end,
-		desc = "Search History",
+		desc = "Search history",
 	},
 	{
 		"<leader>sa",
@@ -195,14 +195,14 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.lines()
 		end,
-		desc = "Buffer Lines",
+		desc = "Buffer lines",
 	},
 	{
 		"<leader>sc",
 		function(Snacks)
 			Snacks.picker.command_history()
 		end,
-		desc = "Command History",
+		desc = "Command history",
 	},
 	{
 		"<leader>sC",
@@ -223,7 +223,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.diagnostics_buffer()
 		end,
-		desc = "Buffer Diagnostics",
+		desc = "Buffer diagnostics",
 	},
 	{
 		"<leader>sH",
@@ -258,7 +258,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.loclist()
 		end,
-		desc = "Location List",
+		desc = "Location list",
 	},
 	{
 		"<leader>sm",
@@ -272,28 +272,28 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.man()
 		end,
-		desc = "Man Pages",
+		desc = "Man pages",
 	},
 	{
 		"<leader>sq",
 		function(Snacks)
 			Snacks.picker.qflist()
 		end,
-		desc = "Quickfix List",
+		desc = "Quickfix list",
 	},
 	{
 		"<leader>sR",
 		function(Snacks)
 			Snacks.picker.resume()
 		end,
-		desc = "Resume Picker",
+		desc = "Resume picker",
 	},
 	{
 		"<leader>su",
 		function(Snacks)
 			Snacks.picker.undo()
 		end,
-		desc = "Undo History",
+		desc = "Undo history",
 	},
 	{
 		"<leader>uC",
@@ -307,21 +307,21 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.lsp_symbols()
 		end,
-		desc = "LSP Symbols",
+		desc = "LSP symbols",
 	},
 	{
 		"<leader>sS",
 		function(Snacks)
 			Snacks.picker.lsp_workspace_symbols()
 		end,
-		desc = "LSP Workspace Symbols",
+		desc = "LSP workspace symbols",
 	},
 	{
 		"gai",
 		function(Snacks)
 			Snacks.picker.lsp_incoming_calls()
 		end,
-		desc = "C[a]lls Incoming",
+		desc = "C[a]lls incoming",
 		has = "callHierarchy/incomingCalls",
 	},
 	{
@@ -329,7 +329,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.lsp_outgoing_calls()
 		end,
-		desc = "C[a]lls Outgoing",
+		desc = "C[a]lls outgoing",
 		has = "callHierarchy/outgoingCalls",
 	},
 	{
@@ -337,7 +337,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.bufdelete()
 		end,
-		desc = "Delete Buffer",
+		desc = "Delete buffer",
 		mode = { "n" },
 	},
 	{
@@ -345,7 +345,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.bufdelete.other()
 		end,
-		desc = "Delete Other Buffers",
+		desc = "Delete other buffers",
 		mode = { "n" },
 	},
 	{
@@ -360,14 +360,14 @@ local keymaps = {
 		function(Snacks)
 			Snacks.rename.rename_file()
 		end,
-		desc = "Rename File",
+		desc = "Rename file",
 	},
 	{
 		"]r",
 		function(Snacks)
 			Snacks.words.jump(vim.v.count1)
 		end,
-		desc = "Next Reference",
+		desc = "Next reference",
 		mode = { "n" },
 	},
 	{
@@ -375,7 +375,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.words.jump(-vim.v.count1)
 		end,
-		desc = "Prev Reference",
+		desc = "Prev reference",
 		mode = { "n" },
 	},
 }

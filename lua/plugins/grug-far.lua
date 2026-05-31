@@ -15,4 +15,4 @@ vim.keymap.set({ "n", "v", "x" }, "<leader>sr", function()
 			filesFilter = ext and ext ~= "" and "*." .. ext or nil,
 		},
 	})
-end, { desc = "Search and Replace" })
+end, { desc = "Search and replace" })

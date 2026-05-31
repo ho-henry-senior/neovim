@@ -94,9 +94,9 @@ vim.keymap.set("n", "<leader>uf", function()
 	else
 		vim.cmd("FormatDisable")
 	end
-end, { desc = "Autoformat Toggle" })
+end, { desc = "Autoformat toggle" })
 
-vim.keymap.set({ "n", "v" }, "<leader>cn", "<cmd>ConformInfo<cr>", { desc = "Show Formatter Info" })
+vim.keymap.set({ "n", "v" }, "<leader>cn", "<cmd>ConformInfo<cr>", { desc = "Show formatter info" })
 
 vim.keymap.set({ "n", "v" }, "<leader>cf", function()
 	require("conform").format({ async = true }, function(err, did_edit)
@@ -104,8 +104,8 @@ vim.keymap.set({ "n", "v" }, "<leader>cf", function()
 			vim.notify("Code formatted", vim.log.levels.INFO, { title = "Conform" })
 		end
 	end)
-end, { desc = "Format Buffer" })
+end, { desc = "Format buffer" })
 
 vim.keymap.set({ "n", "v" }, "<leader>cF", function()
 	require("conform").format({ formatters = { "injected" }, timeout_ms = 3000 })
-end, { desc = "Format Injected Languages" })
+end, { desc = "Format injected languages" })

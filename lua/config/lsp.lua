@@ -4,7 +4,7 @@ local function augroup(name)
 end
 
 local default_keymaps = {
-	{ keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code Actions" },
+	{ keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code actions" },
 	{
 		keys = "<leader>cl",
 		func = function()
@@ -19,10 +19,10 @@ local default_keymaps = {
 				})
 			end
 		end,
-		desc = "LSP Fix All",
+		desc = "LSP fix all",
 	},
 	{ keys = "K", func = vim.lsp.buf.hover, desc = "Hover (alt)", has = "hoverProvider" },
-	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto Definition", has = "definitionProvider" },
+	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto definition", has = "definitionProvider" },
 }
 
 local completion = vim.g.completion_mode or "blink" -- or 'native'

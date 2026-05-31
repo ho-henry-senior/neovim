@@ -61,20 +61,20 @@ vim.keymap.set("n", "<leader>mt", function()
 	else
 		rm.enable()
 	end
-end, { desc = "Markdown Rendering Toggle" })
+end, { desc = "Markdown rendering toggle" })
 
-vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold Selection", silent = true })
-vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic Selection", silent = true })
-vim.keymap.set("x", "<leader>mc", 'c`<C-r>"`<Esc>', { desc = "Code Selection", silent = true })
-vim.keymap.set("x", "<leader>ml", 'c[<C-r>"]()<Esc>F(a', { desc = "Link Selection", silent = true })
+vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold selection", silent = true })
+vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic selection", silent = true })
+vim.keymap.set("x", "<leader>mc", 'c`<C-r>"`<Esc>', { desc = "Code selection", silent = true })
+vim.keymap.set("x", "<leader>ml", 'c[<C-r>"]()<Esc>F(a', { desc = "Link selection", silent = true })
 
 vim.keymap.set("n", "<leader>m<", function()
 	adjust_heading_level(-1)
-end, { desc = "Increase Heading Level" })
+end, { desc = "Increase heading level" })
 
 vim.keymap.set("n", "<leader>m>", function()
 	adjust_heading_level(1)
-end, { desc = "Decrease Heading Level" })
+end, { desc = "Decrease heading level" })
 
-vim.keymap.set("n", "<leader>mh", insert_horizontal_rule, { desc = "Insert Horizontal Rule" })
-vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Checkbox Toggle" })
+vim.keymap.set("n", "<leader>mh", insert_horizontal_rule, { desc = "Insert horizontal rule" })
+vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Checkbox toggle" })

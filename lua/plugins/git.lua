@@ -46,7 +46,7 @@ require("gitsigns").setup({
 			else
 				gs.nav_hunk("next")
 			end
-		end, "Next Hunk")
+		end, "Next hunk")
 
 		map("n", "[h", function()
 			if vim.wo.diff then
@@ -54,35 +54,35 @@ require("gitsigns").setup({
 			else
 				gs.nav_hunk("prev")
 			end
-		end, "Prev Hunk")
+		end, "Prev hunk")
 
 		map("n", "]H", function()
 			gs.nav_hunk("last")
-		end, "Last Hunk")
+		end, "Last hunk")
 		map("n", "[H", function()
 			gs.nav_hunk("first")
-		end, "First Hunk")
+		end, "First hunk")
 
-		map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage Hunk")
-		map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset Hunk")
+		map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
+		map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset hunk")
 
-		map("n", "<leader>ghS", gs.stage_buffer, "Stage Buffer")
-		map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo Stage Hunk")
-		map("n", "<leader>ghR", gs.reset_buffer, "Reset Buffer")
-		map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview Hunk Inline")
+		map("n", "<leader>ghS", gs.stage_buffer, "Stage buffer")
+		map("n", "<leader>ghu", gs.undo_stage_hunk, "Undo stage hunk")
+		map("n", "<leader>ghR", gs.reset_buffer, "Reset buffer")
+		map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview hunk inline")
 		map("n", "<leader>ghb", function()
 			gs.blame_line({ full = true })
-		end, "Blame Line")
+		end, "Blame line")
 		map("n", "<leader>ghB", function()
 			gs.blame()
-		end, "Blame Buffer")
-		map("n", "<leader>ght", gs.toggle_deleted, "Deleted Toggle")
-		map("n", "<leader>ghd", gs.diffthis, "Diff This")
+		end, "Blame buffer")
+		map("n", "<leader>ght", gs.toggle_deleted, "Deleted toggle")
+		map("n", "<leader>ghd", gs.diffthis, "Diff this")
 		map("n", "<leader>ghD", function()
 			gs.diffthis("~")
-		end, "Diff This ~")
+		end, "Diff this ~")
 
-		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns select hunk")
 	end,
 })
 
@@ -120,7 +120,7 @@ vim.keymap.set("n", "<leader>gc", function()
 		local args = ref and ref:match("%S") and { ref } or {}
 		vim.cmd({ cmd = "VDiffCompare", args = args })
 	end)
-end, { desc = "Compare Refs" })
+end, { desc = "Compare refs" })
 
 -- COMPARE TWO REFS (e.g., branches, commits, tags)
 vim.keymap.set("n", "<leader>gC", function()
@@ -136,26 +136,26 @@ vim.keymap.set("n", "<leader>gC", function()
 			vim.cmd({ cmd = "VDiffCompareRefs", args = args })
 		end)
 	end)
-end, { desc = "Compare Two Refs" })
+end, { desc = "Compare two refs" })
 
 -- Quick shortcuts for common comparisons
-vim.keymap.set("n", "<leader>gd", "<Cmd>VDiffCompare<CR>", { desc = "Diff Working Tree" })
-vim.keymap.set("n", "<leader>gD", "<Cmd>VDiffCompare --staged<CR>", { desc = "Diff Staged Changes" })
-vim.keymap.set("n", "<leader>gV", "<Cmd>VDiffHistory<CR>", { desc = "Show File History" })
-vim.keymap.set("v", "<leader>gv", ":'<,'>VDiffRange<CR>", { desc = "Show Line History" })
-vim.keymap.set("n", "<leader>gx", "<Cmd>VDiffClose<CR>", { desc = "Close All Diffs" })
+vim.keymap.set("n", "<leader>gd", "<Cmd>VDiffCompare<CR>", { desc = "Diff working tree" })
+vim.keymap.set("n", "<leader>gD", "<Cmd>VDiffCompare --staged<CR>", { desc = "Diff staged changes" })
+vim.keymap.set("n", "<leader>gV", "<Cmd>VDiffHistory<CR>", { desc = "Show file history" })
+vim.keymap.set("v", "<leader>gv", ":'<,'>VDiffRange<CR>", { desc = "Show line history" })
+vim.keymap.set("n", "<leader>gx", "<Cmd>VDiffClose<CR>", { desc = "Close all diffs" })
 -- 3-way merge view (LOCAL | RESULT | REMOTE)
-vim.keymap.set("n", "<leader>gm", "<Cmd>VMerge<CR>", { desc = "Resolve Merge Conflicts" })
+vim.keymap.set("n", "<leader>gm", "<Cmd>VMerge<CR>", { desc = "Resolve merge conflicts" })
 
 -- CURRENT FILE DIFF
 -- Same principle: accepts any ref or empty for HEAD
-vim.keymap.set("n", "<leader>gf", "<Cmd>VDiff<CR>", { desc = "Diff File Against HEAD" })
+vim.keymap.set("n", "<leader>gf", "<Cmd>VDiff<CR>", { desc = "Diff file against HEAD" })
 vim.keymap.set("n", "<leader>gF", function()
 	vim.ui.input({ prompt = "Diff file with (ref, empty=HEAD): " }, function(ref)
 		local args = ref and ref:match("%S") and { ref } or {}
 		vim.cmd({ cmd = "VDiff", args = args })
 	end)
-end, { desc = "Diff File Against Ref" })
+end, { desc = "Diff file against ref" })
 
 -- UTILITY: Compare two arbitrary files (not git-related)
 vim.keymap.set("n", "<leader>g2", function()
@@ -173,4 +173,4 @@ vim.keymap.set("n", "<leader>g2", function()
 			end
 		end)
 	end)
-end, { desc = "Compare Two Files" })
+end, { desc = "Compare two files" })

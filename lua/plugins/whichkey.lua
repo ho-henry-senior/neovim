@@ -34,11 +34,11 @@ vim.api.nvim_create_autocmd("VimEnter", {
 	callback = function()
 		vim.schedule(function()
 			wk.add({
-				{ "<leader>ud", desc = "Diagnostics Toggle" },
-				{ "<leader>ua", desc = "Tabline Toggle" },
-				{ "<leader>ut", desc = "Treesitter Toggle" },
-				{ "<leader>ub", desc = "Dark Background Toggle" },
-				{ "<leader>ug", desc = "Indent Guides Toggle" },
+				{ "<leader>ud", desc = "Diagnostics toggle" },
+				{ "<leader>ua", desc = "Tabline toggle" },
+				{ "<leader>ut", desc = "Treesitter toggle" },
+				{ "<leader>ub", desc = "Dark background toggle" },
+				{ "<leader>ug", desc = "Indent guides toggle" },
 			})
 		end)
 	end,
@@ -46,7 +46,7 @@ vim.api.nvim_create_autocmd("VimEnter", {
 
 -- mappings
 wk.add({
-	{ "gx", desc = "Open With System App" },
+	{ "gx", desc = "Open with system app" },
 
 	{
 		"<leader>fCf",
@@ -55,7 +55,7 @@ wk.add({
 			vim.fn.setreg("+", p)
 			vim.notify("Copied full file path: " .. p)
 		end,
-		desc = "Copy Full Path",
+		desc = "Copy full path",
 	},
 	{
 		"<leader>fCn",
@@ -64,7 +64,7 @@ wk.add({
 			vim.fn.setreg("+", n)
 			vim.notify("Copied file name: " .. n)
 		end,
-		desc = "Copy File Name",
+		desc = "Copy file name",
 	},
 	{
 		"<leader>fCr",
@@ -75,7 +75,7 @@ wk.add({
 			vim.fn.setreg("+", rel)
 			vim.notify("Copied relative path: " .. rel)
 		end,
-		desc = "Copy Relative Path",
+		desc = "Copy relative path",
 	},
 
 	{
@@ -83,6 +83,6 @@ wk.add({
 		function()
 			wk.show({ global = false })
 		end,
-		desc = "Show Buffer Keymaps",
+		desc = "Show buffer keymaps",
 	},
 })
