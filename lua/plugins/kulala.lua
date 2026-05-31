@@ -15,12 +15,14 @@ local function ensure_kulala_parser()
 
 	vim.fn.mkdir(parser_dir, "p")
 
-	local result = vim.system({
-		"tree-sitter",
-		"build",
-		"-o",
-		parser_path,
-	}, { cwd = parser_root }):wait()
+	local result = vim
+		.system({
+			"tree-sitter",
+			"build",
+			"-o",
+			parser_path,
+		}, { cwd = parser_root })
+		:wait()
 
 	if result.code ~= 0 then
 		vim.notify("Failed to build Kulala Treesitter parser", vim.log.levels.WARN)

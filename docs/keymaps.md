@@ -87,6 +87,7 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | `<leader>sB` | Grep open buffers |
 | `<leader>sb` | Buffer lines |
 | `<leader>sk` | Keymaps |
+| `<leader>sa` | Autocmds |
 | `<leader>sc` | Command history |
 
 ### Tests
@@ -163,8 +164,11 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>n` | Notification history |
 | `<leader>ud` | Diagnostics toggle |
 | `<leader>uv` | Diagnostic virtual text toggle |
+| `<leader>ua` | Tabline toggle |
 | `<leader>ut` | Treesitter toggle |
+| `<leader>ub` | Dark background toggle |
 | `<leader>ug` | Indent guides toggle |
+| `<leader>uC` | Pick colorscheme |
 | `<leader>ur` | Clear search highlight and refresh |
 | `<leader>ci` | Inspect highlight groups at cursor |
 | `<leader>cI` | Inspect Treesitter tree |
