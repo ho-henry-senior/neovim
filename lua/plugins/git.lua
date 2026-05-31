@@ -1,6 +1,5 @@
 vim.pack.add({
 	"https://github.com/lewis6991/gitsigns.nvim",
-	"https://gitlab.com/tduyng/vdiff.nvim",
 })
 
 -- Setup gitsigns.nvim
@@ -99,63 +98,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
 		end)
 	end,
 })
-
--- Setup vdiff.nvim with side-by-side layout (IntelliJ style)
-require("vdiff").setup({
-	diff_layout = "diff2_vertical", -- side-by-side
-	merge_layout = "diff3_vertical", -- 3-way side-by-side
-})
-
--- Accepts any ref: branch, commit, tag, HEAD~N, or empty for working tree
--- Empty or nil = working tree vs HEAD
--- --staged = staged changes
--- main = compare with main branch
--- HEAD~3 = compare with 3 commits ago
--- abc123 = compare with commit hash
--- v1.0.0 = compare with tag
-vim.keymap.set("n", "<leader>gc", function()
-	vim.ui.input({
-		prompt = "Compare with (branch/commit/tag/HEAD~N, empty=working): ",
-	}, function(ref)
-		local args = ref and ref:match("%S") and { ref } or {}
-		vim.cmd({ cmd = "VDiffCompare", args = args })
-	end)
-end, { desc = "Compare refs" })
-
--- COMPARE TWO REFS (e.g., branches, commits, tags)
-vim.keymap.set("n", "<leader>gC", function()
-	vim.ui.input({ prompt = "Compare ref1 (default=HEAD): " }, function(ref1)
-		if not ref1 or ref1 == "" then
-			ref1 = "HEAD"
-		end
-		vim.ui.input({ prompt = "Compare ref2: " }, function(ref2)
-			local args = { ref1 }
-			if ref2 and ref2:match("%S") then
-				table.insert(args, ref2)
-			end
-			vim.cmd({ cmd = "VDiffCompareRefs", args = args })
-		end)
-	end)
-end, { desc = "Compare two refs" })
-
--- Quick shortcuts for common comparisons
-vim.keymap.set("n", "<leader>gd", "<Cmd>VDiffCompare<CR>", { desc = "Diff working tree" })
-vim.keymap.set("n", "<leader>gD", "<Cmd>VDiffCompare --staged<CR>", { desc = "Diff staged changes" })
-vim.keymap.set("n", "<leader>gV", "<Cmd>VDiffHistory<CR>", { desc = "Show file history" })
-vim.keymap.set("v", "<leader>gv", ":'<,'>VDiffRange<CR>", { desc = "Show line history" })
-vim.keymap.set("n", "<leader>gx", "<Cmd>VDiffClose<CR>", { desc = "Close all diffs" })
--- 3-way merge view (LOCAL | RESULT | REMOTE)
-vim.keymap.set("n", "<leader>gm", "<Cmd>VMerge<CR>", { desc = "Resolve merge conflicts" })
-
--- CURRENT FILE DIFF
--- Same principle: accepts any ref or empty for HEAD
-vim.keymap.set("n", "<leader>gf", "<Cmd>VDiff<CR>", { desc = "Diff file against HEAD" })
-vim.keymap.set("n", "<leader>gF", function()
-	vim.ui.input({ prompt = "Diff file with (ref, empty=HEAD): " }, function(ref)
-		local args = ref and ref:match("%S") and { ref } or {}
-		vim.cmd({ cmd = "VDiff", args = args })
-	end)
-end, { desc = "Diff file against ref" })
 
 -- UTILITY: Compare two arbitrary files (not git-related)
 vim.keymap.set("n", "<leader>g2", function()

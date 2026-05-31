@@ -142,18 +142,8 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>ght` | Deleted toggle |
 | `<leader>ghd` | Diff against index |
 | `<leader>ghD` | Diff against previous commit |
-| `<leader>gd` | Diff working tree |
-| `<leader>gD` | Diff staged changes |
-| `<leader>gf` | Diff current file against HEAD |
-| `<leader>gF` | Diff current file against arbitrary ref |
 | `<leader>gH` | Current file history in log picker |
-| `<leader>gV` | Current file history as diff view |
-| `<leader>gv` | Line range history (visual mode) |
-| `<leader>gx` | Close all diff views |
-| `<leader>gc` | Compare working tree against ref |
-| `<leader>gC` | Compare two refs |
 | `<leader>g2` | Diff two arbitrary files |
-| `<leader>gm` | Resolve merge conflicts |
 | `<leader>gg` | Open LazyGit |
 | `<leader>gb` | Git branches picker |
 | `<leader>gl` | Git log picker |

@@ -24,7 +24,6 @@
 ## Git and Refactoring
 
 - **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)** — gutter hunk markers, inline blame, and hunk-level staging and resetting.
-- **[vdiff.nvim](https://gitlab.com/tduyng/vdiff.nvim)** — side-by-side diff and three-way merge views.
 - **[grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim)** — project-wide search and replace with a persistent UI.
 
 ## Testing
