@@ -22,7 +22,7 @@ wk.add({
 	{ "<leader>m", group = "markdown" },
 	{ "<leader>p", group = "plugins" },
 	{ "<leader>q", group = "session" },
-	{ "<leader>r", group = "requests" },
+	{ "<leader>r", group = "REST" },
 	{ "<leader>s", group = "search" },
 	{ "<leader>t", group = "test" },
 	{ "<leader>u", group = "ui" },
