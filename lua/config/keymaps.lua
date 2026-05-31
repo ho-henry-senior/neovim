@@ -103,4 +103,4 @@ end, { desc = "Delete Plugin" })
 vim.keymap.set("n", "<leader>uv", function()
 	local vt = vim.diagnostic.config().virtual_text
 	vim.diagnostic.config({ virtual_text = not vt })
-end, { desc = "Toggle LSP Text" })
+end, { desc = "LSP Text Toggle" })
