@@ -76,7 +76,7 @@ vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Copilot aut
 vim.keymap.set("n", "<leader>at", toggle_copilot, { desc = "Copilot toggle" })
 vim.keymap.set("n", "<leader>aT", "<cmd>Copilot toggle<cr>", { desc = "Copilot buffer toggle" })
 vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Copilot status" })
-vim.keymap.set("n", "<leader>ap", "<cmd>Copilot panel toggle<cr>", { desc = "Copilot panel" })
+vim.keymap.set("n", "<leader>ap", "<cmd>Copilot panel toggle<cr>", { desc = "Copilot panel toggle" })
 
 vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Copilot chat" })
 
