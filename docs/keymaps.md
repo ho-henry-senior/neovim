@@ -158,13 +158,8 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>cF` | Format injected languages |
 | `<leader>cn` | Show formatter info |
 | `<leader>n` | Notification history |
-| `<leader>un` | Dismiss notifications |
-| `<leader>uw` | Toggle wrap |
-| `<leader>uL` | Toggle relative line numbers |
-| `<leader>ul` | Toggle line numbers |
 | `<leader>ud` | Toggle diagnostics |
 | `<leader>uv` | Toggle diagnostic virtual text |
-| `<leader>uc` | Toggle conceal level |
 | `<leader>uT` | Toggle Treesitter highlighting |
 | `<leader>ug` | Toggle indent guides |
 | `<leader>ur` | Clear search highlight and refresh |

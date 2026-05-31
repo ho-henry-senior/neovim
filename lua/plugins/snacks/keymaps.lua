@@ -363,13 +363,6 @@ local keymaps = {
 		desc = "Rename File",
 	},
 	{
-		"<leader>un",
-		function(Snacks)
-			Snacks.notifier.hide()
-		end,
-		desc = "Dismiss All Notifications",
-	},
-	{
 		"]r",
 		function(Snacks)
 			Snacks.words.jump(vim.v.count1)
