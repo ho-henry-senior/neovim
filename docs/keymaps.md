@@ -25,12 +25,15 @@ Custom mappings and high-value workflow shortcuts. Not every built-in Vim comman
 
 ## Sessions
 
-- Start `nvim` in a project directory with no file arguments to restore the last session for that directory.
-- `<leader>qs` — load the session for the current working directory.
-- `<leader>ql` — load the most recent session overall.
-- `<leader>qS` — select a saved session.
-- `<leader>qd` — disable session saving for the current exit.
-- `<leader>qx` — delete the current project's saved session and skip the next auto-save.
+Start `nvim` in a project directory with no file arguments to restore the last session for that directory.
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>qs` | Load project session |
+| `<leader>ql` | Load last session |
+| `<leader>qS` | Select session |
+| `<leader>qd` | Skip session save |
+| `<leader>qx` | Clear project session |
 
 ## Easy to Miss
 
