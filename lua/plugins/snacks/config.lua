@@ -112,8 +112,8 @@ M.options = {
 			},
 			grep_buffers = {},
 			explorer = {
-				hidden = true, -- Show hidden files by default
-				ignored = true, -- Respect .gitignore and other ignore files
+				hidden = false, -- Hide hidden files by default
+				ignored = false, -- Hide gitignored files by default
 				supports_live = true, -- Update explorer in real-time as files change
 				auto_close = true, -- Close when focus move away from explorer
 				diagnostics = true, -- Show diagnostics in the explorer
