@@ -356,7 +356,7 @@ local keymaps = {
 		desc = "which_key_ignore",
 	},
 	{
-		"<leader>cR",
+		"<leader>cr",
 		function(Snacks)
 			Snacks.rename.rename_file()
 		end,
