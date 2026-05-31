@@ -22,7 +22,8 @@ require("gitsigns").setup({
 		untracked = { text = "┆" },
 	},
 	word_diff = true,
-	show_deleted = true,
+	show_deleted = false,
+	numhl = true,
 	current_line_blame = true,
 	current_line_blame_opts = {
 		virt_text = true,
