@@ -51,18 +51,13 @@ Install with:
 npm install -g eslint vscode-eslint-language-server
 ```
 
-Why it is optional:
+ESLint is optional because `ts_ls` already covers general JavaScript and TypeScript features; ESLint is only useful when a project actually uses it and you want lint diagnostics and fix-all support from the editor.
 
-- `ts_ls` already provides general JavaScript and TypeScript language features.
-- ESLint is mainly useful when a project actually uses ESLint and you want lint diagnostics and fix-all support from the editor.
-
-To enable an on-demand server such as ESLint, set `vim.g.lsp_on_demands` before `config.lsp` is loaded:
+To enable it, set `vim.g.lsp_on_demands` early in `init.lua`:
 
 ```lua
 vim.g.lsp_on_demands = { "eslint_ls" }
 ```
-
-In practice that means setting it early in `init.lua` or another module loaded before `require("config.lsp")`.
 
 ## Default LSP Mappings
 

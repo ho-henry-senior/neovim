@@ -15,7 +15,6 @@ wk.add({
 	{ "<leader>a", group = "ai" },
 	{ "<leader>b", group = "buffers" },
 	{ "<leader>c", group = "code" },
-	{ "<leader>d", group = "debug" },
 	{ "<leader>f", group = "files" },
 	{ "<leader>fC", group = "path" },
 	{ "<leader>g", group = "git" },
@@ -27,7 +26,6 @@ wk.add({
 	{ "<leader>s", group = "search" },
 	{ "<leader>t", group = "test" },
 	{ "<leader>u", group = "ui" },
-	{ "<leader>x", group = "diagnostics" },
 })
 
 -- dynamic group
