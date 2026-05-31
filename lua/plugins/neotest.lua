@@ -6,11 +6,11 @@ vim.pack.add({
 	"https://github.com/Issafalcon/neotest-dotnet",
 })
 
-vim.cmd.packadd("nvim-nio")
-
-local neotest = require("neotest")
-local nio = require("nio")
+-- tests.lua is pure Lua (file matching, project root detection) — safe to load at startup.
+-- After fixing jest.lua, no neotest package code is pulled in here.
 local tests = require("plugins.neotest.tests")
+
+local _neotest, _nio
 
 local function patch_subprocess_treesitter_paths()
 	local subprocess = require("neotest.lib.subprocess")
@@ -59,10 +59,47 @@ local function patch_subprocess_treesitter_paths()
 	subprocess._user_treesitter_paths_patched = true
 end
 
-patch_subprocess_treesitter_paths()
+local function load()
+	if _neotest then
+		return
+	end
+
+	vim.cmd.packadd("nvim-nio")
+	_neotest = require("neotest")
+	_nio = require("nio")
+
+	patch_subprocess_treesitter_paths()
+
+	_neotest.setup({
+		summary = {
+			animated = false,
+			follow = false,
+			mappings = {
+				expand = { "<CR>", "l" },
+				parent = "h",
+				output = "o",
+				short = "O",
+				attach = "a",
+				jumpto = "i",
+				stop = "u",
+				run = "r",
+				mark = "m",
+				run_marked = "R",
+				clear_marked = "M",
+				target = "t",
+				clear_target = "T",
+				next_failed = "J",
+				prev_failed = "K",
+				watch = "w",
+				help = "?",
+			},
+		},
+		adapters = tests.adapters(),
+	})
+end
 
 local function get_neotest_client()
-	local _, client = debug.getupvalue(neotest.run.get_tree_from_args, 1)
+	local _, client = debug.getupvalue(_neotest.run.get_tree_from_args, 1)
 	return client
 end
 
@@ -103,43 +140,43 @@ local function ensure_project_positions(root, file_path)
 end
 
 local function run_nearest_test()
-	nio.run(function()
+	_nio.run(function()
 		local file_path = vim.fn.expand("%:p")
 		ensure_test_positions(file_path)
 
-		local tree = neotest.run.get_tree_from_args(nil, false)
+		local tree = _neotest.run.get_tree_from_args(nil, false)
 		if tree then
-			neotest.run.run()
+			_neotest.run.run()
 			return
 		end
 
-		neotest.run.run(file_path)
+		_neotest.run.run(file_path)
 	end)
 end
 
 local function run_file_tests()
-	nio.run(function()
+	_nio.run(function()
 		local file_path = vim.fn.expand("%:p")
 		ensure_test_positions(file_path)
-		neotest.run.run(file_path)
+		_neotest.run.run(file_path)
 	end)
 end
 
 local function run_project_tests()
-	nio.run(function()
+	_nio.run(function()
 		local file_path = vim.fn.expand("%:p")
 		local root = tests.project_root(file_path) or vim.fn.getcwd()
 		local adapter_id = ensure_project_positions(root, file_path)
-		neotest.run.run({ root, adapter = adapter_id })
+		_neotest.run.run({ root, adapter = adapter_id })
 	end)
 end
 
 local function toggle_test_summary()
-	nio.run(function()
+	_nio.run(function()
 		local file_path = vim.fn.expand("%:p")
 		local root = tests.project_root(file_path) or vim.fn.getcwd()
 		ensure_project_positions(root, file_path)
-		neotest.summary.toggle()
+		_neotest.summary.toggle()
 	end)
 end
 
@@ -154,6 +191,7 @@ local function with_test_support(fn)
 			return
 		end
 
+		load()
 		fn()
 	end
 end
@@ -169,6 +207,7 @@ local function with_project_support(fn)
 			return
 		end
 
+		load()
 		fn()
 	end
 end
@@ -184,34 +223,7 @@ vim.keymap.set(
 	"n",
 	"<leader>to",
 	with_test_support(function()
-		neotest.output.open({ enter = true })
+		_neotest.output.open({ enter = true })
 	end),
 	{ desc = "Open test output" }
 )
-
-neotest.setup({
-	summary = {
-		animated = false,
-		follow = false,
-		mappings = {
-			expand = { "<CR>", "l" },
-			parent = "h",
-			output = "o",
-			short = "O",
-			attach = "a",
-			jumpto = "i",
-			stop = "u",
-			run = "r",
-			mark = "m",
-			run_marked = "R",
-			clear_marked = "M",
-			target = "t",
-			clear_target = "T",
-			next_failed = "J",
-			prev_failed = "K",
-			watch = "w",
-			help = "?",
-		},
-	},
-	adapters = tests.adapters(),
-})

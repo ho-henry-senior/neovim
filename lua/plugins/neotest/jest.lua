@@ -1,7 +1,5 @@
 local env = require("plugins.neotest.env")
 local project = require("plugins.neotest.project")
-local jest_path_util = require("neotest-jest.util")
-local jest_util = require("neotest-jest.jest-util")
 
 local M = {}
 
@@ -23,7 +21,7 @@ function M.is_test_file(file_path)
 		return false
 	end
 
-	if not jest_path_util.defaultTestFileMatcher(file_path) then
+	if not require("neotest-jest.util").defaultTestFileMatcher(file_path) then
 		return false
 	end
 
@@ -41,7 +39,7 @@ function M.adapter()
 			current_test_path = file_path
 			-- Load dotenv before Jest starts so projects that read env vars at import
 			-- time behave the same under neotest as they do under `node -r dotenv/config`.
-			return ("node -r dotenv/config %s"):format(jest_util.getJestCommand(file_path))
+			return ("node -r dotenv/config %s"):format(require("neotest-jest.jest-util").getJestCommand(file_path))
 		end,
 		jestConfigFile = function(file_path)
 			current_test_path = file_path

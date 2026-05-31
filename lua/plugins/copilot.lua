@@ -10,10 +10,41 @@ require("copilot").setup({
 		auto_trigger = true,
 	},
 	panel = {
-		enabled = false,
+		enabled = true,
+		keymap = {
+			refresh = false,
+		},
 	},
 })
 require("CopilotChat").setup()
+
+local function refresh_copilot_panel()
+	local panel_name = vim.api.nvim_buf_get_name(0)
+	local source_name = panel_name:gsub("^copilot://", "")
+
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local bufnr = vim.api.nvim_win_get_buf(win)
+		if vim.api.nvim_buf_get_name(bufnr) == source_name then
+			vim.api.nvim_win_call(win, function()
+				require("copilot.panel").refresh()
+			end)
+			return
+		end
+	end
+
+	vim.notify("Could not find Copilot panel source buffer", vim.log.levels.WARN)
+end
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	pattern = "copilot://*",
+	callback = function(args)
+		vim.keymap.set("n", "R", refresh_copilot_panel, {
+			buffer = args.buf,
+			desc = "Copilot panel refresh",
+			silent = true,
+		})
+	end,
+})
 
 vim.keymap.set("i", "<C-l>", function()
 	require("copilot.suggestion").accept()
@@ -31,18 +62,19 @@ vim.keymap.set("i", "<C-h>", function()
 	require("copilot.suggestion").dismiss()
 end, { silent = true })
 
-vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Authenticate" })
+vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Copilot authenticate" })
 vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Copilot toggle" })
-vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Show status" })
+vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Copilot status" })
+vim.keymap.set("n", "<leader>ap", "<cmd>Copilot panel toggle<cr>", { desc = "Copilot panel" })
 
-vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Open chat" })
+vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Copilot chat" })
 
 vim.keymap.set("n", "<leader>aa", function()
 	require("CopilotChat").ask("Explain this code", {
 		sticky = { "#buffer" },
 	})
-end, { desc = "Explain buffer" })
+end, { desc = "Copilot explain buffer" })
 
 vim.keymap.set("v", "<leader>aa", function()
 	require("CopilotChat").ask("Explain this code")
-end, { desc = "Explain selection" })
+end, { desc = "Copilot explain selection" })

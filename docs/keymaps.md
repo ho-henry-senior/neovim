@@ -45,6 +45,9 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | Insert | `<C-j>` | Next Copilot suggestion |
 | Insert | `<C-k>` | Previous Copilot suggestion |
 | Insert | `<C-h>` | Dismiss Copilot suggestion |
+| Copilot panel | `R` | Refresh Copilot panel suggestions |
+| Copilot panel | `]]` / `[[` | Next / previous Copilot panel suggestion |
+| Copilot panel | `<Enter>` | Accept Copilot panel suggestion |
 | Normal | `<C-h/j/k/l>` | Move between windows |
 | Terminal | `<C-h/j/k/l>` | Move between windows from terminal mode |
 | Terminal | `<Esc><Esc>` | Leave terminal insert mode |
@@ -63,10 +66,11 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | Mode | Shortcut | Action |
 | --- | --- | --- |
 | Normal | `<leader>aA` | Copilot auth |
-| Normal | `<leader>at` | Copilot toggle |
+| Normal | `<leader>at` | Copilot toggle current buffer attach |
 | Normal | `<leader>as` | Copilot status |
 | Normal | `<leader>ac` | Open Copilot Chat |
-| Normal / Visual | `<leader>aa` | Explain buffer or selection |
+| Normal | `<leader>ap` | Toggle Copilot panel |
+| Normal / Visual | `<leader>aa` | Copilot explain buffer or selection |
 
 ### Files, Search, and Explorer
 

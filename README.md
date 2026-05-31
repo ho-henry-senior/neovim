@@ -18,6 +18,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 - `<leader>cf` — format buffer
 - `<leader>gg` — LazyGit
 - `<leader>aa` — explain buffer with Copilot Chat
+- `<leader>ap` — toggle Copilot panel (`R` refreshes suggestions inside the panel)
 - Start `nvim` in a project directory with no file arguments to restore the session for that directory.
 
 ## Going Deeper
