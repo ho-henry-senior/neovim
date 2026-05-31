@@ -73,6 +73,8 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | Normal | `<leader>ap` | Toggle Copilot panel |
 | Normal / Visual | `<leader>aa` | Copilot explain buffer or selection |
 
+`<leader>at` enables or disables Copilot globally. `<leader>aT` only attaches or detaches Copilot for the current buffer.
+
 ### Files, Search, and Explorer
 
 | Shortcut | Action |
