@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, and a small set of focused plugins. Not a distribution — closer to a well-documented starting point.
+A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, and a small set of focused plugins. 
 
 ## Install
 
