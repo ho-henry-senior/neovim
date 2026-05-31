@@ -22,6 +22,7 @@ require("gitsigns").setup({
 		untracked = { text = "┆" },
 	},
 	word_diff = true,
+	show_deleted = true,
 	current_line_blame = true,
 	current_line_blame_opts = {
 		virt_text = true,
@@ -75,6 +76,7 @@ require("gitsigns").setup({
 		map("n", "<leader>ghB", function()
 			gs.blame()
 		end, "Blame Buffer")
+		map("n", "<leader>ght", gs.toggle_deleted, "Toggle Deleted")
 		map("n", "<leader>ghd", gs.diffthis, "Diff This")
 		map("n", "<leader>ghD", function()
 			gs.diffthis("~")

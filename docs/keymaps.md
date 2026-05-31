@@ -128,6 +128,7 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>ghp` | Preview hunk inline |
 | `<leader>ghb` | Blame line |
 | `<leader>ghB` | Blame buffer |
+| `<leader>ght` | Toggle deleted lines |
 | `<leader>ghd` | Diff against index |
 | `<leader>ghD` | Diff against previous commit |
 | `<leader>gd` | Diff working tree |

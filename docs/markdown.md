@@ -19,7 +19,7 @@ Related filetype behaviour:
 
 ### Rendering
 
-- `<leader>mm`: toggle inline Markdown rendering
+- `<leader>mt`: toggle inline Markdown rendering
 
 ### Editing Helpers
 

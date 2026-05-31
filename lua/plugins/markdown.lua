@@ -53,7 +53,7 @@ local function adjust_heading_level(delta)
 	vim.api.nvim_set_current_line(string.rep("#", level) .. " " .. text)
 end
 
-vim.keymap.set("n", "<leader>mm", function()
+vim.keymap.set("n", "<leader>mt", function()
 	local rm = require("render-markdown")
 	local enabled = require("render-markdown.state").enabled
 	if enabled then
