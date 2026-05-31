@@ -140,6 +140,8 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>gg` | Open LazyGit |
 | `<leader>gb` | Git branches picker |
 | `<leader>gl` | Git log picker |
+| `<leader>gL` | Git log for current line |
+| `<leader>gp` | Git diff picker |
 | `<leader>gs` | Git status picker |
 | `<leader>gS` | Git stash picker |
 | `<leader>gr` | Open file or selection in remote |
@@ -163,7 +165,7 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>ci` | Inspect highlight groups at cursor |
 | `<leader>cI` | Inspect Treesitter tree |
 
-Markdown, git commit, and other prose buffers automatically enable wrap and spell checking (British English, with English fallback).
+Markdown, text, and git commit buffers automatically enable wrap and spell checking (British English, with English fallback).
 
 ## Reference
 

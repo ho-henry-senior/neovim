@@ -7,7 +7,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 1. Clone this repo to `~/.config/nvim`.
 2. Install required tools from [docs/tooling.md](docs/tooling.md).
 3. Start Neovim. Run `<leader>pu` to install plugins.
-4. Run `just validate` to check everything loaded correctly.
+4. Run `just check` to check everything loaded correctly.
 5. Authenticate Copilot with `<leader>aA` if you use it.
 
 ## Start Here
