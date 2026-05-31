@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				use_nvim_cmp_as_default = true,
 			},
 			completion = {
-				documentation = { auto_show = false },
+				documentation = { auto_show = true },
 			},
 			sources = {
 				default = { "lsp", "path", "buffer" },
