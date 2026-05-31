@@ -20,7 +20,7 @@ require("conform").setup({
 		["markdown.mdx"] = { "prettier" },
 		terraform = { "terraform_fmt" },
 		graphql = { "prettier" },
-		xml = { "prettier" },
+		xml = { "xmllint" },
 	},
 
 	formatters = {

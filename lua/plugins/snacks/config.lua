@@ -8,6 +8,7 @@ M.options = {
 	bigfile = { -- Provides optimizations for handling large files by disabling expensive features like treesitter, LSP inlay hints, and diagnostics when a file exceeds a specified size threshold.
 		enabled = true,
 		size = 1.5 * 1024 * 1024, -- 1.5MB threshold
+		line_length = 1000000, -- effectively disabled; only trigger on file size
 		setup = function(ctx)
 			-- Disable treesitter (disables highlights, folds, indentexpr)
 			vim.cmd("syntax clear")
