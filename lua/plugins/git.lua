@@ -21,6 +21,7 @@ require("gitsigns").setup({
 		changedelete = { text = "~" },
 		untracked = { text = "┆" },
 	},
+	word_diff = true,
 	current_line_blame = true,
 	current_line_blame_opts = {
 		virt_text = true,
@@ -32,7 +33,7 @@ require("gitsigns").setup({
 	},
 	current_line_blame_formatter = "<author>, <author_time:%R> - <summary> (<abbrev_sha>)",
 	on_attach = function(buffer)
-		local gs = package.loaded.gitsigns
+		local gs = require("gitsigns")
 
 		local function map(mode, lhs, rhs, desc)
 			vim.keymap.set(mode, lhs, rhs, { buffer = buffer, desc = desc })
@@ -80,6 +81,20 @@ require("gitsigns").setup({
 		end, "Diff This ~")
 
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
+	end,
+})
+
+-- Attach gitsigns to any buffers already open when the session is restored
+vim.api.nvim_create_autocmd("VimEnter", {
+	once = true,
+	callback = function()
+		vim.schedule(function()
+			for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+				if vim.api.nvim_buf_is_loaded(buf) then
+					require("gitsigns").attach(buf)
+				end
+			end
+		end)
 	end,
 })
 
