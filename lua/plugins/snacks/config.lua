@@ -18,7 +18,7 @@ M.options = {
 			-- Disable LSP features that are expensive on large files
 			vim.schedule(function()
 				vim.lsp.inlay_hint.enable(false, { bufnr = ctx.buf })
-				vim.lsp.document_color.enable(false, ctx.buf)
+				vim.lsp.document_color.enable(false, { bufnr = ctx.buf })
 			end)
 
 			-- Keep diagnostics off for huge files
