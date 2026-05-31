@@ -66,7 +66,8 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | Mode | Shortcut | Action |
 | --- | --- | --- |
 | Normal | `<leader>aA` | Copilot auth |
-| Normal | `<leader>at` | Copilot toggle current buffer attach |
+| Normal | `<leader>at` | Copilot toggle |
+| Normal | `<leader>aT` | Copilot toggle current buffer attach |
 | Normal | `<leader>as` | Copilot status |
 | Normal | `<leader>ac` | Open Copilot Chat |
 | Normal | `<leader>ap` | Toggle Copilot panel |

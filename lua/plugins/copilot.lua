@@ -46,6 +46,16 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
+local function toggle_copilot()
+	if require("copilot.client").is_disabled() then
+		vim.cmd("Copilot enable")
+		vim.notify("Copilot enabled", vim.log.levels.INFO)
+	else
+		vim.cmd("Copilot disable")
+		vim.notify("Copilot disabled", vim.log.levels.WARN)
+	end
+end
+
 vim.keymap.set("i", "<C-l>", function()
 	require("copilot.suggestion").accept()
 end, { silent = true })
@@ -63,7 +73,8 @@ vim.keymap.set("i", "<C-h>", function()
 end, { silent = true })
 
 vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Copilot authenticate" })
-vim.keymap.set("n", "<leader>at", "<cmd>Copilot toggle<cr>", { desc = "Copilot toggle" })
+vim.keymap.set("n", "<leader>at", toggle_copilot, { desc = "Copilot toggle" })
+vim.keymap.set("n", "<leader>aT", "<cmd>Copilot toggle<cr>", { desc = "Copilot buffer toggle" })
 vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Copilot status" })
 vim.keymap.set("n", "<leader>ap", "<cmd>Copilot panel toggle<cr>", { desc = "Copilot panel" })
 
