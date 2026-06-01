@@ -14,6 +14,10 @@
 - **[CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)** — chat and explain-this-code workflows on top of Copilot.
 - **[plenary.nvim](https://github.com/nvim-lua/plenary.nvim)** — utility library required by CopilotChat.
 
+### Commands
+- :CopilotChatModels -  
+- :CopilotChatDebugInfo - 
+
 ## Navigation, Search, and UI
 
 - **[snacks.nvim](https://github.com/folke/snacks.nvim)** — the main UI and workflow plugin; provides the file picker, grep, explorer, terminal, notifications, and toggles. The dashboard, animations, smooth scrolling, and custom status column are intentionally disabled.

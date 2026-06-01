@@ -16,7 +16,10 @@ require("copilot").setup({
 		},
 	},
 })
-require("CopilotChat").setup()
+
+require("CopilotChat").setup({
+	model = "auto",
+})
 
 local function refresh_copilot_panel()
 	local panel_name = vim.api.nvim_buf_get_name(0)
