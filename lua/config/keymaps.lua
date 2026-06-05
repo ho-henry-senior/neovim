@@ -28,11 +28,15 @@ map(
 	{ desc = "Redraw / clear hlsearch / diff update" }
 )
 
+-- Keep cursor centred when scrolling
+map("n", "<C-d>", "<C-d>zz", { desc = "Scroll down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Scroll up" })
+
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-map("n", "n", "'Nn'[v:searchforward].'zv'", { expr = true, desc = "Next search result" })
+map("n", "n", "'Nn'[v:searchforward].'zvzz'", { expr = true, desc = "Next search result" })
 map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Previous search result" })
+map("n", "N", "'nN'[v:searchforward].'zvzz'", { expr = true, desc = "Previous search result" })
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Previous search result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Previous search result" })
 
