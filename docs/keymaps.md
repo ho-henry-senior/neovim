@@ -146,6 +146,29 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>gS` | Git stash picker |
 | `<leader>gr` | Open file or selection in remote |
 
+### Treesitter Text Objects and Motions
+
+Available in any buffer where Treesitter is active.
+
+#### Text objects (visual and operator-pending)
+
+| Shortcut | Object |
+| --- | --- |
+| `af` / `if` | Function outer / inner |
+| `ac` / `ic` | Class outer / inner |
+| `aa` / `ia` | Parameter outer / inner |
+| `ad` | Comment |
+| `as` | Statement |
+
+#### Motions
+
+| Shortcut | Action |
+| --- | --- |
+| `]m` / `[m` | Next / previous function start |
+| `]M` / `[M` | Next / previous function end |
+| `]]` / `[[` | Next / previous class start |
+| `]o` / `[o` | Next / previous loop start |
+
 ### Formatting, Diagnostics, and UI
 
 | Shortcut | Action |
