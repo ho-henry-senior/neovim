@@ -39,6 +39,27 @@
 - local Mocha adapter — Mocha support for JavaScript projects, kept in-repo under `lua/plugins/neotest/`.
 - **[nvim-nio](https://github.com/nvim-neotest/nvim-nio)** — async library required by neotest.
 
+### Test Execution Flow
+
+```mermaid
+flowchart TD
+  A[Test keymap pressed] --> B{Supported test buffer or project?}
+  B -- No --> C[Notify unavailable]
+  B -- Yes --> D[Lazy-load neotest and nio]
+  D --> E[Patch Treesitter paths for subprocesses]
+  E --> F{Command type}
+
+  F -- nearest or file --> G[Get current file]
+  G --> H[Find adapter for file]
+  H --> I[Update test positions]
+  I --> J[Run nearest or file tests]
+
+  F -- project or summary --> K[Find project root]
+  K --> L[Find adapter for root]
+  L --> M[Update project positions]
+  M --> N[Run project tests or toggle summary]
+```
+
 ## Writing and Markdown
 
 - **[render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)** — inline rendering for Markdown headings, callouts, code blocks, checkboxes, and tables. See [markdown.md](markdown.md).
