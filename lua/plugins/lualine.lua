@@ -34,8 +34,28 @@ local function has_window_splits()
 	return normal_windows > 1
 end
 
+local winbar_exclusions = {
+	filetype_prefixes = {
+		"snacks_",
+	},
+	buffer_names = {
+		["kulala://ui"] = true,
+	},
+}
+
+local function should_exclude_winbar()
+	local filetype = vim.bo.filetype
+	for _, prefix in ipairs(winbar_exclusions.filetype_prefixes) do
+		if vim.startswith(filetype, prefix) then
+			return true
+		end
+	end
+
+	return winbar_exclusions.buffer_names[vim.api.nvim_buf_get_name(0)]
+end
+
 local function show_winbar()
-	return has_window_splits() and vim.api.nvim_buf_get_name(0) ~= "kulala://ui"
+	return has_window_splits() and not should_exclude_winbar()
 end
 
 local winbar_filename = {
@@ -171,7 +191,7 @@ lualine.setup({
 local lualine_winbar = lualine.winbar
 
 lualine.winbar = function(...)
-	if vim.api.nvim_buf_get_name(0) == "kulala://ui" then
+	if should_exclude_winbar() then
 		return vim.wo.winbar
 	end
 
