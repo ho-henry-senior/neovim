@@ -103,6 +103,10 @@ map("n", "<leader>pd", function()
 	end)
 end, { desc = "Delete plugin" })
 
+map("n", "<leader>mm", function()
+	require("config.mermaid").preview()
+end, { desc = "Mermaid preview" })
+
 -- Toggle diagnostics
 vim.keymap.set("n", "<leader>uv", function()
 	local vt = vim.diagnostic.config().virtual_text

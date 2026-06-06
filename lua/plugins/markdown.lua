@@ -1,5 +1,12 @@
+vim.g.mkdp_auto_close = 1
+vim.g.mkdp_filetypes = { "markdown" }
+vim.g.mkdp_preview_options = vim.tbl_deep_extend("force", vim.g.mkdp_preview_options or {}, {
+	maid = {},
+})
+
 vim.pack.add({
 	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+	"https://github.com/iamcco/markdown-preview.nvim",
 })
 
 require("render-markdown").setup(require("plugins.markdown.render_opts"))
@@ -62,6 +69,8 @@ vim.keymap.set("n", "<leader>mt", function()
 		rm.enable()
 	end
 end, { desc = "Markdown rendering toggle" })
+
+vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown preview toggle" })
 
 vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold selection", silent = true })
 vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic selection", silent = true })

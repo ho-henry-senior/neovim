@@ -37,6 +37,7 @@ require("nvim-treesitter").install({
 	"make",
 	"markdown",
 	"markdown_inline",
+	"mermaid",
 	"nginx",
 	"python",
 	"query",
@@ -146,23 +147,36 @@ local SKIP_FT = {
 	trouble = true,
 }
 
+local function start_treesitter(buf)
+	local ft = vim.bo[buf].filetype
+	if SKIP_FT[ft] then
+		return
+	end
+
+	local ok = pcall(vim.treesitter.start, buf)
+	if not ok then
+		return
+	end
+
+	for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+		vim.wo[win].foldmethod = "expr"
+		vim.wo[win].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+	end
+end
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "*" },
-	callback = function()
-		local ft = vim.bo.filetype
-		if SKIP_FT[ft] then
-			return
-		end
-
-		local ok = pcall(vim.treesitter.start)
-		if not ok then
-			return
-		end
-
-		-- Only set expr folds when treesitter successfully started
-		vim.wo[0].foldmethod = "expr"
-		vim.wo[0].foldexpr = "v:lua.vim.treesitter.foldexpr()"
+	callback = function(event)
+		start_treesitter(event.buf)
 	end,
 })
+
+vim.schedule(function()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) then
+			start_treesitter(buf)
+		end
+	end
+end)
 
 vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

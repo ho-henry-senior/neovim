@@ -20,6 +20,8 @@ Related filetype behaviour:
 ### Rendering
 
 - `<leader>mt`: toggle inline Markdown rendering
+- `<leader>mp`: toggle browser Markdown preview, including Mermaid diagrams
+- `<leader>mm`: preview the current Mermaid file or Mermaid code fence under the cursor
 
 ### Editing Helpers
 
@@ -48,6 +50,16 @@ Checkbox behaviour:
 Markdown support currently uses:
 
 - `render-markdown.nvim` for inline rendering
+- `markdown-preview.nvim` for browser preview, including Mermaid diagram rendering
+- `nvim-treesitter` installs the `mermaid` parser for Mermaid code-fence highlighting
+
+## Mermaid
+
+Pure Mermaid files use the `mermaid` filetype for `.mermaid` and `.mmd` files.
+Use `<leader>mm` to preview either:
+
+- the whole current Mermaid buffer
+- the Mermaid code fence containing the cursor in a Markdown buffer
 
 ## Notes
 

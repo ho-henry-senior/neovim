@@ -124,6 +124,8 @@ vim.filetype.add({
 		env = "dotenv",
 		txt = "markdown",
 		njk = "html",
+		mermaid = "mermaid",
+		mmd = "mermaid",
 	},
 	filename = {
 		[".env"] = "dotenv",
