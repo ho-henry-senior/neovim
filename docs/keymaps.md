@@ -71,9 +71,9 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | `<leader><space>` | Smart file picker |
 | `<leader>e` | File explorer |
 | `<leader>fr` | Recent files |
-| `<leader>fCf` | Copy full file path |
-| `<leader>fCn` | Copy file name |
-| `<leader>fCr` | Copy relative path |
+| `<leader>fcf` | Copy full file path |
+| `<leader>fcn` | Copy file name |
+| `<leader>fcr` | Copy relative path |
 
 ## Buffers
 

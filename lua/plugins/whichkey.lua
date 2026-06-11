@@ -15,7 +15,7 @@ wk.add({
 	{ "<leader>b", group = "buffers" },
 	{ "<leader>c", group = "code" },
 	{ "<leader>f", group = "files" },
-	{ "<leader>fC", group = "path" },
+	{ "<leader>fc", group = "copy path" },
 	{ "<leader>g", group = "git" },
 	{ "<leader>gh", group = "hunks" },
 	{ "<leader>i", group = "inspect" },
@@ -49,7 +49,7 @@ wk.add({
 	{ "gx", desc = "Open with system app" },
 
 	{
-		"<leader>fCf",
+		"<leader>fcf",
 		function()
 			local p = vim.fn.expand("%:p")
 			vim.fn.setreg("+", p)
@@ -58,7 +58,7 @@ wk.add({
 		desc = "Copy full path",
 	},
 	{
-		"<leader>fCn",
+		"<leader>fcn",
 		function()
 			local n = vim.fn.expand("%:t")
 			vim.fn.setreg("+", n)
@@ -67,7 +67,7 @@ wk.add({
 		desc = "Copy file name",
 	},
 	{
-		"<leader>fCr",
+		"<leader>fcr",
 		function()
 			local cwd = vim.fn.getcwd()
 			local full = vim.fn.expand("%:p")
