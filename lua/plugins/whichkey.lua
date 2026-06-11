@@ -33,21 +33,6 @@ function M.setup()
 		{ "<leader>u", group = "ui" },
 	})
 
-	vim.api.nvim_create_autocmd("VimEnter", {
-		once = true,
-		callback = function()
-			vim.schedule(function()
-				wk.add({
-					{ "<leader>ud", desc = "Diagnostics toggle" },
-					{ "<leader>ua", desc = "Tabline toggle" },
-					{ "<leader>ut", desc = "Treesitter toggle" },
-					{ "<leader>ub", desc = "Dark background toggle" },
-					{ "<leader>ug", desc = "Indent guides toggle" },
-				})
-			end)
-		end,
-	})
-
 	wk.add({
 		{ "gx", desc = "Open with system app" },
 
