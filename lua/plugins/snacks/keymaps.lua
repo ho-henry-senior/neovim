@@ -163,20 +163,6 @@ local keymaps = {
 		mode = { "n", "x" },
 	},
 	{
-		'<leader>s"',
-		function(Snacks)
-			Snacks.picker.registers()
-		end,
-		desc = "Registers",
-	},
-	{
-		"<leader>s/",
-		function(Snacks)
-			Snacks.picker.search_history()
-		end,
-		desc = "Search history",
-	},
-	{
 		"<leader>ia",
 		function(Snacks)
 			Snacks.picker.autocmds()
@@ -226,13 +212,6 @@ local keymaps = {
 		desc = "Icons",
 	},
 	{
-		"<leader>sj",
-		function(Snacks)
-			Snacks.picker.jumps()
-		end,
-		desc = "Jumps",
-	},
-	{
 		"<leader>ik",
 		function(Snacks)
 			Snacks.picker.keymaps()
@@ -240,46 +219,11 @@ local keymaps = {
 		desc = "Keymaps",
 	},
 	{
-		"<leader>sl",
-		function(Snacks)
-			Snacks.picker.loclist()
-		end,
-		desc = "Location list",
-	},
-	{
-		"<leader>sm",
-		function(Snacks)
-			Snacks.picker.marks()
-		end,
-		desc = "Marks",
-	},
-	{
-		"<leader>sM",
-		function(Snacks)
-			Snacks.picker.man()
-		end,
-		desc = "Man pages",
-	},
-	{
-		"<leader>sq",
-		function(Snacks)
-			Snacks.picker.qflist()
-		end,
-		desc = "Quickfix list",
-	},
-	{
 		"<leader>sR",
 		function(Snacks)
 			Snacks.picker.resume()
 		end,
 		desc = "Resume picker",
-	},
-	{
-		"<leader>su",
-		function(Snacks)
-			Snacks.picker.undo()
-		end,
-		desc = "Undo history",
 	},
 	{
 		"<leader>uC",
