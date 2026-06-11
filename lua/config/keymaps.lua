@@ -48,10 +48,6 @@ map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add commen
 map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
 map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
 
--- highlights under cursor
-map("n", "<leader>ci", vim.show_pos, { desc = "Inspect position" })
-map("n", "<leader>cI", "<cmd>InspectTree<cr>", { desc = "Inspect syntax tree" })
-
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter normal mode" })
 map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })

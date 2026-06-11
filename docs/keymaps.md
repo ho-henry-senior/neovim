@@ -8,6 +8,7 @@ Custom mappings and high-value workflow shortcuts. Not every built-in Vim comman
 - `<leader>?` shows buffer-local keymaps.
 - Plugin-managed buffers (neotest summary, explorer, etc.) often expose their own help on `?`.
 - `:MapTable` opens a generated table of all mappings.
+- See [motions.md](motions.md) for bracket motions such as `]d`, `[q`, and `]h`.
 
 ## Core Navigation and Editing
 
@@ -143,12 +144,10 @@ Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove en
 
 ### Git
 
-Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in any file tracked by git.
+Hunk actions are buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md).
 
 | Shortcut | Action |
 | --- | --- |
-| `]h` / `[h` | Next / previous hunk |
-| `]H` / `[H` | Last / first hunk |
 | `ih` | Select hunk (visual and operator mode) |
 | `<leader>ghs` | Stage hunk |
 | `<leader>ghr` | Reset hunk |
@@ -165,11 +164,11 @@ Hunk navigation and staging (`]h`, `<leader>gh*`) are buffer-local and active in
 | `<leader>gS` | Git stash picker |
 | `<leader>gr` | Open file or selection in remote |
 
-### Treesitter Text Objects and Motions
+### Treesitter Text Objects
 
 Available in any buffer where Treesitter is active.
 
-#### Text objects (visual and operator-pending)
+Treesitter bracket motions are listed in [motions.md](motions.md).
 
 | Shortcut | Object |
 | --- | --- |
@@ -178,15 +177,6 @@ Available in any buffer where Treesitter is active.
 | `aa` / `ia` | Parameter outer / inner |
 | `ad` | Comment |
 | `as` | Statement |
-
-#### Motions
-
-| Shortcut | Action |
-| --- | --- |
-| `]m` / `[m` | Next / previous function start |
-| `]M` / `[M` | Next / previous function end |
-| `]]` / `[[` | Next / previous class start |
-| `]o` / `[o` | Next / previous loop start |
 
 ### Formatting, Diagnostics, and UI
 
@@ -204,8 +194,6 @@ Available in any buffer where Treesitter is active.
 | `<leader>ug` | Indent guides toggle |
 | `<leader>uC` | Pick colorscheme |
 | `<leader>ur` | Clear search highlight and refresh |
-| `<leader>ci` | Inspect highlight groups at cursor |
-| `<leader>cI` | Inspect Treesitter tree |
 
 Markdown, text, and git commit buffers automatically enable wrap and spell checking (British English, with English fallback).
 

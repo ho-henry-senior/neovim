@@ -24,6 +24,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 ## Going Deeper
 
 - [docs/keymaps.md](docs/keymaps.md) — full keymap reference, organised from basics to deeper workflows
+- [docs/motions.md](docs/motions.md) — bracket motions and other movement references
 - [docs/plugins.md](docs/plugins.md) — what each plugin does and why it's here
 - [docs/lsp.md](docs/lsp.md) — language servers and install commands
 - [docs/markdown.md](docs/markdown.md) — Markdown and prose support

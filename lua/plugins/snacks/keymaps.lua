@@ -230,13 +230,6 @@ local keymaps = {
 		desc = "which_key_ignore",
 	},
 	{
-		"<leader>cr",
-		function(Snacks)
-			Snacks.rename.rename_file()
-		end,
-		desc = "Rename file",
-	},
-	{
 		"]r",
 		function(Snacks)
 			Snacks.words.jump(vim.v.count1)
