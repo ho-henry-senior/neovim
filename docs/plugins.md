@@ -1,4 +1,4 @@
-# Plugin Guide
+# Plugins
 
 ## Editing and Completion
 
@@ -13,10 +13,6 @@
 - **[copilot.lua](https://github.com/zbirenbaum/copilot.lua)** — inline GitHub Copilot suggestions in insert mode.
 - **[CopilotChat.nvim](https://github.com/CopilotC-Nvim/CopilotChat.nvim)** — chat and explain-this-code workflows on top of Copilot.
 - **[plenary.nvim](https://github.com/nvim-lua/plenary.nvim)** — utility library required by CopilotChat.
-
-### Commands
-- :CopilotChatModels -  
-- :CopilotChatDebugInfo - 
 
 ## Navigation, Search, and UI
 

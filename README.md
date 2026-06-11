@@ -23,10 +23,11 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 
 ## Going Deeper
 
-- [docs/keymaps.md](docs/keymaps.md) — full keymap reference, organised from basics to deeper workflows
+- [docs/keymaps.md](docs/keymaps.md) — short keymap reference
+- [docs/workflows.md](docs/workflows.md) — workflow-specific mappings and notes
 - [docs/motions.md](docs/motions.md) — bracket motions and other movement references
 - [docs/plugins.md](docs/plugins.md) — what each plugin does and why it's here
-- [docs/lsp.md](docs/lsp.md) — language servers and install commands
+- [docs/lsp.md](docs/lsp.md) — configured language servers and LSP mappings
 - [docs/markdown.md](docs/markdown.md) — Markdown and prose support
 - [docs/ui.md](docs/ui.md) — statusline, tabline, and winbar
 - [docs/tooling.md](docs/tooling.md) — required tools, WezTerm config, and troubleshooting
@@ -42,3 +43,5 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 ## Design
 
 Stays close to stock Neovim rather than building on a large framework. Sessions, LSP, and package management use native Neovim features. Plugins fill gaps where native features aren't good enough yet.
+
+Prefer native motions, command history, quickfix/location lists, and editor primitives before adding plugin mappings. Leader mappings are reserved for actions that are frequent, clearer than the native command, or not covered well by stock Neovim.

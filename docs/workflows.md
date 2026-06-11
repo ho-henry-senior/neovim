@@ -1,0 +1,112 @@
+# Workflows
+
+Workflow-specific mappings and notes. See [keymaps.md](keymaps.md) for the short reference.
+
+## AI
+
+| Mode | Shortcut | Action |
+| --- | --- | --- |
+| Normal | `<leader>aA` | Copilot auth |
+| Normal | `<leader>at` | Copilot toggle |
+| Normal | `<leader>aT` | Copilot toggle current buffer attach |
+| Normal | `<leader>as` | Copilot status |
+| Normal | `<leader>ac` | Open Copilot Chat |
+| Normal | `<leader>ap` | Toggle Copilot panel |
+| Normal / Visual | `<leader>aa` | Copilot explain buffer or selection |
+
+`<leader>at` enables or disables Copilot globally. `<leader>aT` only attaches or detaches Copilot for the current buffer.
+
+Copilot panel mappings:
+
+| Shortcut | Action |
+| --- | --- |
+| `R` | Refresh suggestions |
+| `]]` / `[[` | Next / previous suggestion |
+| `<Enter>` | Accept suggestion |
+
+## Harpoon
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>h` | Add current file |
+| `<leader>H` | Remove current file |
+| `<C-e>` | Open Harpoon menu |
+| `<leader>1` ... `<leader>4` | Jump to Harpoon file 1-4 |
+| `<S-h>` / `<S-l>` | Previous / next Harpoon file |
+| `<C-v>` | Open selected Harpoon file in vertical split from the menu |
+| `<C-s>` | Open selected Harpoon file in split from the menu |
+| `<C-t>` | Open selected Harpoon file in tab from the menu |
+
+Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove entries.
+
+## Git
+
+Hunk actions are buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md).
+
+| Shortcut | Action |
+| --- | --- |
+| `ih` | Select hunk (visual and operator mode) |
+| `<leader>ghs` | Stage hunk |
+| `<leader>ghr` | Reset hunk |
+| `<leader>ghp` | Preview hunk inline |
+| `<leader>ghb` | Blame line |
+| `<leader>ghd` | Diff against index |
+| `<leader>gf` | Current file history in log picker |
+| `<leader>gg` | Open LazyGit |
+| `<leader>gb` | Git branches picker |
+| `<leader>gl` | Git log picker |
+| `<leader>gL` | Git log for current line |
+| `<leader>gp` | Git diff picker |
+| `<leader>gs` | Git status picker |
+| `<leader>gS` | Git stash picker |
+| `<leader>gr` | Open file or selection in remote |
+
+## Tests
+
+`<leader>tn`, `<leader>tf`, and `<leader>to` are available in supported test buffers. `<leader>ta` and `<leader>ts` work in supported JavaScript, TypeScript, Python, and .NET projects.
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>t?` | Explain when test mappings are available |
+| `<leader>tn` | Run nearest test |
+| `<leader>tf` | Run tests in current file |
+| `<leader>ta` | Run all tests in project |
+| `<leader>ts` | Test summary toggle |
+| `<leader>to` | Open test output |
+
+## Treesitter Text Objects
+
+Available in any buffer where Treesitter is active. Treesitter bracket motions are listed in [motions.md](motions.md).
+
+| Shortcut | Object |
+| --- | --- |
+| `af` / `if` | Function outer / inner |
+| `ac` / `ic` | Class outer / inner |
+| `aa` / `ia` | Parameter outer / inner |
+| `ad` | Comment |
+| `as` | Statement |
+
+## Formatting, Diagnostics, and UI
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>cf` | Format buffer |
+| `<leader>cF` | Format injected languages |
+| `<leader>cn` | Show formatter info |
+| `<leader>n` | Notification history |
+| `<leader>ud` | Diagnostics toggle |
+| `<leader>uv` | Diagnostic virtual text toggle |
+| `<leader>ua` | Tabline toggle |
+| `<leader>ut` | Treesitter toggle |
+| `<leader>ub` | Dark background toggle |
+| `<leader>ug` | Indent guides toggle |
+| `<leader>uC` | Pick colorscheme |
+| `<leader>ur` | Clear search highlight and refresh |
+
+## Filetype Notes
+
+- `.txt` files are treated as Markdown.
+- `.env` files are treated as dotenv.
+- `*.njk` is treated as HTML.
+- `tsconfig*.json` and `jsconfig*.json` are treated as JSONC.
+- Large files trigger `snacks.bigfile`, disabling Treesitter, LSP inlay hints, and diagnostics.

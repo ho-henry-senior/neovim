@@ -15,41 +15,11 @@
 - TypeScript / JavaScript
 - YAML
 
-The per-server configs live under `lsp/`.
-
-## Install Guidance
-
-### Code-Focused Servers
-
-- Bash: `npm install -g bash-language-server`
-- C# / .NET: `dotnet tool install --global csharp-ls`
-- CSS / HTML / JSON: `npm install -g vscode-langservers-extracted`
-- Lua: `brew install lua-language-server`
-- Python: `npm install -g pyright`
-- Terraform: `brew install terraform-ls`
-- TypeScript / JavaScript: `npm install -g typescript typescript-language-server`
-- YAML: `npm install -g yaml-language-server`
-
-For C# / .NET, ensure global dotnet tools are on `PATH`:
-
-```sh
-export PATH="$HOME/.dotnet/tools:$PATH"
-```
-
-### Writing-Focused Servers
-
-- Markdown: `brew install marksman`
-- Prose / spell / style checks: `brew install harper-ls`
+The per-server configs live under `lsp/`. Install commands are listed in [tooling.md](tooling.md).
 
 ## Optional On-Demand Server
 
 - ESLint
-
-Install with:
-
-```sh
-npm install -g eslint vscode-eslint-language-server
-```
 
 ESLint is optional because `ts_ls` already covers general JavaScript and TypeScript features; ESLint is only useful when a project actually uses it and you want lint diagnostics and fix-all support from the editor.
 
