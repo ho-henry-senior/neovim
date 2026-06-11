@@ -49,7 +49,7 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | `<leader>i` | Inspect |
 | `<leader>m` | Markdown |
 | `<leader>p` | Plugins |
-| `<leader>q` | Sessions |
+| `<leader>S` | Sessions |
 | `<leader>r` | REST |
 | `<leader>s` | Search |
 | `<leader>t` | Tests |
@@ -97,8 +97,4 @@ Start `nvim` in a project directory with no file arguments to restore the last s
 
 | Shortcut | Action |
 | --- | --- |
-| `<leader>qs` | Load project session |
-| `<leader>ql` | Load last session |
-| `<leader>qS` | Select session |
-| `<leader>qd` | Skip session save |
-| `<leader>qx` | Clear project session |
+| `<leader>Sc` | Clear project session |

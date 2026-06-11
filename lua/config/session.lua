@@ -65,61 +65,8 @@ vim.api.nvim_create_autocmd("VimLeavePre", {
 	end,
 })
 
--- Load session for current directory
-vim.keymap.set("n", "<leader>qs", function()
-	local session_file = get_session_file()
-	if vim.fn.filereadable(session_file) == 1 then
-		load_session(session_file)
-	else
-		print("No session found for current directory")
-	end
-end, { desc = "Load project session" })
-
--- Load last session
-vim.keymap.set("n", "<leader>ql", function()
-	local last_session = get_last_session_file()
-	if vim.fn.filereadable(last_session) == 1 then
-		load_session(last_session)
-	else
-		print("No last session found")
-	end
-end, { desc = "Load last session" })
-
--- Select and load a session
-vim.keymap.set("n", "<leader>qS", function()
-	local sessions = {}
-	local session_files = vim.fn.glob(session_dir .. "*.vim", false, true)
-
-	for _, file in ipairs(session_files) do
-		local name = vim.fn.fnamemodify(file, ":t:r")
-		name = name:gsub("%%", "/") -- Convert back from escaped path
-		table.insert(sessions, name)
-	end
-
-	if #sessions == 0 then
-		print("No sessions found")
-		return
-	end
-
-	vim.ui.select(sessions, {
-		prompt = "Select session to load:",
-	}, function(choice)
-		if choice then
-			local session_file = session_dir .. choice:gsub("/", "%%") .. ".vim"
-			load_session(session_file)
-		end
-	end)
-end, { desc = "Select session" })
-
--- Stop session saving (create a flag file)
-vim.keymap.set("n", "<leader>qd", function()
-	local stop_file = get_stop_file()
-	vim.fn.writefile({}, stop_file)
-	print("Session saving stopped")
-end, { desc = "Skip session save" })
-
 -- Clear the saved session for the current project and skip the next auto-save
-vim.keymap.set("n", "<leader>qx", function()
+vim.keymap.set("n", "<leader>Sc", function()
 	local session_file = get_session_file()
 	local deleted = false
 

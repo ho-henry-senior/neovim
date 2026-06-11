@@ -21,7 +21,7 @@ wk.add({
 	{ "<leader>i", group = "inspect" },
 	{ "<leader>m", group = "markdown" },
 	{ "<leader>p", group = "plugins" },
-	{ "<leader>q", group = "session" },
+	{ "<leader>S", group = "session" },
 	{ "<leader>r", group = "rest" },
 	{ "<leader>s", group = "search" },
 	{ "<leader>t", group = "test" },
