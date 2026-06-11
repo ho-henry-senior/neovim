@@ -15,7 +15,7 @@ Custom mappings and high-value workflow shortcuts. Not every built-in Vim comman
 | --- | --- | --- |
 | Normal | `<leader><space>` | Smart file picker |
 | Normal | `<leader>ff` | Find files |
-| Normal | `<leader>sg` | Grep |
+| Normal | `<leader>sg` | Search project |
 | Normal | `<leader>e` | File explorer |
 | Normal | `<leader>h` | Add current file to Harpoon |
 | Normal | `<leader>H` | Remove current file from Harpoon |
@@ -94,8 +94,8 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | `<leader>fCf` | Copy full file path |
 | `<leader>fCn` | Copy file name |
 | `<leader>fCr` | Copy relative path |
-| `<leader>sg` | Grep |
-| `<leader>sw` | Grep word or visual selection |
+| `<leader>sg` | Search project |
+| `<leader>sw` | Search project for word or selection |
 | `<leader>sb` | Search buffer |
 
 ### Inspect

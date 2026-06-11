@@ -145,14 +145,14 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.grep({ cwd = Snacks.git.get_root() or vim.fn.getcwd(0) })
 		end,
-		desc = "Grep",
+		desc = "Search project",
 	},
 	{
 		"<leader>sw",
 		function(Snacks)
 			Snacks.picker.grep_word()
 		end,
-		desc = "Grep selection or word",
+		desc = "Search project for word or selection",
 		mode = { "n", "x" },
 	},
 	{
