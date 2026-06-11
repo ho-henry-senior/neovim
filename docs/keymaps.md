@@ -137,16 +137,13 @@ Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove en
 | `<leader>ts` | Test summary toggle |
 | `<leader>to` | Open test output |
 
-### Buffers and Tabs
+### Buffers
 
 | Shortcut | Action |
 | --- | --- |
 | `<leader>bb` | Buffer picker |
 | `<leader>bd` | Delete current buffer |
 | `<leader>bo` | Delete other buffers |
-| `<leader><tab><tab>` | New tab |
-| `<leader><tab>d` | Close tab |
-| `<leader><tab>[` / `<leader><tab>]` | Previous / next tab |
 
 ### Git
 

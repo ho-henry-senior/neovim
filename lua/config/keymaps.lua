@@ -61,14 +61,6 @@ map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
 map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide terminal" })
 map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
 
--- tabs
-map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last tab" })
-map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close other tabs" })
-map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First tab" })
-map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New tab" })
-map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next tab" })
-map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close tab" })
-map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous tab" })
 -- ------------------------------------------------------------------------- }}}
 
 -- Better paste
