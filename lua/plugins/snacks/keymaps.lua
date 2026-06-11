@@ -177,7 +177,7 @@ local keymaps = {
 		desc = "Search history",
 	},
 	{
-		"<leader>sa",
+		"<leader>ia",
 		function(Snacks)
 			Snacks.picker.autocmds()
 		end,
@@ -191,14 +191,7 @@ local keymaps = {
 		desc = "Buffer lines",
 	},
 	{
-		"<leader>sc",
-		function(Snacks)
-			Snacks.picker.command_history()
-		end,
-		desc = "Command history",
-	},
-	{
-		"<leader>sC",
+		"<leader>ic",
 		function(Snacks)
 			Snacks.picker.commands()
 		end,
@@ -219,14 +212,14 @@ local keymaps = {
 		desc = "Buffer diagnostics",
 	},
 	{
-		"<leader>sH",
+		"<leader>ih",
 		function(Snacks)
 			Snacks.picker.highlights()
 		end,
 		desc = "Highlights",
 	},
 	{
-		"<leader>si",
+		"<leader>ii",
 		function(Snacks)
 			Snacks.picker.icons()
 		end,
@@ -240,7 +233,7 @@ local keymaps = {
 		desc = "Jumps",
 	},
 	{
-		"<leader>sk",
+		"<leader>ik",
 		function(Snacks)
 			Snacks.picker.keymaps()
 		end,

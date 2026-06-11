@@ -98,9 +98,16 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | `<leader>sw` | Grep word or visual selection |
 | `<leader>sB` | Grep open buffers |
 | `<leader>sb` | Buffer lines |
-| `<leader>sk` | Keymaps |
-| `<leader>sa` | Autocmds |
-| `<leader>sc` | Command history |
+
+### Inspect
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>ia` | Autocmds |
+| `<leader>ic` | Commands |
+| `<leader>ih` | Highlights |
+| `<leader>ii` | Icons |
+| `<leader>ik` | Keymaps |
 
 ### Harpoon
 
