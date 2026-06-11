@@ -46,7 +46,7 @@ end, "Harpoon next file")
 for i = 1, 4 do
 	map("<leader>" .. i, function()
 		harpoon:list():select(i)
-	end, "Harpoon file " .. i)
+	end, "which_key_ignore")
 end
 
 harpoon:extend({
