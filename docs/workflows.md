@@ -41,24 +41,16 @@ Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove en
 
 ## Git
 
-Hunk actions are buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md).
+Hunk selection is buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md).
 
 | Shortcut | Action |
 | --- | --- |
 | `ih` | Select hunk (visual and operator mode) |
-| `<leader>ghs` | Stage hunk |
-| `<leader>ghr` | Reset hunk |
-| `<leader>ghp` | Preview hunk inline |
-| `<leader>ghb` | Blame line |
-| `<leader>ghd` | Diff against index |
 | `<leader>gf` | Current file history in log picker |
 | `<leader>gg` | Open LazyGit |
-| `<leader>gb` | Git branches picker |
 | `<leader>gl` | Git log picker |
 | `<leader>gL` | Git log for current line |
 | `<leader>gp` | Git diff picker |
-| `<leader>gs` | Git status picker |
-| `<leader>gS` | Git stash picker |
 | `<leader>gr` | Open file or selection in remote |
 
 ## Tests

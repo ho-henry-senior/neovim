@@ -42,13 +42,6 @@ local keymaps = {
 		desc = "Buffers",
 	},
 	{
-		"<leader>gb",
-		function(Snacks)
-			Snacks.picker.git_branches()
-		end,
-		desc = "Git branches",
-	},
-	{
 		"<leader>gl",
 		function(Snacks)
 			Snacks.picker.git_log()
@@ -61,20 +54,6 @@ local keymaps = {
 			Snacks.picker.git_log_line()
 		end,
 		desc = "Git log line",
-	},
-	{
-		"<leader>gs",
-		function(Snacks)
-			Snacks.picker.git_status()
-		end,
-		desc = "Git status",
-	},
-	{
-		"<leader>gS",
-		function(Snacks)
-			Snacks.picker.git_stash()
-		end,
-		desc = "Git stash",
 	},
 	{
 		"<leader>gp",

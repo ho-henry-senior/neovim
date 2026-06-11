@@ -17,7 +17,6 @@ wk.add({
 	{ "<leader>f", group = "files" },
 	{ "<leader>fc", group = "copy path" },
 	{ "<leader>g", group = "git" },
-	{ "<leader>gh", group = "hunks" },
 	{ "<leader>i", group = "inspect" },
 	{ "<leader>m", group = "markdown" },
 	{ "<leader>p", group = "plugins" },

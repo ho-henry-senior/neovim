@@ -62,15 +62,6 @@ require("gitsigns").setup({
 			gs.nav_hunk("first")
 		end, "First hunk")
 
-		map({ "n", "v" }, "<leader>ghs", ":Gitsigns stage_hunk<CR>", "Stage hunk")
-		map({ "n", "v" }, "<leader>ghr", ":Gitsigns reset_hunk<CR>", "Reset hunk")
-
-		map("n", "<leader>ghp", gs.preview_hunk_inline, "Preview hunk inline")
-		map("n", "<leader>ghb", function()
-			gs.blame_line({ full = true })
-		end, "Blame line")
-		map("n", "<leader>ghd", gs.diffthis, "Diff this")
-
 		map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns select hunk")
 	end,
 })
