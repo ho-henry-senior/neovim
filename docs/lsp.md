@@ -71,6 +71,4 @@ These are the extra mappings this config adds on top of Neovim's built-in LSP be
 - `]d` / `[d`: next / previous diagnostic
 - `]e` / `[e`: next / previous error
 - `]w` / `[w`: next / previous warning
-- `<leader>ss`: document symbols
-- `<leader>sS`: workspace symbols
 - `gai` / `gao`: incoming / outgoing call hierarchy

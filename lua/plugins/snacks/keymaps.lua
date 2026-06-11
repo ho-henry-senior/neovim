@@ -141,13 +141,6 @@ local keymaps = {
 		desc = "Open Lazygit",
 	},
 	{
-		"<leader>sB",
-		function(Snacks)
-			Snacks.picker.grep_buffers()
-		end,
-		desc = "Grep open buffers",
-	},
-	{
 		"<leader>sg",
 		function(Snacks)
 			Snacks.picker.grep({ cwd = Snacks.git.get_root() or vim.fn.getcwd(0) })
@@ -174,7 +167,7 @@ local keymaps = {
 		function(Snacks)
 			Snacks.picker.lines()
 		end,
-		desc = "Buffer lines",
+		desc = "Search buffer",
 	},
 	{
 		"<leader>ic",
@@ -182,20 +175,6 @@ local keymaps = {
 			Snacks.picker.commands()
 		end,
 		desc = "Commands",
-	},
-	{
-		"<leader>sd",
-		function(Snacks)
-			Snacks.picker.diagnostics()
-		end,
-		desc = "Diagnostics",
-	},
-	{
-		"<leader>sD",
-		function(Snacks)
-			Snacks.picker.diagnostics_buffer()
-		end,
-		desc = "Buffer diagnostics",
 	},
 	{
 		"<leader>ih",
@@ -219,32 +198,11 @@ local keymaps = {
 		desc = "Keymaps",
 	},
 	{
-		"<leader>sR",
-		function(Snacks)
-			Snacks.picker.resume()
-		end,
-		desc = "Resume picker",
-	},
-	{
 		"<leader>uC",
 		function(Snacks)
 			Snacks.picker.colorschemes()
 		end,
 		desc = "Colorschemes",
-	},
-	{
-		"<leader>ss",
-		function(Snacks)
-			Snacks.picker.lsp_symbols()
-		end,
-		desc = "LSP symbols",
-	},
-	{
-		"<leader>sS",
-		function(Snacks)
-			Snacks.picker.lsp_workspace_symbols()
-		end,
-		desc = "LSP workspace symbols",
 	},
 	{
 		"gai",

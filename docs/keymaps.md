@@ -96,8 +96,7 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | `<leader>fCr` | Copy relative path |
 | `<leader>sg` | Grep |
 | `<leader>sw` | Grep word or visual selection |
-| `<leader>sB` | Grep open buffers |
-| `<leader>sb` | Buffer lines |
+| `<leader>sb` | Search buffer |
 
 ### Inspect
 
