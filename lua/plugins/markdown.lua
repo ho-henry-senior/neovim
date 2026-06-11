@@ -1,15 +1,4 @@
-vim.g.mkdp_auto_close = 1
-vim.g.mkdp_filetypes = { "markdown" }
-vim.g.mkdp_preview_options = vim.tbl_deep_extend("force", vim.g.mkdp_preview_options or {}, {
-	maid = {},
-})
-
-vim.pack.add({
-	"https://github.com/MeanderingProgrammer/render-markdown.nvim",
-	"https://github.com/iamcco/markdown-preview.nvim",
-})
-
-require("render-markdown").setup(require("plugins.markdown.render_opts"))
+local M = {}
 
 local function toggle_checkbox()
 	local line = vim.api.nvim_get_current_line()
@@ -60,30 +49,53 @@ local function adjust_heading_level(delta)
 	vim.api.nvim_set_current_line(string.rep("#", level) .. " " .. text)
 end
 
-vim.keymap.set("n", "<leader>mt", function()
-	local rm = require("render-markdown")
-	local enabled = require("render-markdown.state").enabled
-	if enabled then
-		rm.disable()
-	else
-		rm.enable()
+function M.setup()
+	if M._did_setup then
+		return
 	end
-end, { desc = "Markdown rendering toggle" })
 
-vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown preview toggle" })
+	vim.g.mkdp_auto_close = 1
+	vim.g.mkdp_filetypes = { "markdown" }
+	vim.g.mkdp_preview_options = vim.tbl_deep_extend("force", vim.g.mkdp_preview_options or {}, {
+		maid = {},
+	})
 
-vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold selection", silent = true })
-vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic selection", silent = true })
-vim.keymap.set("x", "<leader>mc", 'c`<C-r>"`<Esc>', { desc = "Code selection", silent = true })
-vim.keymap.set("x", "<leader>ml", 'c[<C-r>"]()<Esc>F(a', { desc = "Link selection", silent = true })
+	vim.pack.add({
+		"https://github.com/MeanderingProgrammer/render-markdown.nvim",
+		"https://github.com/iamcco/markdown-preview.nvim",
+	})
 
-vim.keymap.set("n", "<leader>m<", function()
-	adjust_heading_level(-1)
-end, { desc = "Increase heading level" })
+	require("render-markdown").setup(require("plugins.markdown.render_opts"))
 
-vim.keymap.set("n", "<leader>m>", function()
-	adjust_heading_level(1)
-end, { desc = "Decrease heading level" })
+	vim.keymap.set("n", "<leader>mt", function()
+		local rm = require("render-markdown")
+		local enabled = require("render-markdown.state").enabled
+		if enabled then
+			rm.disable()
+		else
+			rm.enable()
+		end
+	end, { desc = "Markdown rendering toggle" })
 
-vim.keymap.set("n", "<leader>mh", insert_horizontal_rule, { desc = "Insert horizontal rule" })
-vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Checkbox toggle" })
+	vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown preview toggle" })
+
+	vim.keymap.set("x", "<leader>mb", 'c**<C-r>"**<Esc>', { desc = "Bold selection", silent = true })
+	vim.keymap.set("x", "<leader>mi", 'c*<C-r>"*<Esc>', { desc = "Italic selection", silent = true })
+	vim.keymap.set("x", "<leader>mc", 'c`<C-r>"`<Esc>', { desc = "Code selection", silent = true })
+	vim.keymap.set("x", "<leader>ml", 'c[<C-r>"]()<Esc>F(a', { desc = "Link selection", silent = true })
+
+	vim.keymap.set("n", "<leader>m<", function()
+		adjust_heading_level(-1)
+	end, { desc = "Increase heading level" })
+
+	vim.keymap.set("n", "<leader>m>", function()
+		adjust_heading_level(1)
+	end, { desc = "Decrease heading level" })
+
+	vim.keymap.set("n", "<leader>mh", insert_horizontal_rule, { desc = "Insert horizontal rule" })
+	vim.keymap.set("n", "<leader>mx", toggle_checkbox, { desc = "Checkbox toggle" })
+
+	M._did_setup = true
+end
+
+return M

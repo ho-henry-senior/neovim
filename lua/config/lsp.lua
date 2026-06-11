@@ -1,4 +1,5 @@
--- LSP
+local M = {}
+
 local function augroup(name)
 	return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
 end
@@ -25,77 +26,87 @@ local default_keymaps = {
 	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto definition", has = "definitionProvider" },
 }
 
-local completion = vim.g.completion_mode or "blink" -- or 'native'
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = augroup("lsp_attach"),
-	callback = function(args)
-		local client = vim.lsp.get_client_by_id(args.data.client_id)
-		local buf = args.buf
-		if client then
-			-- Built-in completion
-			if completion == "native" and client:supports_method("textDocument/completion") then
-				vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
-			end
+function M.setup()
+	if M._did_setup then
+		return
+	end
 
-			if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-				vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+	local completion = vim.g.completion_mode or "blink" -- or 'native'
+	vim.api.nvim_create_autocmd("LspAttach", {
+		group = augroup("lsp_attach"),
+		callback = function(args)
+			local client = vim.lsp.get_client_by_id(args.data.client_id)
+			local buf = args.buf
+			if client then
+				-- Built-in completion
+				if completion == "native" and client:supports_method("textDocument/completion") then
+					vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
+				end
 
-				if not vim.b[buf].inlay_hints_autocmd_set then
-					vim.api.nvim_create_autocmd("InsertEnter", {
-						buffer = buf,
-						callback = function()
-							vim.lsp.inlay_hint.enable(false, { bufnr = buf })
-						end,
+				if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+					vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+
+					if not vim.b[buf].inlay_hints_autocmd_set then
+						vim.api.nvim_create_autocmd("InsertEnter", {
+							buffer = buf,
+							callback = function()
+								vim.lsp.inlay_hint.enable(false, { bufnr = buf })
+							end,
+						})
+						vim.api.nvim_create_autocmd("InsertLeave", {
+							buffer = buf,
+							callback = function()
+								vim.lsp.inlay_hint.enable(true, { bufnr = buf })
+							end,
+						})
+						vim.b[buf].inlay_hints_autocmd_set = true
+					end
+				end
+
+				if client:supports_method("textDocument/documentColor") then
+					vim.lsp.document_color.enable(true, {
+						bufnr = buf,
+						style = "virtual",
 					})
-					vim.api.nvim_create_autocmd("InsertLeave", {
-						buffer = buf,
-						callback = function()
-							vim.lsp.inlay_hint.enable(true, { bufnr = buf })
-						end,
-					})
-					vim.b[buf].inlay_hints_autocmd_set = true
+				end
+
+				for _, km in ipairs(default_keymaps) do
+					-- Only bind if there's no `has` requirement, or the server supports it
+					if not km.has or client.server_capabilities[km.has] then
+						vim.keymap.set(
+							km.mode or "n",
+							km.keys,
+							km.func,
+							{ buffer = buf, desc = "LSP: " .. km.desc, nowait = km.nowait }
+						)
+					end
 				end
 			end
+		end,
+	})
 
-			if client:supports_method("textDocument/documentColor") then
-				vim.lsp.document_color.enable(true, {
-					bufnr = buf,
-					style = "virtual",
-				})
-			end
+	vim.lsp.enable({
+		"bash_ls", -- Bash
+		"csharp_ls", -- C# / .NET
+		"css_ls", -- CSS
+		"harper_ls", -- Spell checking
+		"html_ls", -- HTML
+		"json_ls", -- JSON
+		"lua_ls", -- Lua
+		"marksman_ls", -- Markdown
+		"pyright_ls", -- Python
+		"terraform_ls", -- Terraform
+		"ts_ls", -- JS / TS
+		"yaml_ls", -- YAML
+	})
 
-			for _, km in ipairs(default_keymaps) do
-				-- Only bind if there's no `has` requirement, or the server supports it
-				if not km.has or client.server_capabilities[km.has] then
-					vim.keymap.set(
-						km.mode or "n",
-						km.keys,
-						km.func,
-						{ buffer = buf, desc = "LSP: " .. km.desc, nowait = km.nowait }
-					)
-				end
-			end
-		end
-	end,
-})
+	-- Load Lsp on-demand, e.g: eslint is disable by default
+	-- e.g: We could enable eslint by set vim.g.lsp_on_demands = {"eslint"}
+	if vim.g.lsp_on_demands then
+		vim.lsp.enable(vim.g.lsp_on_demands)
+	end
 
-vim.lsp.enable({
-	"bash_ls", -- Bash
-	"csharp_ls", -- C# / .NET
-	"css_ls", -- CSS
-	"harper_ls", -- Spell checking
-	"html_ls", -- HTML
-	"json_ls", -- JSON
-	"lua_ls", -- Lua
-	"marksman_ls", -- Markdown
-	"pyright_ls", -- Python
-	"terraform_ls", -- Terraform
-	"ts_ls", -- JS / TS
-	"yaml_ls", -- YAML
-})
-
--- Load Lsp on-demand, e.g: eslint is disable by default
--- e.g: We could enable eslint by set vim.g.lsp_on_demands = {"eslint"}
-if vim.g.lsp_on_demands then
-	vim.lsp.enable(vim.g.lsp_on_demands)
+	M._did_setup = true
 end
+
+return M

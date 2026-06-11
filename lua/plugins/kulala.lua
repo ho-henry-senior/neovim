@@ -1,6 +1,4 @@
-vim.pack.add({
-	"https://github.com/mistweaverco/kulala.nvim",
-})
+local M = {}
 
 local function ensure_kulala_parser()
 	local plugin_root = vim.fn.stdpath("data") .. "/site/pack/core/opt/kulala.nvim"
@@ -29,10 +27,24 @@ local function ensure_kulala_parser()
 	end
 end
 
-ensure_kulala_parser()
+function M.setup()
+	if M._did_setup then
+		return
+	end
 
-require("kulala").setup({
-	global_keymaps = true,
-	global_keymaps_prefix = "<leader>r",
-	kulala_keymaps_prefix = "",
-})
+	vim.pack.add({
+		"https://github.com/mistweaverco/kulala.nvim",
+	})
+
+	ensure_kulala_parser()
+
+	require("kulala").setup({
+		global_keymaps = true,
+		global_keymaps_prefix = "<leader>r",
+		kulala_keymaps_prefix = "",
+	})
+
+	M._did_setup = true
+end
+
+return M

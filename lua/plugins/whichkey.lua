@@ -1,87 +1,96 @@
-vim.pack.add({
-	"https://github.com/folke/which-key.nvim",
-})
+local M = {}
 
-local wk = require("which-key")
+function M.setup()
+	if M._did_setup then
+		return
+	end
 
-wk.setup({
-	preset = "classic",
-	icons = { mappings = false },
-})
+	vim.pack.add({
+		"https://github.com/folke/which-key.nvim",
+	})
 
--- groups
-wk.add({
-	{ "<leader>a", group = "ai" },
-	{ "<leader>b", group = "buffers" },
-	{ "<leader>c", group = "code" },
-	{ "<leader>f", group = "files" },
-	{ "<leader>fc", group = "copy path" },
-	{ "<leader>g", group = "git" },
-	{ "<leader>i", group = "inspect" },
-	{ "<leader>m", group = "markdown" },
-	{ "<leader>p", group = "plugins" },
-	{ "<leader>S", group = "session" },
-	{ "<leader>r", group = "rest" },
-	{ "<leader>s", group = "search" },
-	{ "<leader>t", group = "test" },
-	{ "<leader>u", group = "ui" },
-})
+	local wk = require("which-key")
 
--- dynamic group
-vim.api.nvim_create_autocmd("VimEnter", {
-	once = true,
-	callback = function()
-		vim.schedule(function()
-			wk.add({
-				{ "<leader>ud", desc = "Diagnostics toggle" },
-				{ "<leader>ua", desc = "Tabline toggle" },
-				{ "<leader>ut", desc = "Treesitter toggle" },
-				{ "<leader>ub", desc = "Dark background toggle" },
-				{ "<leader>ug", desc = "Indent guides toggle" },
-			})
-		end)
-	end,
-})
+	wk.setup({
+		preset = "classic",
+		icons = { mappings = false },
+	})
 
--- mappings
-wk.add({
-	{ "gx", desc = "Open with system app" },
+	wk.add({
+		{ "<leader>a", group = "ai" },
+		{ "<leader>b", group = "buffers" },
+		{ "<leader>c", group = "code" },
+		{ "<leader>f", group = "files" },
+		{ "<leader>fc", group = "copy path" },
+		{ "<leader>g", group = "git" },
+		{ "<leader>i", group = "inspect" },
+		{ "<leader>m", group = "markdown" },
+		{ "<leader>p", group = "plugins" },
+		{ "<leader>S", group = "session" },
+		{ "<leader>r", group = "rest" },
+		{ "<leader>s", group = "search" },
+		{ "<leader>t", group = "test" },
+		{ "<leader>u", group = "ui" },
+	})
 
-	{
-		"<leader>fcf",
-		function()
-			local p = vim.fn.expand("%:p")
-			vim.fn.setreg("+", p)
-			vim.notify("Copied full file path: " .. p)
+	vim.api.nvim_create_autocmd("VimEnter", {
+		once = true,
+		callback = function()
+			vim.schedule(function()
+				wk.add({
+					{ "<leader>ud", desc = "Diagnostics toggle" },
+					{ "<leader>ua", desc = "Tabline toggle" },
+					{ "<leader>ut", desc = "Treesitter toggle" },
+					{ "<leader>ub", desc = "Dark background toggle" },
+					{ "<leader>ug", desc = "Indent guides toggle" },
+				})
+			end)
 		end,
-		desc = "Copy full path",
-	},
-	{
-		"<leader>fcn",
-		function()
-			local n = vim.fn.expand("%:t")
-			vim.fn.setreg("+", n)
-			vim.notify("Copied file name: " .. n)
-		end,
-		desc = "Copy file name",
-	},
-	{
-		"<leader>fcr",
-		function()
-			local cwd = vim.fn.getcwd()
-			local full = vim.fn.expand("%:p")
-			local rel = full:sub(#cwd + 2)
-			vim.fn.setreg("+", rel)
-			vim.notify("Copied relative path: " .. rel)
-		end,
-		desc = "Copy relative path",
-	},
+	})
 
-	{
-		"<leader>?",
-		function()
-			wk.show({ global = false })
-		end,
-		desc = "Show buffer keymaps",
-	},
-})
+	wk.add({
+		{ "gx", desc = "Open with system app" },
+
+		{
+			"<leader>fcf",
+			function()
+				local p = vim.fn.expand("%:p")
+				vim.fn.setreg("+", p)
+				vim.notify("Copied full file path: " .. p)
+			end,
+			desc = "Copy full path",
+		},
+		{
+			"<leader>fcn",
+			function()
+				local n = vim.fn.expand("%:t")
+				vim.fn.setreg("+", n)
+				vim.notify("Copied file name: " .. n)
+			end,
+			desc = "Copy file name",
+		},
+		{
+			"<leader>fcr",
+			function()
+				local cwd = vim.fn.getcwd()
+				local full = vim.fn.expand("%:p")
+				local rel = full:sub(#cwd + 2)
+				vim.fn.setreg("+", rel)
+				vim.notify("Copied relative path: " .. rel)
+			end,
+			desc = "Copy relative path",
+		},
+
+		{
+			"<leader>?",
+			function()
+				wk.show({ global = false })
+			end,
+			desc = "Show buffer keymaps",
+		},
+	})
+
+	M._did_setup = true
+end
+
+return M
