@@ -12,7 +12,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 
 ## Start Here
 
-- `<leader>ff` — find files
+- `<leader><space>` — smart file picker
 - `<leader>sg` — search project
 - `<leader>e` — file explorer
 - `<leader>cf` — format buffer

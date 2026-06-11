@@ -49,20 +49,6 @@ local keymaps = {
 		desc = "Find config file",
 	},
 	{
-		"<leader>ff",
-		function(Snacks)
-			Snacks.picker.files()
-		end,
-		desc = "Find files",
-	},
-	{
-		"<leader>fg",
-		function(Snacks)
-			Snacks.picker.git_files()
-		end,
-		desc = "Find git files",
-	},
-	{
 		"<leader>fp",
 		function(Snacks)
 			Snacks.picker.projects()

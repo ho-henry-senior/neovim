@@ -14,7 +14,6 @@ Custom mappings and high-value workflow shortcuts. Not every built-in Vim comman
 | Mode | Shortcut | Action |
 | --- | --- | --- |
 | Normal | `<leader><space>` | Smart file picker |
-| Normal | `<leader>ff` | Find files |
 | Normal | `<leader>sg` | Search project |
 | Normal | `<leader>e` | File explorer |
 | Normal | `<leader>h` | Add current file to Harpoon |
@@ -86,8 +85,6 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | --- | --- |
 | `<leader><space>` | Smart file picker |
 | `<leader>e` | File explorer |
-| `<leader>ff` | Find files |
-| `<leader>fg` | Find git files |
 | `<leader>fc` | Find config files |
 | `<leader>fr` | Recent files |
 | `<leader>fp` | Open project |
