@@ -17,6 +17,9 @@ Custom mappings and high-value workflow shortcuts. Not every built-in Vim comman
 | Normal | `<leader>ff` | Find files |
 | Normal | `<leader>sg` | Grep |
 | Normal | `<leader>e` | File explorer |
+| Normal | `<leader>h` | Add current file to Harpoon |
+| Normal | `<leader>H` | Remove current file from Harpoon |
+| Normal | `<C-e>` | Harpoon menu |
 | Normal / Visual | `j` / `k` | Move by display line when no count is given |
 | Normal | `<leader>cf` | Format buffer |
 | Normal | `<leader>gg` | Open LazyGit |
@@ -53,11 +56,13 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | Terminal | `<Esc><Esc>` | Leave terminal insert mode |
 | Normal | `<C-/>` | Toggle floating terminal |
 | Terminal | `<C-/>` | Close floating terminal |
+| Normal | `<C-e>` | Harpoon menu |
+| Normal | `<leader>1` ... `<leader>4` | Harpoon files 1-4 |
+| Normal | `<S-h>` / `<S-l>` | Previous / next Harpoon file |
 | Visual | `<A-j>` / `<A-k>` | Move selected lines down / up |
 | Normal | `z0` | Fix spelling of word under cursor |
 | Visual | `p` | Paste without overwriting the unnamed register |
 | Normal | `<C-c>` | Copy entire file to system clipboard |
-| Normal | `<S-h>` / `<S-l>` | Previous / next buffer |
 
 ## Workflows
 
@@ -97,6 +102,21 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 | `<leader>sa` | Autocmds |
 | `<leader>sc` | Command history |
 
+### Harpoon
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>h` | Add current file |
+| `<leader>H` | Remove current file |
+| `<C-e>` | Open Harpoon menu |
+| `<leader>1` ... `<leader>4` | Jump to Harpoon file 1-4 |
+| `<S-h>` / `<S-l>` | Previous / next Harpoon file |
+| `<C-v>` | Open selected Harpoon file in vertical split from the menu |
+| `<C-s>` | Open selected Harpoon file in split from the menu |
+| `<C-t>` | Open selected Harpoon file in tab from the menu |
+
+Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove entries.
+
 ### Tests
 
 `<leader>tn`, `<leader>tf`, and `<leader>to` are available in supported test buffers. `<leader>ta` and `<leader>ts` work in supported JavaScript, TypeScript, Python, and .NET projects.
@@ -114,7 +134,6 @@ Mappings outside the leader namespace, or ones WhichKey doesn't surface as clear
 
 | Shortcut | Action |
 | --- | --- |
-| `<S-h>` / `<S-l>` | Previous / next buffer |
 | `<leader>bb` | Buffer picker |
 | `<leader>bd` | Delete current buffer |
 | `<leader>bo` | Delete other buffers |

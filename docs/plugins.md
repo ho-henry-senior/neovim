@@ -21,6 +21,7 @@
 ## Navigation, Search, and UI
 
 - **[snacks.nvim](https://github.com/folke/snacks.nvim)** — the main UI and workflow plugin; provides the file picker, grep, explorer, terminal, notifications, and toggles. The dashboard, animations, smooth scrolling, and custom status column are intentionally disabled.
+- **[harpoon](https://github.com/ThePrimeagen/harpoon/tree/harpoon2)** — project-local file marks for quickly jumping between the small set of files currently in focus.
 - **[which-key.nvim](https://github.com/folke/which-key.nvim)** — shows leader key groups and mapping hints after a short pause.
 - **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** — statusline, tabline, and per-window labels for splits. See [ui.md](ui.md).
 - **[nvim-web-devicons](https://github.com/nvim-tree/nvim-web-devicons)** — file type icons used by snacks and lualine.

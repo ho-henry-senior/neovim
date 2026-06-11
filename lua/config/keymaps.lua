@@ -15,10 +15,6 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
 map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move down" })
 map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move up" })
 
--- buffers
-map("n", "<S-h>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
-map("n", "<S-l>", "<cmd>bnext<cr>", { desc = "Next buffer" })
-
 -- Clear search, diff update and redraw
 -- taken from runtime/lua/_editor.lua
 map(
