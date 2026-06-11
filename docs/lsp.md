@@ -37,7 +37,6 @@ These are the extra mappings this config adds on top of Neovim's built-in LSP be
 - `K`: hover
 - `<leader>ca`: code actions
 - `<leader>cl`: fix all
-- `<leader>cd`: line diagnostics
 - `gai` / `gao`: incoming / outgoing call hierarchy
 
 Diagnostic bracket motions are listed in [motions.md](motions.md).

@@ -91,8 +91,6 @@ Available in any buffer where Treesitter is active. Treesitter bracket motions a
 | Shortcut | Action |
 | --- | --- |
 | `<leader>cf` | Format buffer |
-| `<leader>cF` | Format injected languages |
-| `<leader>cn` | Show formatter info |
 | `<leader>n` | Notification history |
 | `<leader>ud` | Diagnostics toggle |
 | `<leader>uv` | Diagnostic virtual text toggle |

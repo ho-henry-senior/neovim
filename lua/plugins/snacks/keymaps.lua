@@ -42,13 +42,6 @@ local keymaps = {
 		desc = "Buffers",
 	},
 	{
-		"<leader>fr",
-		function(Snacks)
-			Snacks.picker.recent()
-		end,
-		desc = "Recent files",
-	},
-	{
 		"<leader>gb",
 		function(Snacks)
 			Snacks.picker.git_branches()
@@ -147,13 +140,6 @@ local keymaps = {
 			Snacks.picker.commands()
 		end,
 		desc = "Commands",
-	},
-	{
-		"<leader>ih",
-		function(Snacks)
-			Snacks.picker.highlights()
-		end,
-		desc = "Highlights",
 	},
 	{
 		"<leader>ii",
