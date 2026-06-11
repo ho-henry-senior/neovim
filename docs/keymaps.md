@@ -70,9 +70,7 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | --- | --- |
 | `<leader><space>` | Smart file picker |
 | `<leader>e` | File explorer |
-| `<leader>fc` | Find config files |
 | `<leader>fr` | Recent files |
-| `<leader>fp` | Open project |
 | `<leader>fCf` | Copy full file path |
 | `<leader>fCn` | Copy file name |
 | `<leader>fCr` | Copy relative path |

@@ -42,20 +42,6 @@ local keymaps = {
 		desc = "Buffers",
 	},
 	{
-		"<leader>fc",
-		function(Snacks)
-			Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-		end,
-		desc = "Find config file",
-	},
-	{
-		"<leader>fp",
-		function(Snacks)
-			Snacks.picker.projects()
-		end,
-		desc = "Open project",
-	},
-	{
 		"<leader>fr",
 		function(Snacks)
 			Snacks.picker.recent()
