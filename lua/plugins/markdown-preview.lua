@@ -8,8 +8,13 @@ return {
 	{
 		src = "https://github.com/iamcco/markdown-preview.nvim",
 		name = "markdown-preview.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", { desc = "Markdown preview toggle" })
-		end,
+		cmd = "MarkdownPreviewToggle",
+		keys = {
+			{
+				lhs = "<leader>mp",
+				desc = "Markdown preview toggle",
+				cmd = "MarkdownPreviewToggle",
+			},
+		},
 	},
 }

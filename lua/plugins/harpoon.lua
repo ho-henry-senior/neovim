@@ -1,3 +1,16 @@
+local function harpoon()
+	return require("harpoon")
+end
+
+local function navigate(direction)
+	local list = harpoon():list()
+	if list:length() == 0 then
+		return
+	end
+
+	list[direction](list)
+end
+
 return {
 	{
 		src = "https://github.com/ThePrimeagen/harpoon",
@@ -9,65 +22,92 @@ return {
 				name = "plenary.nvim",
 			},
 		},
+		keys = {
+			{
+				lhs = "<leader>h",
+				desc = "Harpoon add file",
+				callback = function()
+					harpoon():list():add()
+				end,
+			},
+			{
+				lhs = "<leader>H",
+				desc = "Harpoon remove file",
+				callback = function()
+					harpoon():list():remove()
+				end,
+			},
+			{
+				lhs = "<C-e>",
+				desc = "Harpoon menu",
+				callback = function()
+					local hp = harpoon()
+					hp.ui:toggle_quick_menu(hp:list())
+				end,
+			},
+			{
+				lhs = "<S-h>",
+				desc = "Harpoon previous file",
+				callback = function()
+					navigate("prev")
+				end,
+			},
+			{
+				lhs = "<S-l>",
+				desc = "Harpoon next file",
+				callback = function()
+					navigate("next")
+				end,
+			},
+			{
+				lhs = "<leader>1",
+				desc = "which_key_ignore",
+				callback = function()
+					harpoon():list():select(1)
+				end,
+			},
+			{
+				lhs = "<leader>2",
+				desc = "which_key_ignore",
+				callback = function()
+					harpoon():list():select(2)
+				end,
+			},
+			{
+				lhs = "<leader>3",
+				desc = "which_key_ignore",
+				callback = function()
+					harpoon():list():select(3)
+				end,
+			},
+			{
+				lhs = "<leader>4",
+				desc = "which_key_ignore",
+				callback = function()
+					harpoon():list():select(4)
+				end,
+			},
+		},
 		config = function()
-			local harpoon = require("harpoon")
-			harpoon:setup({
+			local hp = harpoon()
+			hp:setup({
 				settings = {
 					save_on_toggle = true,
 				},
 			})
 
-			local function map(lhs, rhs, desc)
-				vim.keymap.set("n", lhs, rhs, { desc = desc })
-			end
-
-			local function navigate(direction)
-				local list = harpoon:list()
-				if list:length() == 0 then
-					return
-				end
-
-				list[direction](list)
-			end
-
-			map("<leader>h", function()
-				harpoon:list():add()
-			end, "Harpoon add file")
-
-			map("<leader>H", function()
-				harpoon:list():remove()
-			end, "Harpoon remove file")
-
-			map("<C-e>", function()
-				harpoon.ui:toggle_quick_menu(harpoon:list())
-			end, "Harpoon menu")
-
-			map("<S-h>", function()
-				navigate("prev")
-			end, "Harpoon previous file")
-
-			map("<S-l>", function()
-				navigate("next")
-			end, "Harpoon next file")
-
-			for i = 1, 4 do
-				map("<leader>" .. i, function()
-					harpoon:list():select(i)
-				end, "which_key_ignore")
-			end
-
-			harpoon:extend({
+			hp:extend({
 				UI_CREATE = function(cx)
 					vim.keymap.set("n", "<C-v>", function()
-						harpoon.ui:select_menu_item({ vsplit = true })
+						hp.ui:select_menu_item({ vsplit = true })
 					end, { buffer = cx.bufnr, desc = "Harpoon open vertical split" })
 
 					vim.keymap.set("n", "<C-s>", function()
-						harpoon.ui:select_menu_item({ split = true })
+						hp.ui:select_menu_item({ split = true })
 					end, { buffer = cx.bufnr, desc = "Harpoon open split" })
 
 					vim.keymap.set("n", "<C-t>", function()
-						harpoon.ui:select_menu_item({ tabedit = true })
+						hp.ui:select_menu_item({ tabedit = true })
 					end, { buffer = cx.bufnr, desc = "Harpoon open tab" })
 				end,
 			})

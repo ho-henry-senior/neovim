@@ -1,4 +1,23 @@
 -- Install prettier: npm install -g prettier
+local auto_format = true
+
+local function toggle_autoformat()
+	auto_format = not auto_format
+	if auto_format then
+		vim.cmd("FormatEnable")
+	else
+		vim.cmd("FormatDisable")
+	end
+end
+
+local function format_buffer()
+	require("conform").format({ async = true }, function(err, did_edit)
+		if not err and did_edit then
+			vim.notify("Code formatted", vim.log.levels.INFO, { title = "Conform" })
+		end
+	end)
+end
+
 return {
 	{
 		src = "https://github.com/stevearc/conform.nvim",
@@ -72,6 +91,19 @@ return {
 			end,
 		},
 		module = "conform",
+		keys = {
+			{
+				lhs = "<leader>uf",
+				desc = "Autoformat toggle",
+				callback = toggle_autoformat,
+			},
+			{
+				mode = { "n", "v" },
+				lhs = "<leader>cf",
+				desc = "Format buffer",
+				callback = format_buffer,
+			},
+		},
 		config = function(spec, opts)
 			require(spec.module).setup(opts)
 
@@ -89,25 +121,6 @@ return {
 				vim.g.disable_autoformat = false
 				vim.notify("Autoformat enabled", vim.log.levels.INFO)
 			end, { desc = "Re-enable autoformat-on-save" })
-
-			local auto_format = true
-
-			vim.keymap.set("n", "<leader>uf", function()
-				auto_format = not auto_format
-				if auto_format then
-					vim.cmd("FormatEnable")
-				else
-					vim.cmd("FormatDisable")
-				end
-			end, { desc = "Autoformat toggle" })
-
-			vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-				require("conform").format({ async = true }, function(err, did_edit)
-					if not err and did_edit then
-						vim.notify("Code formatted", vim.log.levels.INFO, { title = "Conform" })
-					end
-				end)
-			end, { desc = "Format buffer" })
 		end,
 	},
 }

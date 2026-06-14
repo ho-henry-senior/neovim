@@ -36,12 +36,13 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 
 - `init.lua` — entrypoint; sets leader, loads config and plugins
 - `lua/config/` — options, keymaps, LSP wiring, sessions, and autocmds
-- `lua/plugins/` — plugin setup, one file per feature area
+- `lua/plugins/` — plugin specs, one file per configured plugin
+- `lua/lib/pack.lua` — small `vim.pack` helper for plugin specs, dependencies, lazy triggers, and global plugin keymaps
 - `lsp/` — per-server LSP configs
 - `nvim-pack-lock.json` — plugin lock file
 
 ## Design
 
-Stays close to stock Neovim rather than building on a large framework. Sessions, LSP, and package management use native Neovim features. Plugins fill gaps where native features aren't good enough yet.
+Stays close to stock Neovim rather than building on a large framework. Sessions, LSP, and package management use native Neovim features. Plugin specs are a small local layer over `vim.pack`, not a replacement plugin manager. Plugins fill gaps where native features aren't good enough yet.
 
 Prefer native motions, command history, quickfix/location lists, and editor primitives before adding plugin mappings. Leader mappings are reserved for actions that are frequent, clearer than the native command, or not covered well by stock Neovim.

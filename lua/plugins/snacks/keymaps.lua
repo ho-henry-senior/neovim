@@ -1,5 +1,3 @@
-local M = {}
-
 -- Keep Snacks keymaps centralized so the plugin entrypoint stays small and the
 -- large picker/navigation surface can evolve without mixing into setup logic.
 local keymaps = {
@@ -198,24 +196,26 @@ local keymaps = {
 	},
 }
 
-function M.setup(Snacks)
-	for _, keymap in ipairs(keymaps) do
-		local opts = {
-			desc = keymap.desc,
-			noremap = keymap.noremap == nil and true or keymap.noremap,
-		}
-		if keymap.silent ~= nil then
-			opts.silent = keymap.silent
-		end
-		if keymap.expr ~= nil then
-			opts.expr = keymap.expr
-		end
+local M = {}
 
-		local mode = keymap.mode or "n"
-		vim.keymap.set(mode, keymap[1], function()
-			keymap[2](Snacks)
-		end, opts)
+function M.keys()
+	local keys = {}
+
+	for _, keymap in ipairs(keymaps) do
+		table.insert(keys, {
+			mode = keymap.mode or "n",
+			lhs = keymap[1],
+			desc = keymap.desc,
+			remap = keymap.noremap == false,
+			silent = keymap.silent,
+			expr = keymap.expr,
+			callback = function()
+				keymap[2](require("snacks"))
+			end,
+		})
 	end
+
+	return keys
 end
 
 return M

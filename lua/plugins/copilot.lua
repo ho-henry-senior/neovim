@@ -1,3 +1,13 @@
+local function toggle_copilot()
+	if require("copilot.client").is_disabled() then
+		vim.cmd("Copilot enable")
+		vim.notify("Copilot enabled", vim.log.levels.INFO)
+	else
+		vim.cmd("Copilot disable")
+		vim.notify("Copilot disabled", vim.log.levels.WARN)
+	end
+end
+
 return {
 	{
 		src = "https://github.com/zbirenbaum/copilot.lua",
@@ -15,6 +25,64 @@ return {
 			},
 		},
 		module = "copilot",
+		cmd = {
+			"Copilot",
+		},
+		keys = {
+			{
+				mode = "i",
+				lhs = "<C-l>",
+				callback = function()
+					require("copilot.suggestion").accept()
+				end,
+			},
+			{
+				mode = "i",
+				lhs = "<C-j>",
+				callback = function()
+					require("copilot.suggestion").next()
+				end,
+			},
+			{
+				mode = "i",
+				lhs = "<C-k>",
+				callback = function()
+					require("copilot.suggestion").prev()
+				end,
+			},
+			{
+				mode = "i",
+				lhs = "<C-h>",
+				callback = function()
+					require("copilot.suggestion").dismiss()
+				end,
+			},
+			{
+				lhs = "<leader>aA",
+				desc = "Copilot authenticate",
+				cmd = "Copilot auth",
+			},
+			{
+				lhs = "<leader>at",
+				desc = "Copilot toggle",
+				callback = toggle_copilot,
+			},
+			{
+				lhs = "<leader>aT",
+				desc = "Copilot buffer toggle",
+				cmd = "Copilot toggle",
+			},
+			{
+				lhs = "<leader>as",
+				desc = "Copilot status",
+				cmd = "Copilot status",
+			},
+			{
+				lhs = "<leader>ap",
+				desc = "Copilot panel toggle",
+				cmd = "Copilot panel toggle",
+			},
+		},
 		config = function(spec, opts)
 			require(spec.module).setup(opts)
 
@@ -45,38 +113,6 @@ return {
 					})
 				end,
 			})
-
-			local function toggle_copilot()
-				if require("copilot.client").is_disabled() then
-					vim.cmd("Copilot enable")
-					vim.notify("Copilot enabled", vim.log.levels.INFO)
-				else
-					vim.cmd("Copilot disable")
-					vim.notify("Copilot disabled", vim.log.levels.WARN)
-				end
-			end
-
-			vim.keymap.set("i", "<C-l>", function()
-				require("copilot.suggestion").accept()
-			end, { silent = true })
-
-			vim.keymap.set("i", "<C-j>", function()
-				require("copilot.suggestion").next()
-			end, { silent = true })
-
-			vim.keymap.set("i", "<C-k>", function()
-				require("copilot.suggestion").prev()
-			end, { silent = true })
-
-			vim.keymap.set("i", "<C-h>", function()
-				require("copilot.suggestion").dismiss()
-			end, { silent = true })
-
-			vim.keymap.set("n", "<leader>aA", "<cmd>Copilot auth<cr>", { desc = "Copilot authenticate" })
-			vim.keymap.set("n", "<leader>at", toggle_copilot, { desc = "Copilot toggle" })
-			vim.keymap.set("n", "<leader>aT", "<cmd>Copilot toggle<cr>", { desc = "Copilot buffer toggle" })
-			vim.keymap.set("n", "<leader>as", "<cmd>Copilot status<cr>", { desc = "Copilot status" })
-			vim.keymap.set("n", "<leader>ap", "<cmd>Copilot panel toggle<cr>", { desc = "Copilot panel toggle" })
 		end,
 	},
 }
