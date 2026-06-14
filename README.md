@@ -38,6 +38,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 - `lua/config/` — options, keymaps, LSP wiring, sessions, and autocmds
 - `lua/plugins/` — plugin specs, one file per configured plugin
 - `lua/lib/pack.lua` — small `vim.pack` helper for plugin specs, dependencies, lazy triggers, and global plugin keymaps
+- `after/ftplugin/` — filetype-local settings (wrap, spell, conceallevel) loaded after the main config and any plugin ftplugins, one file per filetype
 - `lsp/` — per-server LSP configs
 - `nvim-pack-lock.json` — plugin lock file
 
