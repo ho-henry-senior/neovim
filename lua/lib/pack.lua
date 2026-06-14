@@ -52,6 +52,14 @@ local function opts_for(spec)
 	return spec.opts or {}
 end
 
+local function run_init(specs)
+	for _, spec in ipairs(specs) do
+		if spec.init then
+			spec.init(spec)
+		end
+	end
+end
+
 function M.load(spec)
 	local name = plugin_name(spec)
 	if loaded[name] then
@@ -257,6 +265,7 @@ end
 function M.setup(specs)
 	local all_specs = collect_specs(specs)
 
+	run_init(all_specs)
 	vim.pack.add(vim.tbl_map(pack_spec, all_specs), { load = false })
 
 	for _, spec in ipairs(specs) do

@@ -9,6 +9,7 @@ Each configured plugin has a top-level file in `lua/plugins/`. Specs use a small
 - `event`, `ft`, `cmd`, and `lazy = true` control lazy loading.
 - `keys` is the standard place for global plugin-owned keymaps.
 - `opts` plus `module` handles the common `require(module).setup(opts)` case.
+- `init` runs before a plugin is loaded, for plugin globals or other pre-load setup.
 - `config` is reserved for plugin-specific setup that does not fit the common fields.
 
 Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, special-buffer setup, or plugin UI creation hooks.

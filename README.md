@@ -30,7 +30,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 - [docs/lsp.md](docs/lsp.md) — configured language servers and LSP mappings
 - [docs/markdown.md](docs/markdown.md) — Markdown and prose support
 - [docs/ui.md](docs/ui.md) — statusline, tabline, and winbar
-- [docs/tooling.md](docs/tooling.md) — required tools, WezTerm config, and troubleshooting
+- [docs/tooling.md](docs/tooling.md) — required tools, WezTerm config, and troubleshooting  g
 
 ## Layout
 
