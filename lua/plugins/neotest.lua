@@ -1,64 +1,13 @@
 local tests = require("plugins.neotest.tests")
 
-local _neotest, _nio
-
-local function patch_subprocess_treesitter_paths()
-	local subprocess = require("neotest.lib.subprocess")
-	if subprocess._user_treesitter_paths_patched then
-		return
-	end
-
-	local ok, treesitter = pcall(require, "nvim-treesitter")
-	if not ok or type(treesitter.setup) ~= "function" then
-		return
-	end
-
-	local treesitter_root = subprocess.resolve_plugin_root(treesitter.setup)
-	local treesitter_runtime = treesitter_root and (treesitter_root .. "/runtime") or nil
-	local original_add_paths_to_rtp = subprocess.add_paths_to_rtp
-
-	if not subprocess.add_to_rtp then
-		subprocess.add_to_rtp = function(plugin_funcs)
-			local paths = {}
-			for _, plugin_func in ipairs(plugin_funcs) do
-				local root = subprocess.resolve_plugin_root(plugin_func)
-				if root and not vim.tbl_contains(paths, root) then
-					table.insert(paths, root)
-				end
-			end
-
-			return subprocess.add_paths_to_rtp(paths)
-		end
-	end
-
-	subprocess.add_paths_to_rtp = function(paths)
-		if treesitter_root and not vim.tbl_contains(paths, treesitter_root) then
-			table.insert(paths, treesitter_root)
-		end
-		if
-			treesitter_runtime
-			and vim.uv.fs_stat(treesitter_runtime)
-			and not vim.tbl_contains(paths, treesitter_runtime)
-		then
-			table.insert(paths, treesitter_runtime)
-		end
-
-		return original_add_paths_to_rtp(paths)
-	end
-
-	subprocess._user_treesitter_paths_patched = true
-end
+local _neotest
 
 local function load_neotest()
 	if _neotest then
 		return
 	end
 
-	vim.cmd.packadd("nvim-nio")
 	_neotest = require("neotest")
-	_nio = require("nio")
-
-	patch_subprocess_treesitter_paths()
 
 	_neotest.setup({
 		summary = {
@@ -88,86 +37,13 @@ local function load_neotest()
 	})
 end
 
-local function get_neotest_client()
-	local _, client = debug.getupvalue(_neotest.run.get_tree_from_args, 1)
-	return client
-end
-
-local function ensure_test_positions(file_path)
-	local client = get_neotest_client()
-	if not client or not file_path or file_path == "" then
-		return
-	end
-
-	local adapter_id = client:get_adapter(file_path)
-	if not adapter_id then
-		client:_update_adapters(vim.fs.dirname(file_path))
-		adapter_id = client:get_adapter(file_path)
-	end
-
-	if adapter_id and not client:get_position(file_path, { adapter = adapter_id }) then
-		client:_update_positions(file_path, { adapter = adapter_id })
-	end
-end
-
-local function ensure_project_positions(root, file_path)
-	local client = get_neotest_client()
-	if not client or not root or root == "" then
-		return nil
-	end
-
-	local adapter_id = file_path and client:get_adapter(file_path) or nil
-	if not adapter_id then
-		client:_update_adapters(root)
-		adapter_id = client:get_adapter(root)
-	end
-
-	if adapter_id then
-		client:_update_positions(root, { adapter = adapter_id })
-	end
-
-	return adapter_id
-end
-
-local function run_nearest_test()
-	_nio.run(function()
-		local file_path = vim.fn.expand("%:p")
-		ensure_test_positions(file_path)
-
-		local tree = _neotest.run.get_tree_from_args(nil, false)
-		if tree then
-			_neotest.run.run()
-			return
-		end
-
-		_neotest.run.run(file_path)
-	end)
-end
-
-local function run_file_tests()
-	_nio.run(function()
-		local file_path = vim.fn.expand("%:p")
-		ensure_test_positions(file_path)
-		_neotest.run.run(file_path)
-	end)
-end
-
-local function run_project_tests()
-	_nio.run(function()
+local function with_project_support(fn)
+	return function()
 		local file_path = vim.fn.expand("%:p")
 		local root = tests.project_root(file_path) or vim.fn.getcwd()
-		local adapter_id = ensure_project_positions(root, file_path)
-		_neotest.run.run({ root, adapter = adapter_id })
-	end)
-end
-
-local function toggle_test_summary()
-	_nio.run(function()
-		local file_path = vim.fn.expand("%:p")
-		local root = tests.project_root(file_path) or vim.fn.getcwd()
-		ensure_project_positions(root, file_path)
-		_neotest.summary.toggle()
-	end)
+		load_neotest()
+		fn(root)
+	end
 end
 
 local function with_test_support(fn)
@@ -186,27 +62,11 @@ local function with_test_support(fn)
 	end
 end
 
-local function with_project_support(fn)
-	return function()
-		local file_path = vim.fn.expand("%:p")
-		if not tests.project_root(file_path) then
-			vim.notify(
-				"Run-all is only available in supported JavaScript, TypeScript, Python, or .NET test projects.",
-				vim.log.levels.INFO
-			)
-			return
-		end
-
-		load_neotest()
-		fn()
-	end
-end
-
 return {
 	{
 		src = "https://github.com/nvim-neotest/neotest",
 		name = "neotest",
-		lazy = true,
+		ft = { "cs", "python", "javascript", "typescript", "typescriptreact", "javascriptreact" },
 		dependencies = {
 			{
 				src = "https://github.com/nvim-neotest/nvim-nio",
@@ -236,22 +96,30 @@ return {
 			{
 				lhs = "<leader>tn",
 				desc = "Run nearest test",
-				callback = with_test_support(run_nearest_test),
+				callback = with_test_support(function()
+					_neotest.run.run()
+				end),
 			},
 			{
 				lhs = "<leader>tf",
 				desc = "Run file tests",
-				callback = with_test_support(run_file_tests),
+				callback = with_test_support(function()
+					_neotest.run.run(vim.fn.expand("%:p"))
+				end),
 			},
 			{
 				lhs = "<leader>ta",
 				desc = "Run all tests",
-				callback = with_project_support(run_project_tests),
+				callback = with_project_support(function(root)
+					_neotest.run.run(root)
+				end),
 			},
 			{
 				lhs = "<leader>ts",
 				desc = "Test summary toggle",
-				callback = with_project_support(toggle_test_summary),
+				callback = with_project_support(function()
+					_neotest.summary.toggle()
+				end),
 			},
 			{
 				lhs = "<leader>to",
@@ -261,5 +129,6 @@ return {
 				end),
 			},
 		},
+		config = load_neotest,
 	},
 }

@@ -50,7 +50,7 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 - `terraform-ls`
 - `harper-ls` — prose and spell checking in Markdown and text buffers
 - `terraform`
-- `dotnet` — C# LSP and .NET test support
+- `dotnet` — C# LSP and .NET test support. `lsp/csharp_ls.lua` sets `DOTNET_ROOT` to the Homebrew path (`/opt/homebrew/opt/dotnet/libexec`) if it exists and `DOTNET_ROOT` is not already set, so `csharp-ls` can locate the runtime when installed via Homebrew.
 
 ### npm
 
@@ -104,3 +104,4 @@ return {
 - **Missing venv**: Python tests may be discovered but fail at runtime due to missing imports.
 - **Missing `tree-sitter-cli`**: `.http`/`.rest` files may fail to highlight until the `kulala_http` parser has been built once.
 - **Missing Copilot auth**: AI mappings load, but suggestions and chat will not work.
+- **"No tests found" on first keypress**: neotest discovers test positions asynchronously after loading. If a test key is pressed immediately after opening a file, the first attempt may fail; a second press will work once discovery is complete.
