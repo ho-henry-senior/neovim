@@ -7,6 +7,9 @@ end
 ---@type vim.lsp.Config
 return {
 	cmd = { csharp_ls },
+	cmd_env = {
+		DOTNET_ROOT = "/opt/homebrew/opt/dotnet/libexec",
+	},
 	filetypes = { "cs" },
 	root_dir = function(bufnr, on_dir)
 		local fname = vim.api.nvim_buf_get_name(bufnr)
