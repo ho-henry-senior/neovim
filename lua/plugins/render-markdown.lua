@@ -65,6 +65,7 @@ return {
 	{
 		src = "https://github.com/MeanderingProgrammer/render-markdown.nvim",
 		name = "render-markdown.nvim",
+		ft = "markdown",
 		module = "render-markdown",
 		opts = require("plugins.markdown.render_opts"),
 		keys = {

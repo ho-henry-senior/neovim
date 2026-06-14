@@ -2,6 +2,7 @@ return {
 	{
 		src = "https://github.com/mistweaverco/kulala.nvim",
 		name = "kulala.nvim",
+		ft = "http",
 		opts = {
 			global_keymaps = true,
 			global_keymaps_prefix = "<leader>r",

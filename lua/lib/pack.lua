@@ -1,3 +1,18 @@
+-- Thin layer over vim.pack for declarative plugin specs with lazy loading.
+--
+-- Each spec may include:
+--   src, name, version   passed through to vim.pack
+--   dependencies         nested specs loaded before the parent
+--   init                 runs before load (for pre-load globals)
+--   module, opts         shorthand for require(module).setup(opts)
+--   config               full setup function, receives (spec, opts)
+--   lazy                 if true, skip eager load (must combine with a trigger)
+--   event, ft, cmd       load triggers: autocmd event, filetype, or user command
+--   keys                 plugin-owned keymaps; act as load triggers if the plugin is lazy
+--
+-- A plugin is lazy if lazy=true or any of event/ft/cmd are set. Lazy plugins
+-- load on first use of their trigger. Non-lazy plugins load at startup.
+
 local M = {}
 
 local loaded = {}
