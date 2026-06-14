@@ -66,7 +66,7 @@ return {
 	{
 		src = "https://github.com/nvim-neotest/neotest",
 		name = "neotest",
-		lazy = true,
+		ft = { "cs", "python", "javascript", "typescript", "typescriptreact", "javascriptreact" },
 		dependencies = {
 			{
 				src = "https://github.com/nvim-neotest/nvim-nio",
@@ -129,5 +129,6 @@ return {
 				end),
 			},
 		},
+		config = load_neotest,
 	},
 }
