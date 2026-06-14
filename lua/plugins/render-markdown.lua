@@ -65,6 +65,8 @@ return {
 	{
 		src = "https://github.com/MeanderingProgrammer/render-markdown.nvim",
 		name = "render-markdown.nvim",
+		module = "render-markdown",
+		opts = require("plugins.markdown.render_opts"),
 		keys = {
 			{
 				lhs = "<leader>mt",
@@ -128,8 +130,5 @@ return {
 				callback = toggle_checkbox,
 			},
 		},
-		config = function()
-			require("render-markdown").setup(require("plugins.markdown.render_opts"))
-		end,
 	},
 }

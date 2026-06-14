@@ -37,8 +37,5 @@ return {
 				end,
 			},
 		},
-		config = function(spec, opts)
-			require(spec.module).setup(opts)
-		end,
 	},
 }

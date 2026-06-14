@@ -3,6 +3,23 @@ return {
 		src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
 		name = "nvim-treesitter-textobjects",
 		version = "main",
+		module = "nvim-treesitter-textobjects",
+		opts = {
+			select = {
+				enable = true,
+				lookahead = true,
+				selection_modes = {
+					["@parameter.outer"] = "v",
+					["@function.outer"] = "V",
+					["@class.outer"] = "<c-v>",
+				},
+				include_surrounding_whitespace = false,
+			},
+			move = {
+				enable = true,
+				set_jumps = true,
+			},
+		},
 		keys = {
 			{
 				mode = { "x", "o" },
@@ -136,23 +153,5 @@ return {
 				end,
 			},
 		},
-		config = function()
-			require("nvim-treesitter-textobjects").setup({
-				select = {
-					enable = true,
-					lookahead = true,
-					selection_modes = {
-						["@parameter.outer"] = "v",
-						["@function.outer"] = "V",
-						["@class.outer"] = "<c-v>",
-					},
-					include_surrounding_whitespace = false,
-				},
-				move = {
-					enable = true,
-					set_jumps = true,
-				},
-			})
-		end,
 	},
 }
