@@ -1,4 +1,3 @@
--- TODO: write a description of the object returned by plugin modules.
 local M = {}
 
 local loaded = {}
