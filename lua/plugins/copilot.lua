@@ -25,6 +25,7 @@ return {
 			},
 		},
 		module = "copilot",
+		event = "InsertEnter",
 		cmd = {
 			"Copilot",
 		},
