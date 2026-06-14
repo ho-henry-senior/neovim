@@ -1,13 +1,3 @@
-vim.pack.add({
-	"https://github.com/nvim-neotest/nvim-nio",
-	"https://github.com/nvim-neotest/neotest",
-	"https://github.com/nvim-neotest/neotest-jest",
-	"https://github.com/nvim-neotest/neotest-python",
-	"https://github.com/Issafalcon/neotest-dotnet",
-})
-
--- tests.lua is pure Lua (file matching, project root detection) — safe to load at startup.
--- After fixing jest.lua, no neotest package code is pulled in here.
 local tests = require("plugins.neotest.tests")
 
 local _neotest, _nio
@@ -59,7 +49,7 @@ local function patch_subprocess_treesitter_paths()
 	subprocess._user_treesitter_paths_patched = true
 end
 
-local function load()
+local function load_neotest()
 	if _neotest then
 		return
 	end
@@ -191,7 +181,7 @@ local function with_test_support(fn)
 			return
 		end
 
-		load()
+		load_neotest()
 		fn()
 	end
 end
@@ -207,23 +197,69 @@ local function with_project_support(fn)
 			return
 		end
 
-		load()
+		load_neotest()
 		fn()
 	end
 end
 
-vim.keymap.set("n", "<leader>t?", function()
-	vim.notify("Test mappings are available in supported JavaScript, TypeScript, Python, or C# test buffers.")
-end, { desc = "Test mapping help" })
-vim.keymap.set("n", "<leader>tn", with_test_support(run_nearest_test), { desc = "Run nearest test" })
-vim.keymap.set("n", "<leader>tf", with_test_support(run_file_tests), { desc = "Run file tests" })
-vim.keymap.set("n", "<leader>ta", with_project_support(run_project_tests), { desc = "Run all tests" })
-vim.keymap.set("n", "<leader>ts", with_project_support(toggle_test_summary), { desc = "Test summary toggle" })
-vim.keymap.set(
-	"n",
-	"<leader>to",
-	with_test_support(function()
-		_neotest.output.open({ enter = true })
-	end),
-	{ desc = "Open test output" }
-)
+return {
+	{
+		src = "https://github.com/nvim-neotest/neotest",
+		name = "neotest",
+		lazy = true,
+		dependencies = {
+			{
+				src = "https://github.com/nvim-neotest/nvim-nio",
+				name = "nvim-nio",
+			},
+			{
+				src = "https://github.com/nvim-neotest/neotest-jest",
+				name = "neotest-jest",
+			},
+			{
+				src = "https://github.com/nvim-neotest/neotest-python",
+				name = "neotest-python",
+			},
+			{
+				src = "https://github.com/Issafalcon/neotest-dotnet",
+				name = "neotest-dotnet",
+			},
+		},
+		keys = {
+			{
+				lhs = "<leader>t?",
+				desc = "Test mapping help",
+				callback = function()
+					vim.notify("Test mappings are available in supported JavaScript, TypeScript, Python, or C# test buffers.")
+				end,
+			},
+			{
+				lhs = "<leader>tn",
+				desc = "Run nearest test",
+				callback = with_test_support(run_nearest_test),
+			},
+			{
+				lhs = "<leader>tf",
+				desc = "Run file tests",
+				callback = with_test_support(run_file_tests),
+			},
+			{
+				lhs = "<leader>ta",
+				desc = "Run all tests",
+				callback = with_project_support(run_project_tests),
+			},
+			{
+				lhs = "<leader>ts",
+				desc = "Test summary toggle",
+				callback = with_project_support(toggle_test_summary),
+			},
+			{
+				lhs = "<leader>to",
+				desc = "Open test output",
+				callback = with_test_support(function()
+					_neotest.output.open({ enter = true })
+				end),
+			},
+		},
+	},
+}

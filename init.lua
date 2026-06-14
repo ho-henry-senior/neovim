@@ -2,4 +2,4 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 require("config")
-require("plugins")
+require("lib.pack").setup(require("plugins"))
