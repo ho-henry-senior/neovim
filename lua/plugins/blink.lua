@@ -1,19 +1,11 @@
-vim.pack.add({
+return {
 	{
 		src = "https://github.com/saghen/blink.cmp",
+		name = "blink.cmp",
 		version = vim.version.range("^1"),
-	},
-})
-
--- Lazy load on first insert mode entry
-local group = vim.api.nvim_create_augroup("BlinkCmpLazyLoad", { clear = true })
-
-vim.api.nvim_create_autocmd("InsertEnter", {
-	pattern = "*",
-	group = group,
-	once = true,
-	callback = function()
-		require("blink.cmp").setup({
+		event = "InsertEnter",
+		main = "blink.cmp",
+		opts = {
 			keymap = { preset = "super-tab" },
 			appearance = {
 				nerd_font_variant = "mono",
@@ -26,6 +18,6 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 				default = { "lsp", "path", "buffer" },
 			},
 			fuzzy = { implementation = "prefer_rust_with_warning" },
-		})
-	end,
-})
+		},
+	},
+}
