@@ -1,8 +1,12 @@
 -- Install with: dotnet tool install --global csharp-ls
+local csharp_ls = vim.fn.exepath("csharp-ls")
+if csharp_ls == "" then
+	csharp_ls = vim.fn.expand("~/.dotnet/tools/csharp-ls")
+end
 
 ---@type vim.lsp.Config
 return {
-	cmd = { "csharp-ls" },
+	cmd = { csharp_ls },
 	filetypes = { "cs" },
 	root_dir = function(bufnr, on_dir)
 		local fname = vim.api.nvim_buf_get_name(bufnr)

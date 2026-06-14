@@ -1,17 +1,19 @@
 return {
 	{
-		src = "https://github.com/nvim-lua/plenary.nvim",
-		name = "plenary.nvim",
-	},
-	{
 		src = "https://github.com/CopilotC-Nvim/CopilotChat.nvim",
 		name = "CopilotChat.nvim",
+		dependencies = {
+			{
+				src = "https://github.com/nvim-lua/plenary.nvim",
+				name = "plenary.nvim",
+			},
+		},
 		opts = {
 			model = "auto",
 		},
-		main = "CopilotChat",
+		module = "CopilotChat",
 		config = function(spec, opts)
-			require(spec.main).setup(opts)
+			require(spec.module).setup(opts)
 
 			vim.keymap.set("n", "<leader>ac", "<cmd>CopilotChat<cr>", { desc = "Copilot chat" })
 

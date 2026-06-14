@@ -1,12 +1,14 @@
 return {
 	{
-		src = "https://github.com/nvim-lua/plenary.nvim",
-		name = "plenary.nvim",
-	},
-	{
 		src = "https://github.com/ThePrimeagen/harpoon",
 		name = "harpoon",
 		version = "harpoon2",
+		dependencies = {
+			{
+				src = "https://github.com/nvim-lua/plenary.nvim",
+				name = "plenary.nvim",
+			},
+		},
 		config = function()
 			local harpoon = require("harpoon")
 			harpoon:setup({

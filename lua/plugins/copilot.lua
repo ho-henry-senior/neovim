@@ -14,9 +14,9 @@ return {
 				},
 			},
 		},
-		main = "copilot",
+		module = "copilot",
 		config = function(spec, opts)
-			require(spec.main).setup(opts)
+			require(spec.module).setup(opts)
 
 			local function refresh_copilot_panel()
 				local panel_name = vim.api.nvim_buf_get_name(0)

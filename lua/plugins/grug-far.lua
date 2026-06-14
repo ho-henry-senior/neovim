@@ -5,9 +5,9 @@ return {
 		opts = {
 			headerMaxWidth = 80,
 		},
-		main = "grug-far",
+		module = "grug-far",
 		config = function(spec, opts)
-			require(spec.main).setup(opts)
+			require(spec.module).setup(opts)
 
 			vim.keymap.set({ "n", "v", "x" }, "<leader>sr", function()
 				local grug = require("grug-far")

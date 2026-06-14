@@ -1,11 +1,13 @@
 return {
 	{
-		src = "https://github.com/nvim-tree/nvim-web-devicons",
-		name = "nvim-web-devicons",
-	},
-	{
 		src = "https://github.com/nvim-lualine/lualine.nvim",
 		name = "lualine.nvim",
+		dependencies = {
+			{
+				src = "https://github.com/nvim-tree/nvim-web-devicons",
+				name = "nvim-web-devicons",
+			},
+		},
 		config = function()
 			local lualine = require("lualine")
 

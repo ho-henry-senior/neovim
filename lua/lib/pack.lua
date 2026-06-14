@@ -1,6 +1,7 @@
 local M = {}
 
 local loaded = {}
+local loading = {}
 
 local function plugin_name(spec)
 	if spec.name then
@@ -31,6 +32,17 @@ local function pack_spec(spec)
 	}
 end
 
+local function collect_specs(specs, collected)
+	collected = collected or {}
+
+	for _, spec in ipairs(specs) do
+		collect_specs(as_list(spec.dependencies), collected)
+		table.insert(collected, spec)
+	end
+
+	return collected
+end
+
 local function opts_for(spec)
 	if type(spec.opts) == "function" then
 		return spec.opts(spec)
@@ -44,6 +56,14 @@ function M.load(spec)
 	if loaded[name] then
 		return
 	end
+	if loading[name] then
+		error("Circular plugin dependency: " .. name)
+	end
+
+	loading[name] = true
+	for _, dependency in ipairs(as_list(spec.dependencies)) do
+		M.load(dependency)
+	end
 
 	loaded[name] = true
 	vim.cmd.packadd({ vim.fn.escape(name, " "), magic = { file = false } })
@@ -51,9 +71,10 @@ function M.load(spec)
 	local opts = opts_for(spec)
 	if spec.config then
 		spec.config(spec, opts)
-	elseif spec.main and spec.opts ~= nil then
-		require(spec.main).setup(opts)
+	elseif spec.module and spec.opts ~= nil then
+		require(spec.module).setup(opts)
 	end
+	loading[name] = nil
 end
 
 local function is_lazy(spec)
@@ -188,7 +209,9 @@ local function setup_lazy(spec)
 end
 
 function M.setup(specs)
-	vim.pack.add(vim.tbl_map(pack_spec, specs), { load = false })
+	local all_specs = collect_specs(specs)
+
+	vim.pack.add(vim.tbl_map(pack_spec, all_specs), { load = false })
 
 	for _, spec in ipairs(specs) do
 		if is_lazy(spec) then

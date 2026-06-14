@@ -4,7 +4,7 @@ return {
 		name = "blink.cmp",
 		version = vim.version.range("^1"),
 		event = "InsertEnter",
-		main = "blink.cmp",
+		module = "blink.cmp",
 		opts = {
 			keymap = { preset = "super-tab" },
 			appearance = {

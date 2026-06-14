@@ -7,7 +7,7 @@ return {
 			global_keymaps_prefix = "<leader>r",
 			kulala_keymaps_prefix = "",
 		},
-		main = "kulala",
+		module = "kulala",
 		config = function(spec, opts)
 			local function ensure_kulala_parser()
 				local plugin_root = vim.fn.stdpath("data") .. "/site/pack/core/opt/kulala.nvim"
@@ -37,7 +37,7 @@ return {
 			end
 
 			ensure_kulala_parser()
-			require(spec.main).setup(opts)
+			require(spec.module).setup(opts)
 		end,
 	},
 }

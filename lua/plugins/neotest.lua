@@ -1,23 +1,25 @@
 return {
 	{
-		src = "https://github.com/nvim-neotest/nvim-nio",
-		name = "nvim-nio",
-	},
-	{
-		src = "https://github.com/nvim-neotest/neotest-jest",
-		name = "neotest-jest",
-	},
-	{
-		src = "https://github.com/nvim-neotest/neotest-python",
-		name = "neotest-python",
-	},
-	{
-		src = "https://github.com/Issafalcon/neotest-dotnet",
-		name = "neotest-dotnet",
-	},
-	{
 		src = "https://github.com/nvim-neotest/neotest",
 		name = "neotest",
+		dependencies = {
+			{
+				src = "https://github.com/nvim-neotest/nvim-nio",
+				name = "nvim-nio",
+			},
+			{
+				src = "https://github.com/nvim-neotest/neotest-jest",
+				name = "neotest-jest",
+			},
+			{
+				src = "https://github.com/nvim-neotest/neotest-python",
+				name = "neotest-python",
+			},
+			{
+				src = "https://github.com/Issafalcon/neotest-dotnet",
+				name = "neotest-dotnet",
+			},
+		},
 		config = function()
 			local tests = require("plugins.neotest.tests")
 

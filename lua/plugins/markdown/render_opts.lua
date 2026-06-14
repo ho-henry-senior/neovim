@@ -127,6 +127,9 @@ return {
 		head = "RenderMarkdownTableHead",
 		row = "RenderMarkdownTableRow",
 	},
+	latex = {
+		enabled = false,
+	},
 	callout = {
 		note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
 		tip = { raw = "[!TIP]", rendered = "󰌶 Tip", highlight = "RenderMarkdownSuccess" },

@@ -71,9 +71,9 @@ return {
 				return { timeout_ms = 500, lsp_format = "fallback" }
 			end,
 		},
-		main = "conform",
+		module = "conform",
 		config = function(spec, opts)
-			require(spec.main).setup(opts)
+			require(spec.module).setup(opts)
 
 			vim.api.nvim_create_user_command("FormatDisable", function(args)
 				if args.bang then

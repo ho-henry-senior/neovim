@@ -2,7 +2,7 @@ return {
 	{
 		src = "https://github.com/lewis6991/gitsigns.nvim",
 		name = "gitsigns.nvim",
-		main = "gitsigns",
+		module = "gitsigns",
 		opts = {
 			signs = {
 				add = { text = "▎" },
@@ -66,7 +66,7 @@ return {
 			end,
 		},
 		config = function(spec, opts)
-			require(spec.main).setup(opts)
+			require(spec.module).setup(opts)
 
 			vim.api.nvim_create_autocmd("VimEnter", {
 				once = true,
