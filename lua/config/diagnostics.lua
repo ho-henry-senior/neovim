@@ -1,3 +1,4 @@
+--- TODO: is this file used?
 --- diagnostic settings
 local map = vim.keymap.set
 local palette = {
