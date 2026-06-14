@@ -43,7 +43,7 @@ Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, 
 
 ## Testing
 
-- **[neotest](https://github.com/nvim-neotest/neotest)** — test runner framework; runs the nearest test, current file, or full suite from inside Neovim. Loads automatically when opening C#, Python, or JavaScript/TypeScript files. The summary panel shows results but does not support running tests from within it.
+- **[neotest](https://github.com/nvim-neotest/neotest)** — test runner framework; runs the nearest test, current file, or full suite from inside Neovim. Loads automatically when opening C#, Python, or JavaScript/TypeScript files. The summary panel shows results and supports re-running tests with `r`/`R`, navigating with `<CR>`/`l`/`h`, jumping to source with `i`, opening output with `o`, and cycling failures with `J`/`K`.
 - **[neotest-jest](https://github.com/nvim-neotest/neotest-jest)** — Jest adapter for JavaScript and TypeScript projects.
 - **[neotest-python](https://github.com/nvim-neotest/neotest-python)** — Python adapter, configured for `unittest` projects.
 - **[neotest-dotnet](https://github.com/Issafalcon/neotest-dotnet)** — .NET adapter for xUnit, NUnit, and MSTest projects.

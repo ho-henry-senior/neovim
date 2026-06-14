@@ -50,7 +50,7 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 - `terraform-ls`
 - `harper-ls` — prose and spell checking in Markdown and text buffers
 - `terraform`
-- `dotnet` — C# LSP and .NET test support. If installed via Homebrew, `DOTNET_ROOT` is set to `/opt/homebrew/opt/dotnet/libexec` in `lsp/csharp_ls.lua` so `csharp-ls` can locate the runtime.
+- `dotnet` — C# LSP and .NET test support. `lsp/csharp_ls.lua` sets `DOTNET_ROOT` to the Homebrew path (`/opt/homebrew/opt/dotnet/libexec`) if it exists and `DOTNET_ROOT` is not already set, so `csharp-ls` can locate the runtime when installed via Homebrew.
 
 ### npm
 
