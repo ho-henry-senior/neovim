@@ -84,20 +84,26 @@ function M.load(spec)
 	end
 
 	loading[name] = true
-	for _, dependency in ipairs(as_list(spec.dependencies)) do
-		M.load(dependency)
-	end
+	local ok, err = pcall(function()
+		for _, dependency in ipairs(as_list(spec.dependencies)) do
+			M.load(dependency)
+		end
 
-	loaded[name] = true
-	vim.cmd.packadd({ vim.fn.escape(name, " "), magic = { file = false } })
+		vim.cmd.packadd({ vim.fn.escape(name, " "), magic = { file = false } })
 
-	local opts = opts_for(spec)
-	if spec.config then
-		spec.config(spec, opts)
-	elseif spec.module and spec.opts ~= nil then
-		require(spec.module).setup(opts)
-	end
+		local opts = opts_for(spec)
+		if spec.config then
+			spec.config(spec, opts)
+		elseif spec.module and spec.opts ~= nil then
+			require(spec.module).setup(opts)
+		end
+	end)
 	loading[name] = nil
+	if ok then
+		loaded[name] = true
+	else
+		error(err, 0)
+	end
 end
 
 local function is_lazy(spec)
@@ -255,7 +261,9 @@ local function load_on_keys(spec)
 
 		for _, mode in ipairs(modes) do
 			vim.keymap.set(mode, lhs, function()
-				delete_placeholder_command(command)
+				if not loaded[plugin_name(spec)] then
+					delete_placeholder_command(command)
+				end
 				M.load(spec)
 				if callback then
 					return run_key_callback(callback)
