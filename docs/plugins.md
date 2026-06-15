@@ -14,6 +14,16 @@ Each configured plugin has a top-level file in `lua/plugins/`. Specs use a small
 
 Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, special-buffer setup, or plugin UI creation hooks.
 
+## Potential Startup Optimisations
+
+Ideas to revisit if startup time becomes worth tuning:
+
+- Make `keys` count as a lazy-loading trigger in `lua/lib/pack.lua`, matching the helper comment that keymaps act as lazy triggers.
+- After that change, review key-only plugin specs individually so plugins are not delayed accidentally.
+- Consider event-loading heavier always-on plugins such as `gitsigns.nvim` and `conform.nvim` with `BufReadPre`/`BufNewFile`.
+- Consider loading `nvim-treesitter-textobjects` only when its textobject mappings are first used.
+- Add a `just profile` recipe that writes a startup profile with `nvim --startuptime` so regressions are easy to compare.
+
 ## Editing and Completion
 
 - **[blink.cmp](https://github.com/saghen/blink.cmp)** — completion engine and source integration.
