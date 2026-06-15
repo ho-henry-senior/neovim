@@ -1,6 +1,4 @@
-local function augroup(name)
-	return vim.api.nvim_create_augroup("user_" .. name, { clear = true })
-end
+local augroup = require("config.util").augroup
 
 -- Autocmds are kept for editor lifecycle, buffer ergonomics, and a small number
 -- of explicit filetype adjustments. Avoid adding plugin-specific workflow here
