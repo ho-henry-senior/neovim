@@ -104,20 +104,32 @@ return {
 				vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
 			end
 
+			local function start_loaded_buffers()
+				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+					if vim.api.nvim_buf_is_loaded(buf) then
+						start_treesitter(buf)
+					end
+				end
+			end
+
+			local group = vim.api.nvim_create_augroup("user_treesitter_start", { clear = true })
+
 			vim.api.nvim_create_autocmd("FileType", {
+				group = group,
 				pattern = { "*" },
 				callback = function(event)
 					start_treesitter(event.buf)
 				end,
 			})
 
-			vim.schedule(function()
-				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-					if vim.api.nvim_buf_is_loaded(buf) then
-						start_treesitter(buf)
-					end
-				end
-			end)
+			vim.api.nvim_create_autocmd("SessionLoadPost", {
+				group = group,
+				callback = function()
+					vim.schedule(start_loaded_buffers)
+				end,
+			})
+
+			vim.schedule(start_loaded_buffers)
 		end,
 	},
 }

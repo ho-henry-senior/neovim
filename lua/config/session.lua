@@ -20,9 +20,22 @@ local function get_stop_file()
 	return session_dir .. ".stop_saving"
 end
 
+local function detect_loaded_filetypes()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buftype == "" and vim.bo[buf].filetype == "" then
+			local name = vim.api.nvim_buf_get_name(buf)
+			if name ~= "" then
+				pcall(vim.api.nvim_buf_call, buf, function()
+					vim.cmd("filetype detect")
+				end)
+			end
+		end
+	end
+end
+
 local function load_session(session_file)
 	vim.cmd("source " .. vim.fn.fnameescape(session_file))
-	vim.cmd("filetype detect")
+	detect_loaded_filetypes()
 	vim.cmd("doautocmd BufEnter")
 	vim.api.nvim_exec_autocmds("SessionLoadPost", {})
 end
