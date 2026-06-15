@@ -1,5 +1,5 @@
 -- render-markdown has a large option surface, so keep the presentation data in
--- its own module and leave markdown.lua focused on plugin wiring and keymaps.
+-- its own module and leave render-markdown.lua focused on plugin wiring.
 return {
 	heading = {
 		enabled = true,
