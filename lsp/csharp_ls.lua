@@ -5,9 +5,7 @@ if csharp_ls == "" then
 end
 
 local homebrew_dotnet = "/opt/homebrew/opt/dotnet/libexec"
-local dotnet_root = vim.env.DOTNET_ROOT
-	or (vim.uv.fs_stat(homebrew_dotnet) and homebrew_dotnet)
-	or nil
+local dotnet_root = vim.env.DOTNET_ROOT or (vim.uv.fs_stat(homebrew_dotnet) and homebrew_dotnet) or nil
 
 ---@type vim.lsp.Config
 return {

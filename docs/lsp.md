@@ -10,7 +10,8 @@
 - JSON / JSONC
 - Lua
 - Markdown
-- Pyright for Python
+- Pyright for Python type checking and navigation
+- Ruff for Python linting, fixes, import sorting, and formatting
 - Terraform
 - TypeScript / JavaScript
 - YAML

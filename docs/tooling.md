@@ -11,6 +11,7 @@
 - `lua-language-server`
 - `node`
 - `python`
+- `ruff` — Python linting, fixes, import sorting, formatting, and LSP diagnostics
 - `stylua`
 - `marksman`
 
@@ -56,10 +57,6 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 
 - `eslint`
 - `vscode-eslint-language-server`
-
-### Python
-
-- `black` or `ruff` — Python formatting
 
 ### Project-local
 
