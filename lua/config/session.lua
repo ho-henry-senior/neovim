@@ -40,46 +40,46 @@ local function load_session(session_file)
 	vim.api.nvim_exec_autocmds("SessionLoadPost", {})
 end
 
--- Auto-restore session when starting with no arguments
-vim.api.nvim_create_autocmd("VimEnter", {
-	callback = function()
-		-- Only restore if no files were specified
-		if vim.fn.argc() == 0 then
-			local session_file = get_session_file()
-			if vim.fn.filereadable(session_file) == 1 then
-				vim.cmd("silent! set winminwidth=1 winwidth=1 winminheight=1 winheight=1")
-				load_session(session_file)
-			end
-		end
-	end,
-})
+local function restore_project_session()
+	if vim.fn.argc() ~= 0 then
+		return
+	end
 
-vim.api.nvim_create_autocmd("VimLeavePre", {
-	callback = function()
-		local stop_file = get_stop_file()
-		if vim.fn.filereadable(stop_file) == 1 then
-			vim.fn.delete(stop_file) -- Remove stop file for next time
-			return
-		end
+	local session_file = get_session_file()
+	if vim.fn.filereadable(session_file) == 0 then
+		return
+	end
 
-		-- Only save if we have actual file buffers (like persistence.nvim)
-		local buf_count = 0
-		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-			if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf) ~= "" then
-				buf_count = buf_count + 1
-			end
-		end
+	vim.cmd("silent! set winminwidth=1 winwidth=1 winminheight=1 winheight=1")
+	load_session(session_file)
+end
 
-		if buf_count >= 1 then -- Minimum 1 buffer (like persistence default)
-			local session_file = get_session_file()
-			vim.cmd("mksession! " .. vim.fn.fnameescape(session_file))
-			vim.cmd("mksession! " .. vim.fn.fnameescape(get_last_session_file()))
+local function has_file_buffers()
+	for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(buf) and vim.api.nvim_buf_get_name(buf) ~= "" then
+			return true
 		end
-	end,
-})
+	end
 
--- Clear the saved session for the current project and skip the next auto-save
-vim.keymap.set("n", "<leader>Sc", function()
+	return false
+end
+
+local function save_project_session()
+	local stop_file = get_stop_file()
+	if vim.fn.filereadable(stop_file) == 1 then
+		vim.fn.delete(stop_file)
+		return
+	end
+
+	if not has_file_buffers() then
+		return
+	end
+
+	vim.cmd("mksession! " .. vim.fn.fnameescape(get_session_file()))
+	vim.cmd("mksession! " .. vim.fn.fnameescape(get_last_session_file()))
+end
+
+local function clear_project_session()
 	local session_file = get_session_file()
 	local deleted = false
 
@@ -95,4 +95,15 @@ vim.keymap.set("n", "<leader>Sc", function()
 	else
 		print("No session found; next auto-save skipped")
 	end
-end, { desc = "Clear project session" })
+end
+
+vim.api.nvim_create_autocmd("VimEnter", {
+	callback = restore_project_session,
+})
+
+vim.api.nvim_create_autocmd("VimLeavePre", {
+	callback = save_project_session,
+})
+
+-- Clear the saved session for the current project and skip the next auto-save
+vim.keymap.set("n", "<leader>Sc", clear_project_session, { desc = "Clear project session" })
