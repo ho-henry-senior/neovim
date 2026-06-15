@@ -32,6 +32,36 @@ doctor:
 		fi
 	}
 
+	check_file() {
+		local label="$1"
+		local path="$2"
+		local required="${3:-required}"
+
+		if [[ -x "$path" ]]; then
+			printf "  ✓ %s\n" "$label"
+		elif [[ "$required" == "required" ]]; then
+			printf "  ✗ %s\n" "$label"
+			missing_required=1
+		else
+			printf "  ! %s\n" "$label"
+		fi
+	}
+
+	check_tool_or_file() {
+		local name="$1"
+		local path="$2"
+		local required="${3:-required}"
+
+		if command -v "$name" >/dev/null 2>&1 || [[ -x "$path" ]]; then
+			printf "  ✓ %s\n" "$name"
+		elif [[ "$required" == "required" ]]; then
+			printf "  ✗ %s\n" "$name"
+			missing_required=1
+		else
+			printf "  ! %s\n" "$name"
+		fi
+	}
+
 	echo "Core"
 	check_tool nvim
 	check_tool rg
@@ -62,11 +92,16 @@ doctor:
 	check_tool terraform optional
 	check_tool harper-ls optional
 	check_tool dotnet optional
-	check_tool csharp-ls optional
-	check_tool eslint optional
+	check_tool_or_file csharp-ls "$HOME/.dotnet/tools/csharp-ls" optional
 	check_tool vscode-eslint-language-server optional
-	check_tool jest optional
-	check_tool mocha optional
+
+	if [[ -f package.json ]]; then
+		echo
+		echo "Project-local Node tools"
+		check_file eslint node_modules/.bin/eslint optional
+		check_file jest node_modules/.bin/jest optional
+		check_file mocha node_modules/.bin/mocha optional
+	fi
 
 	if [[ "$missing_required" -ne 0 ]]; then
 		echo
