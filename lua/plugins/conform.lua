@@ -50,10 +50,12 @@ return {
 					args = function(_self, ctx)
 						local search_dir = ctx.dirname or vim.fn.getcwd()
 						local config_files = {
+							"package.json",
 							".prettierrc",
 							".prettierrc.json",
 							".prettierrc.yaml",
 							".prettierrc.yml",
+							".prettierrc.toml",
 							".prettierrc.js",
 							".prettierrc.cjs",
 							".prettierrc.mjs",
@@ -61,6 +63,8 @@ return {
 							"prettier.config.cjs",
 							"prettier.config.mjs",
 							"prettier.config.ts",
+							"prettier.config.mts",
+							"prettier.config.cts",
 						}
 						local project_config = nil
 						for _, name in ipairs(config_files) do
@@ -70,8 +74,18 @@ return {
 								break
 							end
 						end
-						local config = project_config or vim.fn.expand("~/.prettierrc")
-						return { "--config", config, "--stdin-filepath", ctx.filename }
+
+						local args = { "--stdin-filepath", ctx.filename }
+						local global_config = vim.fn.expand("~/.prettierrc")
+						local config = project_config
+						if not config and vim.fn.filereadable(global_config) == 1 then
+							config = global_config
+						end
+						if config then
+							vim.list_extend(args, { "--config", config })
+						end
+
+						return args
 					end,
 				},
 			},
