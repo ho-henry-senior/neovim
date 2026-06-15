@@ -88,5 +88,5 @@ map("n", "<leader>pd", function()
 end, { desc = "Delete plugin" })
 
 map("n", "<leader>mm", function()
-	require("config.mermaid").preview()
+	require("plugins.markdown.mermaid").preview()
 end, { desc = "Mermaid preview" })
