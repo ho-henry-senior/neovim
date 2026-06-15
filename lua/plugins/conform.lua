@@ -22,6 +22,7 @@ return {
 	{
 		src = "https://github.com/stevearc/conform.nvim",
 		name = "conform.nvim",
+		lazy = false,
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },

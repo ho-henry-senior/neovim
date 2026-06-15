@@ -11,6 +11,7 @@ return {
 				name = "nvim-web-devicons",
 			},
 		},
+		lazy = false,
 		keys = keys,
 		config = function()
 			local Snacks = require("snacks")

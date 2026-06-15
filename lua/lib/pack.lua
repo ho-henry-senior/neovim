@@ -107,7 +107,7 @@ function M.load(spec)
 end
 
 local function is_lazy(spec)
-	return spec.lazy == true or spec.event ~= nil or spec.ft ~= nil or spec.cmd ~= nil
+	return spec.lazy == true or spec.event ~= nil or spec.ft ~= nil or spec.cmd ~= nil or spec.keys ~= nil
 end
 
 local function has_handlers(spec)
