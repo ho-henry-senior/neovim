@@ -112,6 +112,18 @@ doctor:
 	echo
 	echo "Required tools available"
 
+profile:
+	#!/usr/bin/env bash
+	set -euo pipefail
+	PROFILE_DIR="${TMPDIR:-/tmp}/nvim-profile"
+	PROFILE="$PROFILE_DIR/startuptime.log"
+	mkdir -p "$PROFILE_DIR/state"
+	export NVIM_LOG_FILE="$PROFILE_DIR/nvim.log"
+	export XDG_STATE_HOME="$PROFILE_DIR/state"
+	echo "Writing Neovim startup profile to $PROFILE..."
+	nvim --headless --startuptime "$PROFILE" --cmd "set shadafile=NONE" -c "quitall!"
+	echo "✓ Startup profile written"
+
 fmt:
 	@echo "Formatting Lua files..."
 	@stylua .
