@@ -22,7 +22,7 @@ return {
 	{
 		src = "https://github.com/stevearc/conform.nvim",
 		name = "conform.nvim",
-		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
