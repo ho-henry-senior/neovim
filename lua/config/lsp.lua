@@ -23,7 +23,6 @@ local default_keymaps = {
 	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto definition", has = "definitionProvider" },
 }
 
-local completion = vim.g.completion_mode or "blink" -- or 'native'
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = augroup("lsp_attach"),
 	callback = function(args)
@@ -32,11 +31,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		if client then
 			if client.name == "ruff" then
 				client.server_capabilities.hoverProvider = false
-			end
-
-			-- Built-in completion
-			if completion == "native" and client:supports_method("textDocument/completion") then
-				vim.lsp.completion.enable(true, client.id, args.buf, { autotrigger = true })
 			end
 
 			if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
@@ -97,8 +91,3 @@ vim.lsp.enable({
 	"yaml_ls", -- YAML
 })
 
--- Load LSP servers on demand, e.g. ESLint is disabled by default.
--- Enable it with: vim.g.lsp_on_demands = { "eslint_ls" }
-if vim.g.lsp_on_demands then
-	vim.lsp.enable(vim.g.lsp_on_demands)
-end
