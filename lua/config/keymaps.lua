@@ -87,6 +87,29 @@ map("n", "<leader>pd", function()
 	end)
 end, { desc = "Delete plugin" })
 
+map("n", "<leader>qg", function()
+	vim.ui.input({ prompt = "Git diff ref (default: HEAD): " }, function(ref)
+		if ref == nil then
+			return
+		end
+		ref = ref == "" and "HEAD" or ref
+		local files = vim.fn.systemlist({ "git", "diff", "--name-only", ref })
+		if vim.v.shell_error ~= 0 then
+			vim.notify("git diff failed: " .. table.concat(files, "\n"), vim.log.levels.ERROR)
+			return
+		end
+		if #files == 0 then
+			vim.notify("No changed files for: " .. ref, vim.log.levels.INFO)
+			return
+		end
+		local items = vim.tbl_map(function(f)
+			return { filename = f, valid = 1 }
+		end, files)
+		vim.fn.setqflist({}, "r", { title = "git diff " .. ref, items = items })
+		vim.cmd("copen")
+	end)
+end, { desc = "Git diff files → quickfix" })
+
 map("n", "<leader>mm", function()
 	require("plugins.markdown.mermaid").preview()
 end, { desc = "Mermaid preview" })

@@ -21,6 +21,19 @@ local default_keymaps = {
 	},
 	{ keys = "K", func = vim.lsp.buf.hover, desc = "Hover (alt)", has = "hoverProvider" },
 	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto definition", has = "definitionProvider" },
+	{
+		keys = "<leader>qr",
+		func = function()
+			vim.lsp.buf.references(nil, {
+				on_list = function(options)
+					vim.fn.setqflist({}, "r", { title = options.title, items = options.items })
+					vim.cmd("copen")
+				end,
+			})
+		end,
+		desc = "References → quickfix",
+		has = "referencesProvider",
+	},
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {

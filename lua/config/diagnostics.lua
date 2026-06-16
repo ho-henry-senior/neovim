@@ -66,6 +66,14 @@ map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
 map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
 map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
+map("n", "<leader>qd", function()
+	vim.diagnostic.setqflist({ open = true })
+end, { desc = "All diagnostics → quickfix" })
+
+map("n", "<leader>qe", function()
+	vim.diagnostic.setqflist({ open = true, severity = vim.diagnostic.severity.ERROR })
+end, { desc = "Errors → quickfix" })
+
 map("n", "<leader>uv", function()
 	local vt = vim.diagnostic.config().virtual_text
 	vim.diagnostic.config({ virtual_text = not vt })

@@ -13,6 +13,7 @@ return {
 
 			wk.add({
 				{ "<leader>a", group = "ai" },
+				{ "<leader>q", group = "quickfix" },
 				{ "<leader>b", group = "buffers" },
 				{ "<leader>c", group = "code" },
 				{ "<leader>f", group = "files" },
