@@ -2,6 +2,7 @@ return {
 	{
 		src = "https://github.com/lewis6991/gitsigns.nvim",
 		name = "gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
 		module = "gitsigns",
 		opts = {
 			signs = {

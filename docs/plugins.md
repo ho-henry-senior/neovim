@@ -19,12 +19,13 @@ Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, 
 Ideas to revisit if startup time becomes worth tuning:
 
 - Use `just profile` to write a startup profile before and after startup changes.
-- Consider event-loading heavier always-on plugins such as `gitsigns.nvim` and `conform.nvim` with `BufReadPre`/`BufNewFile`.
+- Consider event-loading `conform.nvim` with `BufReadPre`/`BufNewFile`.
 
 Current startup notes:
 
 - `keys` count as lazy-loading triggers in `lua/lib/pack.lua`.
 - Key-only plugin specs have been reviewed; none currently need to opt out of key-triggered lazy loading.
+- `gitsigns.nvim` loads on `BufReadPre`/`BufNewFile`.
 - `nvim-treesitter-textobjects` loads when its textobject mappings are first used.
 
 ## Editing and Completion
