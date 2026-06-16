@@ -93,6 +93,28 @@ Available in any buffer where Treesitter is active. Treesitter bracket motions a
 | `<leader>uC` | Pick colorscheme |
 | `<leader>ur` | Clear search highlight and refresh |
 
+## Quickfix
+
+The quickfix list is populated from multiple sources and navigated with `]q` / `[q`.
+
+### Populating quickfix
+
+| Shortcut | Source |
+| --- | --- |
+| `<leader>qd` | All diagnostics (project-wide) |
+| `<leader>qe` | Errors only (project-wide) |
+| `<leader>qr` | LSP references for symbol under cursor |
+| `<leader>qg` | Git diff files — prompts for a ref, defaults to `HEAD` |
+| `<leader>qh` | Git hunks in current buffer |
+| `<leader>qH` | Git hunks across all open buffers |
+| `<C-q>` | Send current picker results to quickfix (inside any Snacks picker) |
+
+### Automatic population
+
+- **Neotest** — failed tests are sent to quickfix automatically after every test run and the window opens.
+- **Grug-far** — `<localleader>q` inside the grug-far buffer sends all matches to quickfix.
+- **CopilotChat** — `gqd` sends code diff blocks to quickfix; `gqa` sends assistant answers.
+
 ## Filetype Notes
 
 - `.txt` files are treated as Markdown.

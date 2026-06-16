@@ -49,6 +49,7 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | `<leader>i` | Inspect |
 | `<leader>m` | Markdown |
 | `<leader>p` | Plugins |
+| `<leader>q` | Quickfix |
 | `<leader>S` | Sessions |
 | `<leader>r` | REST |
 | `<leader>s` | Search |

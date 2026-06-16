@@ -64,6 +64,13 @@ return {
 				end, "First hunk")
 
 				map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns select hunk")
+
+				map("n", "<leader>qh", function()
+					gs.setqflist(0)
+				end, "Hunks → quickfix (buffer)")
+				map("n", "<leader>qH", function()
+					gs.setqflist("attached")
+				end, "Hunks → quickfix (all buffers)")
 			end,
 		},
 		config = function(spec, opts)

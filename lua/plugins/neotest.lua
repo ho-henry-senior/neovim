@@ -34,6 +34,10 @@ local function load_neotest()
 			},
 		},
 		adapters = tests.adapters(),
+		quickfix = {
+			enabled = true,
+			open = true,
+		},
 	})
 end
 
