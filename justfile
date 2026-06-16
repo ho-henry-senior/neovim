@@ -189,4 +189,4 @@ fmt-check:
 	@stylua --check .
 	@echo "✓ Formatting valid!"
 
-validate: check fmt-check
+validate: check lazy-check fmt-check
