@@ -6,7 +6,7 @@ Each configured plugin has a top-level file in `lua/plugins/`. Specs use a small
 
 - `src`, `name`, and `version` are passed through to `vim.pack`.
 - `dependencies` keeps dependency-only plugins with the plugin that needs them.
-- `event`, `ft`, `cmd`, and `lazy = true` control lazy loading.
+- `event`, `ft`, `cmd`, `keys`, and `lazy = true` control lazy loading.
 - `keys` is the standard place for global plugin-owned keymaps.
 - `opts` plus `module` handles the common `require(module).setup(opts)` case.
 - `init` runs before a plugin is loaded, for plugin globals or other pre-load setup.
