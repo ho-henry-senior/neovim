@@ -32,6 +32,25 @@ function Adapter.filter_dir(name)
 	return name ~= "node_modules"
 end
 
+local function get_string_from_template_literal(value)
+	local matched = string.match(value, "^`(.*)`$")
+	if not matched then
+		return value
+	end
+
+	return (
+		matched
+			:gsub("%${.*}", ".*")
+			:gsub("%%s", "\\w*")
+			:gsub("%%i", "\\d*")
+			:gsub("%%d", ".*")
+			:gsub("%%f", ".*")
+			:gsub("%%j", ".*")
+			:gsub("%%o", ".*")
+			:gsub("%%#", "\\d*")
+	)
+end
+
 local function is_template_literal(value)
 	return string.sub(value, 1, 1) == "`"
 end
@@ -71,25 +90,6 @@ local function normalize_id_segments(id)
 		end
 	end
 	return table.concat(segments, "::")
-end
-
-local function get_string_from_template_literal(value)
-	local matched = string.match(value, "^`(.*)`$")
-	if not matched then
-		return value
-	end
-
-	return (
-		matched
-			:gsub("%${.*}", ".*")
-			:gsub("%%s", "\\w*")
-			:gsub("%%i", "\\d*")
-			:gsub("%%d", ".*")
-			:gsub("%%f", ".*")
-			:gsub("%%j", ".*")
-			:gsub("%%o", ".*")
-			:gsub("%%#", "\\d*")
-	)
 end
 
 function Adapter.discover_positions(file_path)
