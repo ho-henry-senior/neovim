@@ -97,8 +97,8 @@ vim.lsp.enable({
 	"yaml_ls", -- YAML
 })
 
--- Load Lsp on-demand, e.g: eslint is disable by default
--- e.g: We could enable eslint by set vim.g.lsp_on_demands = {"eslint"}
+-- Load LSP servers on demand, e.g. ESLint is disabled by default.
+-- Enable it with: vim.g.lsp_on_demands = { "eslint_ls" }
 if vim.g.lsp_on_demands then
 	vim.lsp.enable(vim.g.lsp_on_demands)
 end
