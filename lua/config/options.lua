@@ -36,7 +36,7 @@ opt.showmode = false -- Don't show mode in command line
 opt.pumheight = 10 -- Popup menu height
 opt.pumblend = 10 -- Popup menu transparency
 opt.winblend = 0 -- Floating window transparency
-opt.completeopt = "menu,menuone,noselect" -- menu: Use a popup menu to show the completion options. menuone: Show the popup menu even if there is only one match. noselct: Don't automatically select a match in the popup menu. This allows the user to manually select a match from the list of options.?
+opt.completeopt = "menu,menuone,noselect" -- menu: Use a popup menu to show the completion options. menuone: Show the popup menu even if there is only one match. noselect: Don't automatically select a match in the popup menu.
 opt.conceallevel = 2 -- Hide * markup for bold and italic, but not markers with substitutions
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.concealcursor = "" -- Don't hide cursor line markup
@@ -73,7 +73,7 @@ opt.encoding = "UTF-8" -- Set encoding
 
 -- Folding settings
 opt.smoothscroll = false
-vim.wo.foldmethod = "manual"
+opt.foldmethod = "manual"
 opt.foldlevel = 99 -- Start with all folds open
 opt.formatoptions = "jcroqlnt" -- tcqj
 opt.grepformat = "%f:%l:%c:%m"
