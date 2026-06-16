@@ -109,8 +109,8 @@ return {
 			name = vim.fn.fnamemodify(root_dir, ":t"),
 		}
 
-		-- Find the nearest ESLint flat config from the current file
-		local fname = vim.api.nvim_buf_get_name(0)
+		-- Find the nearest ESLint flat config from the workspace root
+		local fname = root_dir
 		local stop_dir = vim.fs.dirname(root_dir)
 		local nearest_config = vim.fs.find(ESLINT_FLAT_CONFIG, { path = fname, upward = true, stop = stop_dir })[1]
 		local config_dir = nearest_config and vim.fs.dirname(nearest_config) or root_dir
