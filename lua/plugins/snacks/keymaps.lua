@@ -145,7 +145,6 @@ local keymaps = {
 			Snacks.picker.lsp_incoming_calls()
 		end,
 		desc = "C[a]lls incoming",
-		has = "callHierarchy/incomingCalls",
 	},
 	{
 		"gao",
@@ -153,7 +152,6 @@ local keymaps = {
 			Snacks.picker.lsp_outgoing_calls()
 		end,
 		desc = "C[a]lls outgoing",
-		has = "callHierarchy/outgoingCalls",
 	},
 	{
 		"<leader>bd",
