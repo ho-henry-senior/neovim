@@ -10,7 +10,7 @@
 --   event, ft, cmd       load triggers: autocmd event, filetype, or user command
 --   keys                 plugin-owned keymaps; act as load triggers if the plugin is lazy
 --
--- A plugin is lazy if lazy=true or any of event/ft/cmd are set. Lazy plugins
+-- A plugin is lazy if lazy=true or any of event/ft/cmd/keys are set. Lazy plugins
 -- load on first use of their trigger. Non-lazy plugins load at startup.
 
 local M = {}
