@@ -188,16 +188,6 @@ return {
 				},
 				extensions = {},
 			})
-
-			local lualine_winbar = lualine.winbar
-
-			lualine.winbar = function(...)
-				if should_exclude_winbar() then
-					return vim.wo.winbar
-				end
-
-				return lualine_winbar(...)
-			end
 		end,
 	},
 }
