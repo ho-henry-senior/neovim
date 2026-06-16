@@ -151,15 +151,6 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
 
 -- Let the explicit vim.filetype.add rules in options.lua handle .env files.
 
--- Set filetype for TOML-like config files not covered by Neovim defaults
-vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
-	group = augroup("toml_filetype"),
-	pattern = { "*.tomg-config*" },
-	callback = function()
-		vim.opt_local.filetype = "toml"
-	end,
-})
-
 -- Set filetype for .ejs files
 vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
 	group = augroup("ejs_filetype"),
