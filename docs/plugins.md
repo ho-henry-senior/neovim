@@ -18,11 +18,14 @@ Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, 
 
 Ideas to revisit if startup time becomes worth tuning:
 
-- Make `keys` count as a lazy-loading trigger in `lua/lib/pack.lua`, matching the helper comment that keymaps act as lazy triggers.
-- After that change, review key-only plugin specs individually so plugins are not delayed accidentally.
+- Use `just profile` to write a startup profile before and after startup changes.
 - Consider event-loading heavier always-on plugins such as `gitsigns.nvim` and `conform.nvim` with `BufReadPre`/`BufNewFile`.
-- Consider loading `nvim-treesitter-textobjects` only when its textobject mappings are first used.
-- Add a `just profile` recipe that writes a startup profile with `nvim --startuptime` so regressions are easy to compare.
+
+Current startup notes:
+
+- `keys` count as lazy-loading triggers in `lua/lib/pack.lua`.
+- Key-only plugin specs have been reviewed; none currently need to opt out of key-triggered lazy loading.
+- `nvim-treesitter-textobjects` loads when its textobject mappings are first used.
 
 ## Editing and Completion
 
