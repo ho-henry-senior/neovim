@@ -35,6 +35,9 @@ end
 
 local function load_session(session_file)
 	vim.cmd("source " .. vim.fn.fnameescape(session_file))
+
+	-- Reconcile restored buffers with the lifecycle hooks that file-opened buffers
+	-- normally receive, then notify plugins that need to react after session restore.
 	detect_loaded_filetypes()
 	vim.cmd("doautocmd BufEnter")
 	vim.api.nvim_exec_autocmds("SessionLoadPost", {})
