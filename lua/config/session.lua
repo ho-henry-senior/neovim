@@ -39,8 +39,8 @@ local function load_session(session_file)
 	-- Reconcile restored buffers with the lifecycle hooks that file-opened buffers
 	-- normally receive, then notify plugins that need to react after session restore.
 	detect_loaded_filetypes()
-	vim.cmd("doautocmd BufEnter")
-	vim.api.nvim_exec_autocmds("SessionLoadPost", {})
+	vim.api.nvim_exec_autocmds("BufEnter", { modeline = false })
+	vim.api.nvim_exec_autocmds("SessionLoadPost", { modeline = false })
 end
 
 local function restore_project_session()
