@@ -125,6 +125,60 @@ profile:
 	nvim --headless --startuptime "$PROFILE" --cmd "set shadafile=NONE" -c "quitall!"
 	echo "✓ Startup profile written"
 
+lazy-check:
+	#!/usr/bin/env bash
+	set -euo pipefail
+
+	TEST_DIR="${TMPDIR:-/tmp}/nvim-lazy-check"
+	mkdir -p "$TEST_DIR/state"
+
+	run_nvim() {
+		NVIM_LOG_FILE="$TEST_DIR/nvim.log" \
+		XDG_STATE_HOME="$TEST_DIR/state" \
+		nvim --headless --cmd "set shadafile=NONE" "$@"
+	}
+
+	assert_output() {
+		local label="$1"
+		local expected="$2"
+		shift 2
+		local output
+
+		output="$(run_nvim "$@" 2>&1)"
+		if [[ "$output" == *"$expected"* ]]; then
+			printf "  ✓ %s\n" "$label"
+		else
+			printf "  ✗ %s\n" "$label"
+			printf "Expected output containing: %s\n" "$expected"
+			printf "Actual output:\n%s\n" "$output"
+			exit 1
+		fi
+	}
+
+	LUA_FILE="$TEST_DIR/lazy-check.lua"
+	printf 'local value={a=1,b=2}\n' > "$LUA_FILE"
+
+	echo "Checking lazy-loading lifecycle assumptions..."
+	assert_output "conform stays unloaded on empty startup" "false" \
+		-c "lua vim.print(package.loaded['conform'] ~= nil)" \
+		-c "quitall!"
+	assert_output "gitsigns setup stays inactive on empty startup" "false" \
+		-c "lua vim.print(require('gitsigns.config').config.current_line_blame)" \
+		-c "quitall!"
+	assert_output "opening a Lua file loads conform" "true" \
+		"$LUA_FILE" \
+		-c "lua vim.print(package.loaded['conform'] ~= nil)" \
+		-c "quitall!"
+	assert_output "opening a Lua file sets up gitsigns" "true" \
+		"$LUA_FILE" \
+		-c "lua vim.print(require('gitsigns.config').config.current_line_blame)" \
+		-c "quitall!"
+	assert_output "SessionLoadPost loads conform" "true" \
+		-c "doautocmd SessionLoadPost" \
+		-c "lua vim.print(package.loaded['conform'] ~= nil)" \
+		-c "quitall!"
+	echo "✓ Lazy-loading checks passed"
+
 fmt:
 	@echo "Formatting Lua files..."
 	@stylua .
