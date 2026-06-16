@@ -118,6 +118,7 @@ profile:
 	PROFILE_DIR="${TMPDIR:-/tmp}/nvim-profile"
 	PROFILE="$PROFILE_DIR/startuptime.log"
 	mkdir -p "$PROFILE_DIR/state"
+	: > "$PROFILE"
 	export NVIM_LOG_FILE="$PROFILE_DIR/nvim.log"
 	export XDG_STATE_HOME="$PROFILE_DIR/state"
 	echo "Writing Neovim startup profile to $PROFILE..."
