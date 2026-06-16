@@ -107,6 +107,9 @@ function M.load(spec)
 end
 
 local function is_lazy(spec)
+	if spec.lazy == false then
+		return false
+	end
 	return spec.lazy == true or spec.event ~= nil or spec.ft ~= nil or spec.cmd ~= nil or spec.keys ~= nil
 end
 
