@@ -64,4 +64,3 @@ Use `<leader>mm` to preview either:
 ## Notes
 
 - The visual editing mappings are intended for characterwise and linewise visual selections.
-- If you want a complete mapping overview beyond what the clue window shows, use `:MapTable`.

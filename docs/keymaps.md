@@ -7,7 +7,7 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 - WhichKey covers most leader mappings: pause after `<leader>`.
 - `<leader>?` shows buffer-local keymaps.
 - Plugin-managed buffers often expose their own help on `?`.
-- `:MapTable` opens a generated table of all mappings.
+- `<leader>ik` opens the keymap picker.
 
 ## Core
 
