@@ -17,7 +17,3 @@ Tabs are shown in the tabline when more than one tab is open. The active tab use
 ## Winbar
 
 A per-window label appears above each split when the current tab has more than one normal window open. Single-window editing gets no winbar. Inactive splits are dimmed relative to the active one.
-
-## Theming
-
-The config uses a built-in colorscheme and relies on standard highlight groups (`StatusLine`, `StatusLineNC`, `TabLine`, `TabLineSel`) throughout. Switching to a different colorscheme should work without any UI configuration changes.
