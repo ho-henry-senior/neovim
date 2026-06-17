@@ -20,4 +20,4 @@ A per-window label appears above each split when the current tab has more than o
 
 ## Theming
 
-The config uses Neovim's built-in `default` colorscheme and relies on standard highlight groups (`StatusLine`, `StatusLineNC`, `TabLine`, `TabLineSel`) throughout. Switching to a different colorscheme should work without any UI configuration changes.
+The config uses a built-in colorscheme and relies on standard highlight groups (`StatusLine`, `StatusLineNC`, `TabLine`, `TabLineSel`) throughout. Switching to a different colorscheme should work without any UI configuration changes.
