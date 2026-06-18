@@ -11,7 +11,7 @@ vim.opt.guicursor = table.concat({ -- Blinking cursor definitions for different 
 
 -- Visual settings
 opt.termguicolors = true -- Enable 24-bit colors
-vim.cmd.colorscheme("catppuccin")
+vim.cmd.colorscheme("retrobox")
 opt.signcolumn = "yes" -- Always show sign column
 opt.showmatch = true -- Highlight matching brackets
 opt.matchtime = 2 -- How long to show matching bracket

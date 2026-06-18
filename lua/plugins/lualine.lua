@@ -62,6 +62,7 @@ return {
 			local winbar_filename = {
 				"filename",
 				cond = show_winbar,
+				color = "UserLualineWinbarActive",
 				file_status = true,
 				newfile_status = true,
 				path = 1,
@@ -76,8 +77,101 @@ return {
 
 			local inactive_winbar_filename = vim.tbl_extend("force", winbar_filename, {
 				shorting_target = 20,
-				color = "StatusLineNC",
+				color = "UserLualineWinbarInactive",
 			})
+
+			local winbar_spacer = {
+				"%=",
+				cond = show_winbar,
+				color = "UserLualineWinbarActive",
+				padding = 0,
+			}
+
+			local inactive_winbar_spacer = vim.tbl_extend("force", winbar_spacer, {
+				color = "UserLualineWinbarInactive",
+			})
+
+			local winbar_diagnostics = {
+				"diagnostics",
+				cond = show_winbar,
+				sections = { "error", "warn", "info", "hint" },
+				symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
+				colored = true,
+				color = "UserLualineWinbarActive",
+				update_in_insert = false,
+			}
+
+			local winbar_filetype = {
+				"filetype",
+				cond = show_winbar,
+				icon_only = true,
+				padding = { left = 1, right = 0 },
+				color = "UserLualineWinbarActive",
+			}
+
+			local inactive_winbar_filetype = vim.tbl_extend("force", winbar_filetype, {
+				color = "UserLualineWinbarInactive",
+			})
+
+			local function apply_winbar_highlights()
+				local tab_active = vim.api.nvim_get_hl(0, { name = "StatusLine", link = false })
+				local tab_inactive = vim.api.nvim_get_hl(0, { name = "StatusLineNC", link = false })
+				local active = vim.api.nvim_get_hl(0, { name = "lualine_c_normal", link = false })
+				local inactive = vim.api.nvim_get_hl(0, { name = "lualine_b_inactive", link = false })
+				local normal = vim.api.nvim_get_hl(0, { name = "Normal", link = false })
+
+				if tab_active.bg then
+					vim.api.nvim_set_hl(0, "UserLualineTabActive", {
+						bg = tab_active.bg,
+						fg = tab_active.fg,
+						bold = true,
+					})
+				end
+
+				if tab_inactive.bg then
+					vim.api.nvim_set_hl(0, "UserLualineTabInactive", {
+						bg = tab_inactive.bg,
+						fg = tab_inactive.fg,
+						bold = true,
+					})
+				end
+
+				if active.fg and normal.bg then
+					vim.api.nvim_set_hl(0, "WinBar", {
+						bg = normal.bg,
+						fg = active.fg,
+						bold = active.bold,
+					})
+					vim.api.nvim_set_hl(0, "UserLualineWinbarActive", {
+						bg = normal.bg,
+						fg = active.fg,
+						bold = active.bold,
+					})
+				end
+
+				if inactive.fg and normal.bg then
+					vim.api.nvim_set_hl(0, "WinBarNC", {
+						bg = normal.bg,
+						fg = inactive.fg,
+						bold = inactive.bold,
+					})
+					vim.api.nvim_set_hl(0, "UserLualineWinbarInactive", {
+						bg = normal.bg,
+						fg = inactive.fg,
+						bold = inactive.bold,
+					})
+					vim.api.nvim_set_hl(0, "lualine_c_inactive", {
+						bg = normal.bg,
+						fg = inactive.fg,
+						bold = inactive.bold,
+					})
+					vim.api.nvim_set_hl(0, "lualine_x_inactive", {
+						bg = normal.bg,
+						fg = inactive.fg,
+						bold = inactive.bold,
+					})
+				end
+			end
 
 			lualine.setup({
 				options = {
@@ -139,9 +233,11 @@ return {
 					lualine_a = {
 						{
 							"tabs",
+							section_separators = { left = "", right = "" },
+							component_separators = { left = "", right = "" },
 							tabs_color = {
-								active = "StatusLine",
-								inactive = "StatusLineNC",
+								active = "UserLualineTabActive",
+								inactive = "UserLualineTabInactive",
 							},
 							mode = 2,
 						},
@@ -150,43 +246,28 @@ return {
 				winbar = {
 					lualine_a = {},
 					lualine_b = {},
-					lualine_c = { winbar_filename },
-					lualine_x = {
-						{
-							"diagnostics",
-							cond = show_winbar,
-							sections = { "error", "warn", "info", "hint" },
-							symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
-							colored = true,
-							update_in_insert = false,
-						},
-						{
-							"filetype",
-							cond = show_winbar,
-							icon_only = true,
-							padding = { left = 1, right = 0 },
-						},
-					},
+					lualine_c = { winbar_filename, winbar_spacer, winbar_diagnostics, winbar_filetype },
+					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {},
 				},
 				inactive_winbar = {
 					lualine_a = {},
 					lualine_b = {},
-					lualine_c = { inactive_winbar_filename },
-					lualine_x = {
-						{
-							"filetype",
-							cond = show_winbar,
-							icon_only = true,
-							padding = { left = 1, right = 0 },
-							color = "StatusLineNC",
-						},
-					},
+					lualine_c = { inactive_winbar_filename, inactive_winbar_spacer, inactive_winbar_filetype },
+					lualine_x = {},
 					lualine_y = {},
 					lualine_z = {},
 				},
 				extensions = {},
+			})
+
+			apply_winbar_highlights()
+			vim.api.nvim_create_autocmd("ColorScheme", {
+				group = vim.api.nvim_create_augroup("UserLualineWinbarHighlights", { clear = true }),
+				callback = function()
+					vim.schedule(apply_winbar_highlights)
+				end,
 			})
 		end,
 	},
