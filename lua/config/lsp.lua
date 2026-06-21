@@ -103,4 +103,3 @@ vim.lsp.enable({
 	"ts_ls", -- JS / TS
 	"yaml_ls", -- YAML
 })
-

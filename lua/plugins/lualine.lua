@@ -235,6 +235,9 @@ return {
 							"tabs",
 							section_separators = { left = "", right = "" },
 							component_separators = { left = "", right = "" },
+							max_length = function()
+								return vim.o.columns
+							end,
 							tabs_color = {
 								active = "UserLualineTabActive",
 								inactive = "UserLualineTabInactive",
