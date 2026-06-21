@@ -4,6 +4,7 @@ return {
 		name = "nvim-treesitter",
 		version = "main",
 		config = function()
+			local augroup = require("lib.utils").augroup
 			local treesitter_runtime = vim.fn.stdpath("data") .. "/site/pack/core/opt/nvim-treesitter/runtime"
 			if not vim.tbl_contains(vim.opt.runtimepath:get(), treesitter_runtime) then
 				vim.opt.runtimepath:append(treesitter_runtime)
@@ -48,7 +49,7 @@ return {
 
 			vim.api.nvim_create_autocmd("PackChanged", {
 				desc = "Handle nvim-treesitter updates",
-				group = vim.api.nvim_create_augroup("nvim-treesitter-pack-changed-update-handler", { clear = true }),
+				group = augroup("treesitter_pack_changed_update_handler"),
 				callback = function(event)
 					if event.data.kind == "update" then
 						local ok = pcall(vim.cmd, "TSUpdate")
@@ -112,7 +113,7 @@ return {
 				end
 			end
 
-			local group = vim.api.nvim_create_augroup("user_treesitter_start", { clear = true })
+			local group = augroup("treesitter_start")
 
 			vim.api.nvim_create_autocmd("FileType", {
 				group = group,

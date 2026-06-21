@@ -1,5 +1,5 @@
 -- LSP
-local augroup = require("config.util").augroup
+local augroup = require("lib.utils").augroup
 
 local default_keymaps = {
 	{ keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code actions" },

@@ -9,6 +9,7 @@ return {
 			},
 		},
 		config = function()
+			local augroup = require("lib.utils").augroup
 			local lualine = require("lualine")
 
 			local lsp = {
@@ -267,7 +268,7 @@ return {
 
 			apply_winbar_highlights()
 			vim.api.nvim_create_autocmd("ColorScheme", {
-				group = vim.api.nvim_create_augroup("UserLualineWinbarHighlights", { clear = true }),
+				group = augroup("lualine_winbar_highlights"),
 				callback = function()
 					vim.schedule(apply_winbar_highlights)
 				end,

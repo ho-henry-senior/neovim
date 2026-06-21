@@ -1,4 +1,4 @@
-local augroup = require("config.util").augroup
+local augroup = require("lib.utils").augroup
 local opt = vim.opt
 
 local function get_hl(name)
