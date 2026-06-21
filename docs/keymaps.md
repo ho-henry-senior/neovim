@@ -20,6 +20,8 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | Normal / Visual | `j` / `k` | Move by display line when no count is given |
 | Normal | `<leader>cf` | Format buffer |
 | Normal | `<leader>gg` | Open LazyGit |
+| Normal | `<leader>gh` | Open Hunk review UI |
+| Normal | `<leader>gH` | Open Hunk review UI for `HEAD` |
 | Normal | `<leader>aa` | Explain current buffer with Copilot |
 | Insert | `<C-l>` | Accept Copilot suggestion |
 

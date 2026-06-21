@@ -17,6 +17,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 - `<leader>e` — file explorer
 - `<leader>cf` — format buffer
 - `<leader>gg` — LazyGit
+- `<leader>gh` — Hunk review UI for the current repo diff
 - `<leader>aa` — explain buffer with Copilot Chat
 - `<leader>ap` — toggle Copilot panel (`R` refreshes suggestions inside the panel)
 - Start `nvim` in a project directory with no file arguments to restore the session for that directory.
@@ -37,6 +38,7 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 - `init.lua` — entrypoint; sets leader, loads config and plugins
 - `lua/config/` — options, keymaps, LSP wiring, sessions, and autocmds
 - `lua/plugins/` — plugin specs, one file per configured plugin
+- `lua/integrations/` — wrappers for external tools exposed through the editor workflow (for example Hunk and LazyGit)
 - `lua/lib/pack.lua` — small `vim.pack` helper for plugin specs, dependencies, lazy triggers, and global plugin keymaps
 - `after/ftplugin/` — filetype-local settings (wrap, spell, conceallevel) loaded after the main config and any plugin ftplugins, one file per filetype
 - `lsp/` — per-server LSP configs

@@ -88,6 +88,7 @@ doctor:
 	echo
 	echo "Optional workflows"
 	check_tool lazygit optional
+	check_tool hunk optional
 	check_tool terraform-ls optional
 	check_tool terraform optional
 	check_tool harper-ls optional

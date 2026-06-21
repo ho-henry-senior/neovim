@@ -48,6 +48,7 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 ### Homebrew
 
 - `lazygit`
+- `hunk` — review-first terminal diff viewer (`brew install modem-dev/tap/hunk`)
 - `terraform-ls`
 - `harper-ls` — prose and spell checking in Markdown and text buffers
 - `terraform`
@@ -57,6 +58,7 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 
 - `eslint`
 - `vscode-eslint-language-server`
+- `hunkdiff` — alternative install for the `hunk` CLI
 
 ### Project-local
 
@@ -101,4 +103,5 @@ return {
 - **Missing venv**: Python tests may be discovered but fail at runtime due to missing imports.
 - **Missing `tree-sitter-cli`**: `.http`/`.rest` files may fail to highlight until the `kulala_http` parser has been built once.
 - **Missing Copilot auth**: AI mappings load, but suggestions and chat will not work.
+- **Missing `hunk`**: `:HunkDiff`, `:HunkShow`, and `<leader>gh` will notify instead of opening the review UI.
 - **"No tests found" on first keypress**: neotest discovers test positions asynchronously after loading. If a test key is pressed immediately after opening a file, the first attempt may fail; a second press will work once discovery is complete.

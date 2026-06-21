@@ -40,6 +40,20 @@ local keymaps = {
 		desc = "Buffers",
 	},
 	{
+		"<leader>gh",
+		function()
+			require("integrations.hunk").diff()
+		end,
+		desc = "Open Hunk review UI",
+	},
+	{
+		"<leader>gH",
+		function()
+			require("integrations.hunk").show()
+		end,
+		desc = "Open Hunk for HEAD",
+	},
+	{
 		"<leader>gl",
 		function(Snacks)
 			Snacks.picker.git_log()
@@ -77,8 +91,8 @@ local keymaps = {
 	},
 	{
 		"<leader>gg",
-		function(Snacks)
-			Snacks.lazygit()
+		function()
+			require("integrations.lazygit").open()
 		end,
 		desc = "Open Lazygit",
 	},

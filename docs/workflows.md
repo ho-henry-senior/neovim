@@ -48,6 +48,8 @@ Hunk selection is buffer-local and active in any file tracked by git. Hunk navig
 | `ih` | Select hunk (visual and operator mode) |
 | `<leader>gf` | Current file history in log picker |
 | `<leader>gg` | Open LazyGit |
+| `<leader>gh` | Open Hunk review UI for the current repo diff |
+| `<leader>gH` | Open Hunk review UI for `HEAD` |
 | `<leader>gl` | Git log picker |
 | `<leader>gL` | Git log for current line |
 | `<leader>gp` | Git diff picker |
