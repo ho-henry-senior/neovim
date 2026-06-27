@@ -100,15 +100,15 @@ return {
 				UI_CREATE = function(cx)
 					vim.keymap.set("n", "<C-v>", function()
 						hp.ui:select_menu_item({ vsplit = true })
-					end, { buffer = cx.bufnr, desc = "Harpoon open vertical split" })
+					end, { buf = cx.bufnr, desc = "Harpoon open vertical split" })
 
 					vim.keymap.set("n", "<C-s>", function()
 						hp.ui:select_menu_item({ split = true })
-					end, { buffer = cx.bufnr, desc = "Harpoon open split" })
+					end, { buf = cx.bufnr, desc = "Harpoon open split" })
 
 					vim.keymap.set("n", "<C-t>", function()
 						hp.ui:select_menu_item({ tabedit = true })
-					end, { buffer = cx.bufnr, desc = "Harpoon open tab" })
+					end, { buf = cx.bufnr, desc = "Harpoon open tab" })
 				end,
 			})
 		end,

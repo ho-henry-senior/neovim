@@ -51,13 +51,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 				if not vim.b[buf].inlay_hints_autocmd_set then
 					vim.api.nvim_create_autocmd("InsertEnter", {
-						buffer = buf,
+						buf = buf,
 						callback = function()
 							vim.lsp.inlay_hint.enable(false, { bufnr = buf })
 						end,
 					})
 					vim.api.nvim_create_autocmd("InsertLeave", {
-						buffer = buf,
+						buf = buf,
 						callback = function()
 							vim.lsp.inlay_hint.enable(true, { bufnr = buf })
 						end,
@@ -76,12 +76,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			for _, km in ipairs(default_keymaps) do
 				-- Only bind if there's no `has` requirement, or the server supports it
 				if not km.has or client.server_capabilities[km.has] then
-					vim.keymap.set(
-						km.mode or "n",
-						km.keys,
-						km.func,
-						{ buffer = buf, desc = "LSP: " .. km.desc, nowait = km.nowait }
-					)
+					vim.keymap.set(km.mode or "n", km.keys, km.func, { buf = buf, desc = "LSP: " .. km.desc, nowait = km.nowait })
 				end
 			end
 		end

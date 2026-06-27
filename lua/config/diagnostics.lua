@@ -56,7 +56,15 @@ vim.diagnostic.config({
 local diagnostic_goto = function(next, severity)
 	severity = severity and vim.diagnostic.severity[severity] or nil
 	return function()
-		vim.diagnostic.jump({ count = next and 1 or -1, float = true, severity = severity })
+		vim.diagnostic.jump({
+			count = next and 1 or -1,
+			severity = severity,
+			on_jump = function(diagnostic)
+				if diagnostic then
+					vim.diagnostic.open_float()
+				end
+			end,
+		})
 	end
 end
 map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })

@@ -108,7 +108,7 @@ return {
 				pattern = "copilot://*",
 				callback = function(args)
 					vim.keymap.set("n", "R", refresh_copilot_panel, {
-						buffer = args.buf,
+						buf = args.buf,
 						desc = "Copilot panel refresh",
 						silent = true,
 					})
