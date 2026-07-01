@@ -1,6 +1,33 @@
 -- LSP
 local augroup = require("lib.utils").augroup
 
+vim.lsp.config("*", {
+	flags = {
+		-- Work around Neovim 0.12.3's incremental sync assertion when quickfix
+		-- buffers are rewritten by vim.fn.setqflist()/Snacks picker actions.
+		allow_incremental_sync = false,
+	},
+})
+
+local lsp_excluded_buftypes = {
+	nofile = true,
+	prompt = true,
+	quickfix = true,
+	terminal = true,
+}
+
+local lsp_excluded_filetypes = {
+	qf = true,
+	snacks_input = true,
+	snacks_picker_input = true,
+	snacks_picker_list = true,
+	snacks_terminal = true,
+}
+
+local function lsp_is_excluded_buffer(buf)
+	return lsp_excluded_buftypes[vim.bo[buf].buftype] or lsp_excluded_filetypes[vim.bo[buf].filetype]
+end
+
 local default_keymaps = {
 	{ keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code actions" },
 	{
@@ -42,6 +69,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		local client = vim.lsp.get_client_by_id(args.data.client_id)
 		local buf = args.buf
 		if client then
+			if lsp_is_excluded_buffer(buf) then
+				vim.lsp.buf_detach_client(buf, client.id)
+				return
+			end
+
 			if client.name == "ruff" then
 				client.server_capabilities.hoverProvider = false
 			end
