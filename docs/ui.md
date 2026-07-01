@@ -5,7 +5,7 @@
 A single global statusline at the bottom of the window. It shows:
 
 - current mode
-- git branch, diff summary, and diagnostics
+- repository name, git branch, diff summary, and diagnostics
 - current file
 - filetype, encoding, file format, and active LSP servers
 - cursor position and scroll progress

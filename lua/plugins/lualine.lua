@@ -24,6 +24,16 @@ return {
 				show_name = true,
 			}
 
+			local function repo_name()
+				local root = vim.fs.root(0, ".git") or vim.fs.root(vim.fn.getcwd(), ".git")
+				return root and vim.fs.basename(root) or ""
+			end
+
+			local repository = {
+				repo_name,
+				icon = "󰊢",
+			}
+
 			local function has_window_splits()
 				local normal_windows = 0
 
@@ -211,7 +221,7 @@ return {
 				},
 				sections = {
 					lualine_a = { "mode" },
-					lualine_b = { "branch", "diff", "diagnostics" },
+					lualine_b = { repository, "branch", "diff", "diagnostics" },
 					lualine_c = { "filename" },
 					lualine_x = {
 						"encoding",
