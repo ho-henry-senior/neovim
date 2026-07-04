@@ -34,6 +34,7 @@ Visual mode:
 
 Normal mode:
 
+- `gf`: follow a local inline Markdown link from anywhere inside the link, including `#heading` fragments
 - `<leader>m<`: increase the current heading level
 - `<leader>m>`: decrease the current heading level
 - `<leader>mh`: insert a horizontal rule
@@ -44,6 +45,14 @@ Checkbox behaviour:
 - `- [ ] item` becomes `- [x] item`
 - `- [x] item` becomes `- [ ] item`
 - `- item` becomes `- [ ] item`
+
+Link navigation:
+
+- `[label](other.md)` opens `other.md` even when the cursor is on `label`
+- `[label](other.md#some-heading)` opens `other.md` and jumps to `Some Heading`
+- `[label](#some-heading)` jumps within the current Markdown file
+- extensionless local links try a matching `.md` file
+- external URLs are left alone; use the normal URL-opening workflow for those
 
 ## Plugins
 
