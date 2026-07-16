@@ -45,8 +45,36 @@ map("i", ";", ";<c-g>u")
 map("n", "gco", "o<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add comment below" })
 map("n", "gcO", "O<esc>Vcx<esc><cmd>normal gcc<cr>fxa<bs>", { desc = "Add comment above" })
 
-map("n", "[q", vim.cmd.cprev, { desc = "Previous quickfix" })
-map("n", "]q", vim.cmd.cnext, { desc = "Next quickfix" })
+local function qf_next(direction)
+	local info = vim.fn.getqflist({ idx = 0, size = 0 })
+	local count = vim.v.count1
+	local target = info.idx + direction * count
+
+	if info.size == 0 then
+		vim.notify("Quickfix list is empty", vim.log.levels.INFO)
+		return
+	end
+
+	if target < 1 then
+		vim.notify("Beginning of quickfix results", vim.log.levels.INFO)
+		return
+	end
+
+	if target > info.size then
+		vim.notify("End of quickfix results", vim.log.levels.INFO)
+		return
+	end
+
+	local command = direction > 0 and "cnext" or "cprev"
+	vim.cmd(command .. " " .. count)
+end
+
+map("n", "[q", function()
+	qf_next(-1)
+end, { desc = "Previous quickfix" })
+map("n", "]q", function()
+	qf_next(1)
+end, { desc = "Next quickfix" })
 
 -- Terminal Mappings
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter normal mode" })
