@@ -6,6 +6,7 @@ current design goals:
 - stay close to stock Neovim
 - prefer native editor primitives before adding plugins
 - keep leader mappings for frequent or clearer workflows
+- prefer knowledge that transfers to Vim on other servers
 - make quickfix, diagnostics, sessions, and LSP feel intentional rather than noisy
 
 ## Strong Candidates
@@ -47,24 +48,21 @@ It is currently used for LSP references and git diff files. Future work can
 decide whether diagnostics, gitsigns, neotest, grug-far, or CopilotChat should
 route through the same helper, where their APIs allow it cleanly.
 
-### 3. Add quickfix open/close mappings
-
-Consider adding direct mappings under the existing `<leader>q` group:
-
-| Mapping | Action |
-| --- | --- |
-| `<leader>qo` | Open quickfix |
-| `<leader>qc` | Close quickfix |
-
-These are simple native commands, but the mappings would make the quickfix
-workflow easier to discover.
-
-### 4. Document quickfix boundary behavior
+### 3. Document quickfix boundary behaviour
 
 Update `docs/workflows.md` or `docs/motions.md` to mention that `[q` and `]q`
 notify at the beginning/end of the list.
 
-This makes the new behavior intentional and discoverable.
+This makes the new behaviour intentional and discoverable.
+
+### 4. Prefer native quickfix commands where they are clear
+
+Avoid adding mappings that only duplicate clear native commands. For example,
+prefer learning and documenting:
+
+- `:cope` / `:copen` to open quickfix
+- `:cclose` or `:q` from the quickfix window to close it
+- `:colder` / `:cnewer` for quickfix history, if that workflow becomes useful
 
 ## Optional Candidates
 
@@ -120,6 +118,7 @@ These would likely work against the current design goals:
 - adding a dashboard
 - adding another fuzzy finder
 - adding a large keymap abstraction layer
+- adding mappings that only rename clear native commands
 - replacing native quickfix/location-list workflows with plugin-only flows
 - enabling visual effects such as animated scrolling without a clear need
 - adding location-list mappings before there is a real location-list workflow
