@@ -49,3 +49,5 @@ A personal Neovim setup built around stock Neovim 0.12, `vim.pack`, native LSP, 
 Stays close to stock Neovim rather than building on a large framework. Sessions, LSP, and package management use native Neovim features. Plugin specs are a small local layer over `vim.pack`, not a replacement plugin manager. Plugins fill gaps where native features aren't good enough yet.
 
 Prefer native motions, command history, quickfix/location lists, and editor primitives before adding plugin mappings. Leader mappings are reserved for actions that are frequent, clearer than the native command, or not covered well by stock Neovim.
+
+Avoid mappings that only rename clear native commands. Favour editor knowledge that transfers to Vim on other servers, and document native commands where they are already concise.

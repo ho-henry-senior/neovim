@@ -98,6 +98,11 @@ Available in any buffer where Treesitter is active. Treesitter bracket motions a
 ## Quickfix
 
 The quickfix list is populated from multiple sources and navigated with `]q` / `[q`.
+At the beginning or end of the list, these mappings notify instead of showing
+the raw quickfix boundary error.
+
+Use `:cope` or `:copen` to open the quickfix window. Close it with `:cclose`,
+or with `:q` from inside the quickfix window.
 
 ### Populating quickfix
 
@@ -116,6 +121,27 @@ The quickfix list is populated from multiple sources and navigated with `]q` / `
 - **Neotest** — failed tests are sent to quickfix automatically after every test run and the window opens.
 - **Grug-far** — `<localleader>q` inside the grug-far buffer sends all matches to quickfix.
 - **CopilotChat** — `gqd` sends code diff blocks to quickfix; `gqa` sends assistant answers.
+
+### Quickfix history
+
+Quickfix keeps a history of result lists. This is useful after replacing grep
+results with diagnostics, references, tests, or git output.
+
+| Command | Action |
+| --- | --- |
+| `:chi` | Show quickfix history |
+| `:{count}chi` | Make a specific quickfix list current |
+| `:col` | Move to the previous quickfix list |
+| `:cnew` | Move to the next quickfix list |
+
+After switching lists, use `:cope` to inspect the current quickfix list.
+
+### Location lists
+
+Location lists are the window-local sibling of quickfix lists. They are useful
+when different windows need different result sets. This config stays
+quickfix-first because diagnostics, search, references, tests, git output, and
+AI output are treated as one global task list.
 
 ## Filetype Notes
 
