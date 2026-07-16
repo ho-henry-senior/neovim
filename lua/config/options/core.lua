@@ -35,7 +35,8 @@ opt.writebackup = false -- Don't create backup before writing
 opt.swapfile = false -- Don't create swap files
 opt.undofile = true -- Persistent undo
 opt.undolevels = 10000
-opt.undodir = vim.fn.expand("~/.vim/undodir") -- Undo directory
+local undodir = vim.fn.stdpath("state") .. "/undo"
+opt.undodir = undodir -- Undo directory
 opt.autoread = true -- Auto reload files changed outside vim
 opt.autowrite = true -- Auto save
 
@@ -76,7 +77,6 @@ opt.maxmempattern = 20000
 opt.smoothscroll = false
 
 -- Create undo directory if it doesn't exist
-local undodir = vim.fn.expand("~/.vim/undodir")
 if vim.fn.isdirectory(undodir) == 0 then
 	vim.fn.mkdir(undodir, "p")
 end
