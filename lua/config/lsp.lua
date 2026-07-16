@@ -128,6 +128,7 @@ vim.lsp.enable({
 	"pyright_ls", -- Python
 	"ruff", -- Python linting and Ruff code actions
 	"terraform_ls", -- Terraform
+	"eslint_ls", -- JS / TS linting
 	"ts_ls", -- JS / TS
 	"yaml_ls", -- YAML
 })
