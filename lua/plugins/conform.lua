@@ -1,9 +1,6 @@
 -- Install prettier: npm install -g prettier
-local auto_format = true
-
 local function toggle_autoformat()
-	auto_format = not auto_format
-	if auto_format then
+	if vim.g.disable_autoformat then
 		vim.cmd("FormatEnable")
 	else
 		vim.cmd("FormatDisable")
