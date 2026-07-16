@@ -33,36 +33,6 @@ return {
 				{ "gx", desc = "Open with system app" },
 
 				{
-					"<leader>fcf",
-					function()
-						local p = vim.fn.expand("%:p")
-						vim.fn.setreg("+", p)
-						vim.notify("Copied full file path: " .. p)
-					end,
-					desc = "Copy full path",
-				},
-				{
-					"<leader>fcn",
-					function()
-						local n = vim.fn.expand("%:t")
-						vim.fn.setreg("+", n)
-						vim.notify("Copied file name: " .. n)
-					end,
-					desc = "Copy file name",
-				},
-				{
-					"<leader>fcr",
-					function()
-						local cwd = vim.fn.getcwd()
-						local full = vim.fn.expand("%:p")
-						local rel = full:sub(#cwd + 2)
-						vim.fn.setreg("+", rel)
-						vim.notify("Copied relative path: " .. rel)
-					end,
-					desc = "Copy relative path",
-				},
-
-				{
 					"<leader>?",
 					function()
 						wk.show({ global = false })

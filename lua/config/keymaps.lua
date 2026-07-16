@@ -105,6 +105,26 @@ map("n", "z0", "1z=", {
 	desc = "Fix word under cursor",
 })
 
+map("n", "<leader>fcf", function()
+	local p = vim.fn.expand("%:p")
+	vim.fn.setreg("+", p)
+	vim.notify("Copied full file path: " .. p)
+end, { desc = "Copy full path" })
+
+map("n", "<leader>fcn", function()
+	local n = vim.fn.expand("%:t")
+	vim.fn.setreg("+", n)
+	vim.notify("Copied file name: " .. n)
+end, { desc = "Copy file name" })
+
+map("n", "<leader>fcr", function()
+	local cwd = vim.fn.getcwd()
+	local full = vim.fn.expand("%:p")
+	local rel = full:sub(#cwd + 2)
+	vim.fn.setreg("+", rel)
+	vim.notify("Copied relative path: " .. rel)
+end, { desc = "Copy relative path" })
+
 -- vim.pack keymaps
 map("n", "<leader>pu", "<cmd>lua vim.pack.update()<CR>")
 map("n", "<leader>pd", function()
