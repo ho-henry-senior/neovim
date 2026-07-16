@@ -133,8 +133,7 @@ map("n", "<leader>qg", function()
 		local items = vim.tbl_map(function(f)
 			return { filename = f, valid = 1 }
 		end, files)
-		vim.fn.setqflist({}, "r", { title = "git diff " .. ref, items = items })
-		vim.cmd("copen")
+		require("lib.quickfix").set_items("git diff " .. ref, items)
 	end)
 end, { desc = "Git diff files → quickfix" })
 

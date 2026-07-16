@@ -53,8 +53,9 @@ local default_keymaps = {
 		func = function()
 			vim.lsp.buf.references(nil, {
 				on_list = function(options)
-					vim.fn.setqflist({}, "r", { title = options.title, items = options.items })
-					vim.cmd("copen")
+					require("lib.quickfix").set_items(options.title, options.items, {
+						empty_message = "No references found",
+					})
 				end,
 			})
 		end,

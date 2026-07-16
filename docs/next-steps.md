@@ -20,11 +20,11 @@ Possible follow-ups:
 
 - keep boundary notifications for beginning/end of results
 - notify when the quickfix list is empty
-- avoid opening quickfix windows for empty result sets
-- use consistent titles for quickfix lists populated by diagnostics, references,
-  git, tests, search, and AI workflows
+- continue avoiding quickfix windows for empty result sets
+- continue using consistent titles for quickfix lists populated by diagnostics,
+  references, git, tests, search, and AI workflows
 
-### 2. Add a small quickfix helper
+### 2. Expand the quickfix helper
 
 Several features populate quickfix:
 
@@ -36,14 +36,16 @@ Several features populate quickfix:
 - search/replace results
 - CopilotChat results
 
-A small helper could centralize common behavior:
+`lua/lib/quickfix.lua` centralizes common behavior for local producers:
 
 - replace the quickfix list
 - open it only when non-empty
 - notify when there are no results
 - apply a consistent title
 
-This keeps the workflow native while making it feel more polished.
+It is currently used for LSP references and git diff files. Future work can
+decide whether diagnostics, gitsigns, neotest, grug-far, or CopilotChat should
+route through the same helper, where their APIs allow it cleanly.
 
 ### 3. Add quickfix open/close mappings
 
