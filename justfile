@@ -84,6 +84,8 @@ doctor:
 	check_tool ruff
 	check_tool marksman
 	check_tool prettier
+	check_tool_or_file roslyn-language-server "$HOME/.dotnet/tools/roslyn-language-server" optional
+	check_tool_or_file csharpier "$HOME/.dotnet/tools/csharpier" optional
 
 	echo
 	echo "Optional workflows"
@@ -93,7 +95,6 @@ doctor:
 	check_tool terraform optional
 	check_tool harper-ls optional
 	check_tool dotnet optional
-	check_tool_or_file csharp-ls "$HOME/.dotnet/tools/csharp-ls" optional
 	check_tool vscode-eslint-language-server optional
 
 	if [[ -f package.json ]]; then

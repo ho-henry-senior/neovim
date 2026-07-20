@@ -15,6 +15,11 @@ local function format_buffer()
 	end)
 end
 
+local csharpier = vim.fn.exepath("csharpier")
+if csharpier == "" then
+	csharpier = vim.fn.expand("~/.dotnet/tools/csharpier")
+end
+
 return {
 	{
 		src = "https://github.com/stevearc/conform.nvim",
@@ -40,9 +45,19 @@ return {
 				terraform = { "terraform_fmt" },
 				graphql = { "prettier" },
 				xml = { "xmllint" },
+				cs = { "csharpier" },
 			},
 
 			formatters = {
+				csharpier = {
+					command = csharpier,
+					args = { "format", "--stdin-path", "$FILENAME", "--write-stdout" },
+					env = {
+						DOTNET_ROOT = "/opt/homebrew/opt/dotnet/libexec",
+						DOTNET_ROOT_ARM64 = "/opt/homebrew/opt/dotnet/libexec",
+					},
+					stdin = true,
+				},
 				prettier = {
 					---@diagnostic disable-next-line: unused-local
 					args = function(_self, ctx)

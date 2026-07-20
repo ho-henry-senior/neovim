@@ -3,7 +3,7 @@
 ## Configured by Default
 
 - Bash
-- C# / .NET
+- C# / .NET via Roslyn
 - CSS / SCSS / LESS
 - Harper for prose, spell, and style checks
 - HTML

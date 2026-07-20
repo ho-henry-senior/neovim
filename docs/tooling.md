@@ -39,7 +39,10 @@ npm install -g \
 ### .NET
 
 ```sh
-dotnet tool install --global csharp-ls
+dotnet tool install --global csharpier
+dotnet tool install --global roslyn-language-server \
+  --prerelease \
+  --source https://pkgs.dev.azure.com/azure-public/vside/_packaging/vs-impl/nuget/v3/index.json
 export PATH="$HOME/.dotnet/tools:$PATH"
 ```
 
@@ -52,7 +55,7 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 - `terraform-ls`
 - `harper-ls` — prose and spell checking in Markdown and text buffers
 - `terraform`
-- `dotnet` — C# LSP and .NET test support. `lsp/csharp_ls.lua` sets `DOTNET_ROOT` to the Homebrew path (`/opt/homebrew/opt/dotnet/libexec`) if it exists and `DOTNET_ROOT` is not already set, so `csharp-ls` can locate the runtime when installed via Homebrew.
+- `dotnet` — C# LSP, C# formatting, and .NET test support. `lsp/roslyn_ls.lua` sets `DOTNET_ROOT` and `DOTNET_ROOT_ARM64` to the Homebrew path (`/opt/homebrew/opt/dotnet/libexec`) so `roslyn-language-server` can locate the runtime when installed via Homebrew.
 
 ### npm
 

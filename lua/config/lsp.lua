@@ -118,7 +118,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 vim.lsp.enable({
 	"bash_ls", -- Bash
-	"csharp_ls", -- C# / .NET
+	"roslyn_ls", -- C# / .NET
 	"css_ls", -- CSS
 	"harper_ls", -- Spell checking
 	"html_ls", -- HTML
