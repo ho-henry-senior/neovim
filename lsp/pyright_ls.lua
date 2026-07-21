@@ -18,15 +18,8 @@ end
 return {
 	cmd = { "pyright-langserver", "--stdio" },
 	filetypes = { "python" },
-	root_markers = {
-		"pyproject.toml",
-		"setup.py",
-		"setup.cfg",
-		"requirements.txt",
-		"Pipfile",
-		"pyrightconfig.json",
-		".git",
-	},
+	-- Keep Python LSPs rooted at the exercise's python/ directory in this multi-language repo.
+	root_dir = require("lsp.python_root").root_dir,
 	settings = {
 		python = {
 			analysis = {
