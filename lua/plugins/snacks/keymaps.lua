@@ -17,8 +17,8 @@ local keymaps = {
 	},
 	{
 		"<leader>e",
-		function(Snacks)
-			Snacks.explorer()
+		function()
+			require("integrations.snacks_explorer").open()
 		end,
 		desc = "File explorer",
 	},

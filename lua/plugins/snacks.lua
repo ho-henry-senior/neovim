@@ -19,6 +19,7 @@ return {
 			Snacks.setup(require("plugins.snacks.config"))
 			Snacks.input.enable()
 			vim.ui.select = Snacks.picker.select
+			require("integrations.snacks_explorer").setup()
 		end,
 	},
 }
