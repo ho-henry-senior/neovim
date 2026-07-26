@@ -83,6 +83,7 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | --- | --- |
 | `<leader>bb` | Buffer picker |
 | `<leader>bd` | Delete current buffer |
+| `<leader>bh` | Delete hidden buffers |
 | `<leader>bo` | Delete other buffers |
 
 ## Inspect

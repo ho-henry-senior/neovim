@@ -184,6 +184,18 @@ local keymaps = {
 		mode = { "n" },
 	},
 	{
+		"<leader>bh",
+		function(Snacks)
+			Snacks.bufdelete({
+				filter = function(buf)
+					return vim.bo[buf].buftype == "" and #vim.fn.win_findbuf(buf) == 0
+				end,
+			})
+		end,
+		desc = "Delete hidden buffers",
+		mode = { "n" },
+	},
+	{
 		"<c-_>",
 		function(Snacks)
 			Snacks.terminal()
