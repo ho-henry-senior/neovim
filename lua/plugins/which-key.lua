@@ -11,10 +11,10 @@ return {
 
 			wk.setup(opts)
 
-				wk.add({
-					{ "<leader>a", group = "ai" },
-					{ "<leader>q", group = "quickfix" },
-					{ "<leader>b", group = "buffers" },
+			wk.add({
+				{ "<leader>a", group = "ai" },
+				{ "<leader>q", group = "quickfix" },
+				{ "<leader>b", group = "buffers" },
 				{ "<leader>c", group = "code" },
 				{ "<leader>f", group = "files" },
 				{ "<leader>fc", group = "copy path" },
@@ -26,18 +26,18 @@ return {
 				{ "<leader>r", group = "rest" },
 				{ "<leader>s", group = "search" },
 				{ "<leader>t", group = "test" },
-					{ "<leader>u", group = "ui" },
-				})
+				{ "<leader>u", group = "ui" },
+			})
 
-				wk.add({
-					mode = "x",
-					{ "<leader>a", group = "ai" },
-					{ "<leader>m", group = "markdown" },
-					{ "<leader>s", group = "search" },
-				})
+			wk.add({
+				mode = "x",
+				{ "<leader>a", group = "ai" },
+				{ "<leader>m", group = "markdown" },
+				{ "<leader>s", group = "search" },
+			})
 
-				wk.add({
-					{ "gx", desc = "Open with system app" },
+			wk.add({
+				{ "gx", desc = "Open with system app" },
 
 				{
 					"<leader>?",
