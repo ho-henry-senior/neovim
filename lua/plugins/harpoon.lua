@@ -27,6 +27,10 @@ return {
 				lhs = "<leader>h",
 				desc = "Harpoon add file",
 				callback = function()
+					if vim.bo.buftype == "terminal" then
+						vim.notify("Harpoon: can't add a terminal buffer", vim.log.levels.WARN)
+						return
+					end
 					harpoon():list():add()
 				end,
 			},
