@@ -14,6 +14,12 @@ local function modules()
 	return Snacks, Git, Tree
 end
 
+-- Git.refresh() only busts the cache if its `path` argument is a byte-for-byte
+-- match (or prefix) of the root key Snacks stored via Snacks.git.get_root(),
+-- which is svim.fs.normalize()'d. Any mismatch (trailing slash, symlink,
+-- etc.) makes the invalidation silently no-op and the 15-minute TTL cache
+-- stays stale. Force a real re-scan via Git.update() instead, which always
+-- recomputes the root itself and is immune to that mismatch.
 function M.refresh_git_status()
 	local Snacks, Git, Tree = modules()
 	if not Snacks then
@@ -24,10 +30,18 @@ function M.refresh_git_status()
 	for _, picker in ipairs(pickers) do
 		if picker and not picker.closed then
 			local cwd = picker:cwd()
-			Git.refresh(cwd)
 			Tree:refresh(cwd)
-			picker.list:set_target()
-			picker:find({ refresh = true })
+			Git.update(cwd, {
+				force = true,
+				untracked = true,
+				on_update = function()
+					if picker.closed then
+						return
+					end
+					picker.list:set_target()
+					picker:find({ refresh = true })
+				end,
+			})
 		end
 	end
 end
@@ -38,8 +52,8 @@ function M.invalidate_git_status(cwd)
 		return
 	end
 
-	cwd = cwd or Snacks.git.get_root() or vim.fn.getcwd(0)
-	Git.refresh(cwd)
+	cwd = cwd or vim.fn.getcwd(0)
+	Git.update(cwd, { force = true, untracked = true })
 end
 
 function M.open()
