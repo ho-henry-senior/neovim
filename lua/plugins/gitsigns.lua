@@ -2,7 +2,11 @@ return {
 	{
 		src = "https://github.com/lewis6991/gitsigns.nvim",
 		name = "gitsigns.nvim",
-		event = { "BufReadPre", "BufNewFile" },
+		-- Not actually lazy: gitsigns.nvim ships its own plugin/gitsigns.lua that
+		-- calls require('gitsigns').setup() unconditionally as soon as Neovim's
+		-- startup sourcing reaches it, regardless of this event trigger. Loading
+		-- it eagerly here just means our real opts (and on_attach keymaps) take
+		-- effect from that same moment instead of never overriding the defaults.
 		module = "gitsigns",
 		opts = {
 			signs = {
@@ -76,17 +80,23 @@ return {
 		config = function(spec, opts)
 			require(spec.module).setup(opts)
 
-			vim.api.nvim_create_autocmd("VimEnter", {
-				once = true,
-				callback = function()
-					vim.schedule(function()
-						for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-							if vim.api.nvim_buf_is_loaded(buf) then
-								require("gitsigns").attach(buf)
-							end
-						end
-					end)
-				end,
+			local function attach_loaded_buffers()
+				for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+					if vim.api.nvim_buf_is_loaded(buf) then
+						require("gitsigns").attach(buf)
+					end
+				end
+			end
+
+			-- Covers buffers already open when this loads (e.g. a CLI file arg).
+			vim.schedule(attach_loaded_buffers)
+
+			-- Session-restored buffers never fire BufReadPre/BufRead/BufNewFile
+			-- (Neovim's SessionLoad fast path skips them for performance), so
+			-- gitsigns' own attach-on-BufRead autocmds never see them. Re-attach
+			-- explicitly once session.lua's SessionLoadPost fires.
+			vim.api.nvim_create_autocmd("SessionLoadPost", {
+				callback = attach_loaded_buffers,
 			})
 		end,
 	},
