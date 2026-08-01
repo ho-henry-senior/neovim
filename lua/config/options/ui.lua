@@ -46,6 +46,37 @@ local function apply_inactive_window_highlights()
 	})
 end
 
+local function apply_gitsigns_inline_highlights()
+	local normal = get_hl("Normal")
+	if not normal.bg then
+		return
+	end
+
+	local function inline_hl(signal_group)
+		local signal = get_hl(signal_group)
+		local color = signal.fg or normal.fg
+		if not color then
+			return nil
+		end
+		return {
+			bg = blend_colors(normal.bg, color, 0.35),
+			fg = normal.fg,
+		}
+	end
+
+	local groups = {
+		GitSignsAddInline = inline_hl("Added"),
+		GitSignsChangeInline = inline_hl("Changed"),
+		GitSignsDeleteInline = inline_hl("Removed"),
+	}
+
+	for name, hl in pairs(groups) do
+		if hl then
+			vim.api.nvim_set_hl(0, name, hl)
+		end
+	end
+end
+
 opt.number = true -- Line numbers
 opt.relativenumber = true -- Relative line numbers
 opt.cursorline = true -- Highlight current line
@@ -81,10 +112,14 @@ opt.list = false -- Show some invisible characters (tabs...)
 opt.shortmess:append({ W = true, I = true, c = true, C = true })
 
 apply_inactive_window_highlights()
+apply_gitsigns_inline_highlights()
 
 vim.api.nvim_create_autocmd("ColorScheme", {
 	group = augroup("inactive_window_highlights"),
 	callback = function()
-		vim.schedule(apply_inactive_window_highlights)
+		vim.schedule(function()
+			apply_inactive_window_highlights()
+			apply_gitsigns_inline_highlights()
+		end)
 	end,
 })
