@@ -77,13 +77,23 @@ map("n", "]q", function()
 end, { desc = "Next quickfix" })
 
 -- Terminal Mappings
+local function toggle_snacks_terminal()
+	local buf = vim.api.nvim_get_current_buf()
+	if vim.bo[buf].filetype == "snacks_terminal" or vim.b[buf].snacks_terminal ~= nil then
+		vim.cmd.close()
+		return
+	end
+
+	require("snacks").terminal()
+end
+
 map("t", "<esc><esc>", "<c-\\><c-n>", { desc = "Enter normal mode" })
 map("t", "<C-h>", "<cmd>wincmd h<cr>", { desc = "Go to left window" })
 map("t", "<C-j>", "<cmd>wincmd j<cr>", { desc = "Go to lower window" })
 map("t", "<C-k>", "<cmd>wincmd k<cr>", { desc = "Go to upper window" })
 map("t", "<C-l>", "<cmd>wincmd l<cr>", { desc = "Go to right window" })
-map("t", "<C-/>", "<cmd>close<cr>", { desc = "Hide terminal" })
-map("t", "<c-_>", "<cmd>close<cr>", { desc = "which_key_ignore" })
+map("t", "<C-/>", toggle_snacks_terminal, { desc = "Toggle floating terminal" })
+map("t", "<c-_>", toggle_snacks_terminal, { desc = "which_key_ignore" })
 
 -- ------------------------------------------------------------------------- }}}
 

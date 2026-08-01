@@ -33,7 +33,7 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | Terminal | `<C-h/j/k/l>` | Move between windows from terminal mode |
 | Terminal | `<Esc><Esc>` | Leave terminal insert mode |
 | Normal | `<C-/>` | Toggle floating terminal |
-| Terminal | `<C-/>` | Close floating terminal |
+| Terminal | `<C-/>` | Toggle floating terminal |
 | Visual | `<A-j>` / `<A-k>` | Move selected lines down / up |
 | Normal | `z0` | Fix spelling of word under cursor |
 | Visual | `p` | Paste without overwriting the unnamed register |
