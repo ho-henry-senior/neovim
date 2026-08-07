@@ -55,19 +55,13 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 - `terraform-ls`
 - `harper-ls` — prose and spell checking in Markdown and text buffers
 - `terraform`
-- `dotnet` — C# LSP, C# formatting, and .NET test support. `lsp/roslyn_ls.lua` sets `DOTNET_ROOT` and `DOTNET_ROOT_ARM64` to the Homebrew path (`/opt/homebrew/opt/dotnet/libexec`) so `roslyn-language-server` can locate the runtime when installed via Homebrew.
+- `dotnet` — C# LSP and C# formatting support. `lsp/roslyn_ls.lua` sets `DOTNET_ROOT` and `DOTNET_ROOT_ARM64` to the Homebrew path (`/opt/homebrew/opt/dotnet/libexec`) so `roslyn-language-server` can locate the runtime when installed via Homebrew.
 
 ### npm
 
 - `eslint`
 - `vscode-eslint-language-server`
 - `hunkdiff` — alternative install for the `hunk` CLI
-
-### Project-local
-
-- `jest` — required for neotest Jest support in JS/TS projects
-- `mocha` — required for neotest Mocha support
-- `.venv` or `venv` — required for Python test support when project dependencies are not on `python`
 
 ## Verification
 
@@ -103,8 +97,6 @@ return {
 
 ## Troubleshooting
 
-- **Missing venv**: Python tests may be discovered but fail at runtime due to missing imports.
 - **Missing `tree-sitter-cli`**: `.http`/`.rest` files may fail to highlight until the `kulala_http` parser has been built once.
 - **Missing Copilot auth**: AI mappings load, but suggestions and chat will not work.
 - **Missing `hunk`**: `:HunkDiff`, `:HunkShow`, and `<leader>gh` will notify instead of opening the review UI.
-- **"No tests found" on first keypress**: neotest discovers test positions asynchronously after loading. If a test key is pressed immediately after opening a file, the first attempt may fail; a second press will work once discovery is complete.

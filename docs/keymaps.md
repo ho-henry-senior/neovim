@@ -55,7 +55,6 @@ Custom mappings and high-value shortcuts. This is the short reference; workflow-
 | `<leader>S` | Sessions |
 | `<leader>r` | REST |
 | `<leader>s` | Search |
-| `<leader>t` | Tests |
 | `<leader>u` | UI |
 
 ## Search

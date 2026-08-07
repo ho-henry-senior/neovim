@@ -42,26 +42,6 @@
       "rev": "a923f5fc5ba36a3b17e289dc35dc17f66d0548ee",
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
-    "neotest": {
-      "rev": "1c529a1ef9c82e8131e872368415cecc2bb86ea2",
-      "src": "https://github.com/nvim-neotest/neotest"
-    },
-    "neotest-dotnet": {
-      "rev": "e27c67a856ce67cc968b773d01a35ec07459bb8b",
-      "src": "https://github.com/Issafalcon/neotest-dotnet"
-    },
-    "neotest-jest": {
-      "rev": "0e7979d51301dfae5ef839d771bd28cf593fde3f",
-      "src": "https://github.com/nvim-neotest/neotest-jest"
-    },
-    "neotest-python": {
-      "rev": "1b56ca4ba51c6014f986d6548ee629bdc95589d1",
-      "src": "https://github.com/nvim-neotest/neotest-python"
-    },
-    "nvim-nio": {
-      "rev": "edcc181a875301dd21840189aa2f2f9ad69fc172",
-      "src": "https://github.com/nvim-neotest/nvim-nio"
-    },
     "nvim-treesitter": {
       "rev": "3d3321b560a63ff92a8692401f303a5123336b86",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",

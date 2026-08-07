@@ -25,7 +25,6 @@ return {
 				{ "<leader>S", group = "session" },
 				{ "<leader>r", group = "rest" },
 				{ "<leader>s", group = "search" },
-				{ "<leader>t", group = "test" },
 				{ "<leader>u", group = "ui" },
 			})
 

@@ -55,19 +55,6 @@ Hunk selection is buffer-local and active in any file tracked by git. Hunk navig
 | `<leader>gp` | Git diff picker |
 | `<leader>gr` | Open file or selection in remote |
 
-## Tests
-
-`<leader>tn`, `<leader>tf`, and `<leader>to` are available in supported test buffers. `<leader>ta` and `<leader>ts` work in supported JavaScript, TypeScript, Python, and .NET projects.
-
-| Shortcut | Action |
-| --- | --- |
-| `<leader>t?` | Explain when test mappings are available |
-| `<leader>tn` | Run nearest test |
-| `<leader>tf` | Run tests in current file |
-| `<leader>ta` | Run all tests in project |
-| `<leader>ts` | Test summary toggle |
-| `<leader>to` | Open test output |
-
 ## Treesitter Text Objects
 
 Available in any buffer where Treesitter is active. Treesitter bracket motions are listed in [motions.md](motions.md).
@@ -118,14 +105,13 @@ or with `:q` from inside the quickfix window.
 
 ### Automatic population
 
-- **Neotest** — failed tests are sent to quickfix automatically after every test run and the window opens.
 - **Grug-far** — `<localleader>q` inside the grug-far buffer sends all matches to quickfix.
 - **CopilotChat** — `gqd` sends code diff blocks to quickfix; `gqa` sends assistant answers.
 
 ### Quickfix history
 
 Quickfix keeps a history of result lists. This is useful after replacing grep
-results with diagnostics, references, tests, or git output.
+results with diagnostics, references, or git output.
 
 | Command | Action |
 | --- | --- |
@@ -140,8 +126,8 @@ After switching lists, use `:cope` to inspect the current quickfix list.
 
 Location lists are the window-local sibling of quickfix lists. They are useful
 when different windows need different result sets. This config stays
-quickfix-first because diagnostics, search, references, tests, git output, and
-AI output are treated as one global task list.
+quickfix-first because diagnostics, search, references, git output, and AI
+output are treated as one global task list.
 
 ## Filetype Notes
 

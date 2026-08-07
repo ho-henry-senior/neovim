@@ -53,15 +53,6 @@ Current startup notes:
 - **[gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)** — gutter hunk markers, inline blame, and hunk-level staging and resetting.
 - **[grug-far.nvim](https://github.com/MagicDuck/grug-far.nvim)** — project-wide search and replace with a persistent UI.
 
-## Testing
-
-- **[neotest](https://github.com/nvim-neotest/neotest)** — test runner framework; runs the nearest test, current file, or full suite from inside Neovim. Loads automatically when opening C#, Python, or JavaScript/TypeScript files. The summary panel shows results and supports re-running tests with `r`/`R`, navigating with `<CR>`/`l`/`h`, jumping to source with `i`, opening output with `o`, and cycling failures with `J`/`K`.
-- **[neotest-jest](https://github.com/nvim-neotest/neotest-jest)** — Jest adapter for JavaScript and TypeScript projects.
-- **[neotest-python](https://github.com/nvim-neotest/neotest-python)** — Python adapter, configured for `unittest` projects.
-- **[neotest-dotnet](https://github.com/Issafalcon/neotest-dotnet)** — .NET adapter for xUnit, NUnit, and MSTest projects.
-- local Mocha adapter — Mocha support for JavaScript projects, kept in-repo under `lua/plugins/neotest/`.
-- **[nvim-nio](https://github.com/nvim-neotest/nvim-nio)** — async library required by neotest.
-
 ## Writing and Markdown
 
 - **[render-markdown.nvim](https://github.com/MeanderingProgrammer/render-markdown.nvim)** — inline rendering for Markdown headings, callouts, code blocks, checkboxes, and tables. See [markdown.md](markdown.md).

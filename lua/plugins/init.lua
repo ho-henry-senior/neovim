@@ -19,6 +19,5 @@ add("plugins.copilot")
 add("plugins.copilot-chat")
 add("plugins.grug-far")
 add("plugins.kulala")
-add("plugins.neotest")
 
 return specs
