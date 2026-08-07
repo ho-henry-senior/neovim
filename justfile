@@ -164,7 +164,7 @@ lazy-check:
 	assert_output "conform stays unloaded on empty startup" "false" \
 		-c "lua vim.print(package.loaded['conform'] ~= nil)" \
 		-c "quitall!"
-	assert_output "gitsigns setup stays inactive on empty startup" "false" \
+	assert_output "gitsigns setup is active on empty startup" "true" \
 		-c "lua vim.print(require('gitsigns.config').config.current_line_blame)" \
 		-c "quitall!"
 	assert_output "opening a Lua file loads conform" "true" \
