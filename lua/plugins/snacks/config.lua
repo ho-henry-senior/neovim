@@ -73,7 +73,6 @@ M.options = {
 					"build/*",
 					"coverage/*",
 					"dist/*",
-					"hodor-types/*",
 					"**/target/*",
 					"**/public/*",
 					"**/.node-gyp/**",
