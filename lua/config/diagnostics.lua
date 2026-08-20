@@ -1,16 +1,32 @@
 --- diagnostic settings
 local map = vim.keymap.set
-local palette = {
-	err = "#51202A",
-	warn = "#3B3B1B",
-	info = "#1F3342",
-	hint = "#1E2E1E",
-}
+local utils = require("lib.utils")
+local get_hl = utils.get_hl
+local blend_colors = utils.blend_colors
 
-vim.api.nvim_set_hl(0, "DiagnosticErrorLine", { bg = palette.err, blend = 20 })
-vim.api.nvim_set_hl(0, "DiagnosticWarnLine", { bg = palette.warn, blend = 15 })
-vim.api.nvim_set_hl(0, "DiagnosticInfoLine", { bg = palette.info, blend = 10 })
-vim.api.nvim_set_hl(0, "DiagnosticHintLine", { bg = palette.hint, blend = 10 })
+local line_alphas = { Error = 0.20, Warn = 0.15, Info = 0.10, Hint = 0.10 }
+
+local function apply_diagnostic_line_highlights()
+	local normal = get_hl("Normal")
+	if not normal.bg then
+		return
+	end
+
+	for name, alpha in pairs(line_alphas) do
+		local color = get_hl("Diagnostic" .. name).fg or normal.fg
+		if color then
+			vim.api.nvim_set_hl(0, "Diagnostic" .. name .. "Line", { bg = blend_colors(normal.bg, color, alpha) })
+		end
+	end
+end
+
+apply_diagnostic_line_highlights()
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = utils.augroup("diagnostic_line_highlights"),
+	callback = function()
+		vim.schedule(apply_diagnostic_line_highlights)
+	end,
+})
 
 local sev = vim.diagnostic.severity
 
