@@ -48,6 +48,11 @@ local function restore_project_session()
 		return
 	end
 
+	if vim.v.startreason == "restart" then
+		-- Nvim's own `:restart` already saved/restored a session for us.
+		return
+	end
+
 	local session_file = get_session_file()
 	if vim.fn.filereadable(session_file) == 0 then
 		return
