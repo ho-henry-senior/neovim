@@ -108,18 +108,14 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	group = augroup("close_with_q"),
 	pattern = {
-		"PlenaryTestPopup",
 		"checkhealth",
-		"dbout",
 		"gitsigns-blame",
 		"grug-far",
 		"help",
 		"lspinfo",
 		"notify",
 		"qf",
-		"spectre_panel",
 		"startuptime",
-		"tsplayground",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false

@@ -79,11 +79,7 @@ return {
 				lspinfo = true,
 				checkhealth = true,
 				startuptime = true,
-				TelescopePrompt = true,
-				TelescopeResults = true,
-				spectre_panel = true,
 				["grug-far"] = true,
-				trouble = true,
 			}
 
 			local function start_treesitter(buf)
