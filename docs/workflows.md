@@ -131,7 +131,6 @@ output are treated as one global task list.
 
 ## Filetype Notes
 
-- `.txt` files are treated as Markdown.
 - `.env` files are treated as dotenv.
 - `*.njk` is treated as HTML.
 - `tsconfig*.json` and `jsconfig*.json` are treated as JSONC.

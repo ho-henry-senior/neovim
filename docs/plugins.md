@@ -2,15 +2,7 @@
 
 Plugin installation and loading is handled by a small local helper in `lua/lib/pack.lua` on top of Neovim's built-in `vim.pack`.
 
-Each configured plugin has a top-level file in `lua/plugins/`. Specs use a small, explicit shape:
-
-- `src`, `name`, and `version` are passed through to `vim.pack`.
-- `dependencies` keeps dependency-only plugins with the plugin that needs them.
-- `event`, `ft`, `cmd`, `keys`, and `lazy = true` control lazy loading.
-- `keys` is the standard place for global plugin-owned keymaps.
-- `opts` plus `module` handles the common `require(module).setup(opts)` case.
-- `init` runs before a plugin is loaded, for plugin globals or other pre-load setup.
-- `config` is reserved for plugin-specific setup that does not fit the common fields.
+Each configured plugin has a top-level file in `lua/plugins/`. See the header comment in `lua/lib/pack.lua` for the full spec shape (`src`/`name`/`version`, `dependencies`, `event`/`ft`/`cmd`/`keys`, `opts`/`module`, `init`, `config`).
 
 Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, special-buffer setup, or plugin UI creation hooks.
 
