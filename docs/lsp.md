@@ -14,21 +14,10 @@
 - Ruff for Python linting, fixes, import sorting, and formatting
 - Terraform
 - TypeScript / JavaScript
+- ESLint for JS / TS linting and fix-all support
 - YAML
 
 The per-server configs live under `lsp/`. Install commands are listed in [tooling.md](tooling.md).
-
-## Optional On-Demand Server
-
-- ESLint
-
-ESLint is optional because `ts_ls` already covers general JavaScript and TypeScript features; ESLint is only useful when a project actually uses it and you want lint diagnostics and fix-all support from the editor.
-
-To enable it, set `vim.g.lsp_on_demands` early in `init.lua`:
-
-```lua
-vim.g.lsp_on_demands = { "eslint_ls" }
-```
 
 ## Default LSP Mappings
 

@@ -14,7 +14,7 @@ Current startup notes:
 
 - `keys` count as lazy-loading triggers in `lua/lib/pack.lua`.
 - Key-only plugin specs have been reviewed; none currently need to opt out of key-triggered lazy loading.
-- `gitsigns.nvim` loads on `BufReadPre`/`BufNewFile`.
+- `gitsigns.nvim` loads eagerly so its configured opts override the plugin's own startup setup.
 - `conform.nvim` loads on `BufReadPre`/`BufNewFile` and after session restore, with `<leader>cf` as a manual formatting trigger.
 - `nvim-treesitter-textobjects` loads when its textobject mappings are first used.
 

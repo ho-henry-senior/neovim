@@ -3,7 +3,7 @@ local augroup = require("lib.utils").augroup
 
 vim.lsp.config("*", {
 	flags = {
-		-- Work around Neovim 0.12.3's incremental sync assertion when quickfix
+		-- Work around a Neovim 0.12.x incremental sync assertion when quickfix
 		-- buffers are rewritten by vim.fn.setqflist()/Snacks picker actions.
 		allow_incremental_sync = false,
 	},
