@@ -67,7 +67,7 @@ export PATH="$HOME/.dotnet/tools:$PATH"
 
 - `just check` — load Neovim headlessly, fail if the config or plugins error
 - `just fmt-check` — verify Lua formatting with `stylua --check`
-- `just validate` — run both (may also install missing `vim.pack` plugins)
+- `just validate` — run config, lazy-loading, and formatting checks
 
 ## WezTerm
 

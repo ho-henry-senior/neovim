@@ -1,6 +1,6 @@
 # Markdown
 
-This config treats Markdown and prose as a first-class workflow, but keeps the setup fairly small.
+This config treats Markdown and prose as a first-class workflow, but keeps the setup fairly small. Markdown shortcuts are listed in [keymaps.md](keymaps.md).
 
 ## Defaults
 
@@ -15,44 +15,23 @@ Related filetype behaviour:
 - `.txt` files are treated as Markdown
 - `gitcommit` buffers get the same writing defaults
 
-## Mappings
+## Editing Behaviour
 
-### Rendering
-
-- `<leader>mt`: toggle inline Markdown rendering
-- `<leader>mp`: toggle browser Markdown preview, including Mermaid diagrams
-- `<leader>mm`: preview the current Mermaid file or Mermaid code fence under the cursor
-
-### Editing Helpers
-
-Visual mode:
-
-- `<leader>mb`: wrap selection in `**...**`
-- `<leader>mi`: wrap selection in `*...*`
-- `<leader>mc`: wrap selection in `` `...` ``
-- `<leader>ml`: turn the selection into `[text]()` and place the cursor inside the URL
-
-Normal mode:
-
-- `gf`: follow a local inline Markdown link from anywhere inside the link, including `#heading` fragments
-- `<leader>m<`: increase the current heading level
-- `<leader>m>`: decrease the current heading level
-- `<leader>mh`: insert a horizontal rule
-- `<leader>mx`: toggle a checkbox on the current line
-
-Checkbox behaviour:
+Checkbox toggling handles common list states:
 
 - `- [ ] item` becomes `- [x] item`
 - `- [x] item` becomes `- [ ] item`
 - `- item` becomes `- [ ] item`
 
-Link navigation:
+Link navigation follows local inline Markdown links from anywhere inside the link:
 
-- `[label](other.md)` opens `other.md` even when the cursor is on `label`
+- `[label](other.md)` opens `other.md`
 - `[label](other.md#some-heading)` opens `other.md` and jumps to `Some Heading`
 - `[label](#some-heading)` jumps within the current Markdown file
 - extensionless local links try a matching `.md` file
 - external URLs are left alone; use the normal URL-opening workflow for those
+
+The visual editing mappings are intended for characterwise and linewise visual selections.
 
 ## Plugins
 
@@ -64,12 +43,4 @@ Markdown support currently uses:
 
 ## Mermaid
 
-Pure Mermaid files use the `mermaid` filetype for `.mermaid` and `.mmd` files.
-Use `<leader>mm` to preview either:
-
-- the whole current Mermaid buffer
-- the Mermaid code fence containing the cursor in a Markdown buffer
-
-## Notes
-
-- The visual editing mappings are intended for characterwise and linewise visual selections.
+Pure Mermaid files use the `mermaid` filetype for `.mermaid` and `.mmd` files. The Mermaid preview opens either the whole current Mermaid buffer or the Mermaid code fence containing the cursor in a Markdown buffer.

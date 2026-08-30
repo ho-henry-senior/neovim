@@ -1,117 +1,38 @@
 # Workflows
 
-Workflow-specific mappings and notes. See [keymaps.md](keymaps.md) for the short reference.
+Workflow-specific notes. Use [keymaps.md](keymaps.md) as the canonical shortcut reference and [motions.md](motions.md) for bracket motions.
 
 ## AI
 
-| Mode | Shortcut | Action |
-| --- | --- | --- |
-| Normal | `<leader>aA` | Copilot auth |
-| Normal | `<leader>at` | Copilot toggle |
-| Normal | `<leader>aT` | Copilot toggle current buffer attach |
-| Normal | `<leader>as` | Copilot status |
-| Normal | `<leader>ac` | Open Copilot Chat |
-| Normal | `<leader>ap` | Toggle Copilot panel |
-| Normal / Visual | `<leader>aa` | Copilot explain buffer or selection |
+Copilot has three surfaces: inline insert-mode suggestions, the Copilot panel, and Copilot Chat. Global enable/disable and buffer-local attach/detach are separate so a noisy file can opt out without disabling suggestions everywhere.
 
-`<leader>at` enables or disables Copilot globally. `<leader>aT` only attaches or detaches Copilot for the current buffer.
-
-Copilot panel mappings:
-
-| Shortcut | Action |
-| --- | --- |
-| `R` | Refresh suggestions |
-| `]]` / `[[` | Next / previous suggestion |
-| `<Enter>` | Accept suggestion |
+Inside the Copilot panel, `R` refreshes suggestions. CopilotChat can also send structured output into quickfix: `gqd` sends code diff blocks, and `gqa` sends assistant answers.
 
 ## Harpoon
 
-| Shortcut | Action |
-| --- | --- |
-| `<leader>h` | Add current file |
-| `<leader>H` | Remove current file |
-| `<C-e>` | Open Harpoon menu |
-| `<leader>1` ... `<leader>4` | Jump to Harpoon file 1-4 |
-| `<S-h>` / `<S-l>` | Previous / next Harpoon file |
-| `<C-v>` | Open selected Harpoon file in vertical split from the menu |
-| `<C-s>` | Open selected Harpoon file in split from the menu |
-| `<C-t>` | Open selected Harpoon file in tab from the menu |
-
-Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove entries.
+Harpoon is for the small working set of files currently in focus. Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove entries.
 
 ## Git
 
-Hunk selection is buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md).
-
-| Shortcut | Action |
-| --- | --- |
-| `ih` | Select hunk (visual and operator mode) |
-| `<leader>gf` | Current file history in log picker |
-| `<leader>gg` | Open LazyGit |
-| `<leader>gh` | Open Hunk review UI for the current repo diff |
-| `<leader>gH` | Open Hunk review UI for `HEAD` |
-| `<leader>gl` | Git log picker |
-| `<leader>gL` | Git log for current line |
-| `<leader>gp` | Git diff picker |
-| `<leader>gr` | Open file or selection in remote |
+Hunk selection is buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md). Git workflows can send files, references, and hunks into quickfix when they become a task list rather than a one-off jump.
 
 ## Treesitter Text Objects
 
-Available in any buffer where Treesitter is active. Treesitter bracket motions are listed in [motions.md](motions.md).
-
-| Shortcut | Object |
-| --- | --- |
-| `af` / `if` | Function outer / inner |
-| `ac` / `ic` | Class outer / inner |
-| `aa` / `ia` | Parameter outer / inner |
-| `ad` | Comment |
-| `as` | Statement |
+Treesitter textobjects are available in buffers where Treesitter is active. They cover functions, classes, parameters, comments, and statements; related bracket motions are listed in [motions.md](motions.md).
 
 ## Formatting, Diagnostics, and UI
 
-| Shortcut | Action |
-| --- | --- |
-| `<leader>cf` | Format buffer |
-| `<leader>n` | Notification history |
-| `<leader>ud` | Diagnostics toggle |
-| `<leader>uv` | Diagnostic virtual text toggle |
-| `<leader>ua` | Tabline toggle |
-| `<leader>ut` | Treesitter toggle |
-| `<leader>ub` | Dark background toggle |
-| `<leader>ug` | Indent guides toggle |
-| `<leader>uC` | Pick colorscheme |
-| `<leader>ur` | Clear search highlight and refresh |
+Formatting is handled by Conform, with LSP formatting as a fallback. Diagnostics can be browsed inline, moved into quickfix, or filtered to errors only. UI toggles are grouped under `<leader>u`.
 
 ## Quickfix
 
-The quickfix list is populated from multiple sources and navigated with `]q` / `[q`.
-At the beginning or end of the list, these mappings notify instead of showing
-the raw quickfix boundary error.
+The quickfix list is populated from diagnostics, LSP references, git diffs, git hunks, picker results, Grug-far results, and CopilotChat output. Navigate with `]q` / `[q`; at the beginning or end of the list, these mappings notify instead of showing the raw quickfix boundary error.
 
-Use `:cope` or `:copen` to open the quickfix window. Close it with `:cclose`,
-or with `:q` from inside the quickfix window.
+Use `:cope` or `:copen` to open the quickfix window. Close it with `:cclose`, or with `:q` from inside the quickfix window.
 
-### Populating quickfix
+### Quickfix History
 
-| Shortcut | Source |
-| --- | --- |
-| `<leader>qd` | All diagnostics (project-wide) |
-| `<leader>qe` | Errors only (project-wide) |
-| `<leader>qr` | LSP references for symbol under cursor |
-| `<leader>qg` | Git diff files — prompts for a ref, defaults to `HEAD` |
-| `<leader>qh` | Git hunks in current buffer |
-| `<leader>qH` | Git hunks across all open buffers |
-| `<C-q>` | Send current picker results to quickfix (inside any Snacks picker) |
-
-### Automatic population
-
-- **Grug-far** — `<localleader>q` inside the grug-far buffer sends all matches to quickfix.
-- **CopilotChat** — `gqd` sends code diff blocks to quickfix; `gqa` sends assistant answers.
-
-### Quickfix history
-
-Quickfix keeps a history of result lists. This is useful after replacing grep
-results with diagnostics, references, or git output.
+Quickfix keeps a history of result lists. This is useful after replacing grep results with diagnostics, references, or git output.
 
 | Command | Action |
 | --- | --- |
@@ -122,12 +43,9 @@ results with diagnostics, references, or git output.
 
 After switching lists, use `:cope` to inspect the current quickfix list.
 
-### Location lists
+### Location Lists
 
-Location lists are the window-local sibling of quickfix lists. They are useful
-when different windows need different result sets. This config stays
-quickfix-first because diagnostics, search, references, git output, and AI
-output are treated as one global task list.
+Location lists are the window-local sibling of quickfix lists. They are useful when different windows need different result sets. This config stays quickfix-first because diagnostics, search, references, git output, and AI output are treated as one global task list.
 
 ## Filetype Notes
 
