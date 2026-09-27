@@ -1,5 +1,6 @@
 require("config.options")
 require("config.keymaps")
+require("just").setup()
 require("integrations").setup()
 require("config.session")
 require("config.diagnostics")

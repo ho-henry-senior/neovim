@@ -117,6 +117,12 @@ Canonical shortcut reference. Workflow notes live in [workflows.md](workflows.md
 | `<leader>ii` | Icons |
 | `<leader>ik` | Keymaps |
 
+## Just
+
+| Shortcut | Action |
+| --- | --- |
+| `<leader>j` | Pick and run a recipe from the nearest justfile |
+
 ## Markdown
 
 | Mode | Shortcut | Action |

@@ -6,6 +6,8 @@ Each configured plugin has a top-level file in `lua/plugins/`. See the header co
 
 Buffer-local and dynamic mappings stay in plugin callbacks such as `on_attach`, special-buffer setup, or plugin UI creation hooks.
 
+Local workflow modules live directly under `lua/`. The Just runner is documented in [just.md](just.md).
+
 ## Startup Optimisations
 
 Use `just profile` to write a startup profile before and after startup changes.
