@@ -4,6 +4,7 @@ local M = {}
 
 function M.setup()
 	require("integrations.hunk").setup()
+	require("integrations.just").setup()
 end
 
 return M
