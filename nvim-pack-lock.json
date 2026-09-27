@@ -27,8 +27,7 @@
     },
     "harpoon": {
       "rev": "87b1a3506211538f460786c23f98ec63ad9af4e5",
-      "src": "https://github.com/ThePrimeagen/harpoon",
-      "version": "'harpoon2'"
+      "src": "https://github.com/ThePrimeagen/harpoon"
     },
     "kulala.nvim": {
       "rev": "b1c1cd9430d1f506e9b7add09cc2f2aac067565f",

@@ -8,10 +8,6 @@ Copilot has three surfaces: inline insert-mode suggestions, the Copilot panel, a
 
 Inside the Copilot panel, `R` refreshes suggestions. CopilotChat can also send structured output into quickfix: `gqd` sends code diff blocks, and `gqa` sends assistant answers.
 
-## Harpoon
-
-Harpoon is for the small working set of files currently in focus. Delete lines from the Harpoon menu and close it with `q` or `<Esc>` to remove entries.
-
 ## Git
 
 Hunk selection is buffer-local and active in any file tracked by git. Hunk navigation is listed in [motions.md](motions.md). Git workflows can send files, references, and hunks into quickfix when they become a task list rather than a one-off jump.

@@ -108,19 +108,6 @@ Canonical shortcut reference. Workflow notes live in [workflows.md](workflows.md
 | Normal | `<leader>qh` | Current buffer hunks to quickfix |
 | Normal | `<leader>qH` | All open buffer hunks to quickfix |
 
-## Harpoon
-
-| Shortcut | Action |
-| --- | --- |
-| `<leader>h` | Add current file |
-| `<leader>H` | Remove current file |
-| `<C-e>` | Open Harpoon menu |
-| `<leader>1` ... `<leader>4` | Jump to Harpoon file 1-4 |
-| `<S-h>` / `<S-l>` | Previous / next Harpoon file |
-| Harpoon menu `<C-v>` | Open selected file in vertical split |
-| Harpoon menu `<C-s>` | Open selected file in split |
-| Harpoon menu `<C-t>` | Open selected file in tab |
-
 ## Inspect
 
 | Shortcut | Action |
