@@ -1,5 +1,7 @@
 # Motions
 
+`%` matches paired keywords such as `if`/`else`/`endif` and `do`/`while` via Neovim's built-in `matchit` package.
+
 ## Bracket Motions
 
 Use `]` for next and `[` for previous.

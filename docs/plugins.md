@@ -36,6 +36,7 @@ Current startup notes:
 
 ## Navigation, Search, and UI
 
+- **matchit** — Neovim's built-in runtime package; extends `%` to match language keywords and other structural pairs. See [motions.md](motions.md).
 - **[snacks.nvim](https://github.com/folke/snacks.nvim)** — the main UI and workflow plugin; provides the file picker, grep, explorer, terminal, notifications, and toggles. The dashboard, animations, smooth scrolling, and custom status column are intentionally disabled.
 - **[which-key.nvim](https://github.com/folke/which-key.nvim)** — shows leader key groups and mapping hints after a short pause.
 - **[lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)** — statusline, tabline, and per-window labels for splits. See [ui.md](ui.md).
