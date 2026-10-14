@@ -29,7 +29,6 @@ local function lsp_is_excluded_buffer(buf)
 end
 
 local default_keymaps = {
-	{ keys = "<leader>ca", func = vim.lsp.buf.code_action, desc = "Code actions" },
 	{
 		keys = "<leader>cl",
 		func = function()
@@ -46,22 +45,7 @@ local default_keymaps = {
 		end,
 		desc = "LSP fix all",
 	},
-	{ keys = "K", func = vim.lsp.buf.hover, desc = "Hover (alt)", has = "hoverProvider" },
 	{ keys = "gd", func = vim.lsp.buf.definition, desc = "Goto definition", has = "definitionProvider" },
-	{
-		keys = "<leader>qr",
-		func = function()
-			vim.lsp.buf.references(nil, {
-				on_list = function(options)
-					require("lib.quickfix").set_items(options.title, options.items, {
-						empty_message = "No references found",
-					})
-				end,
-			})
-		end,
-		desc = "References → quickfix",
-		has = "referencesProvider",
-	},
 }
 
 vim.api.nvim_create_autocmd("LspAttach", {
