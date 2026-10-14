@@ -71,11 +71,9 @@ Canonical shortcut reference. Workflow notes live in [workflows.md](workflows.md
 | Shortcut | Action |
 | --- | --- |
 | `<leader>cf` | Format buffer |
-| `<leader>ca` | LSP code actions |
 | `<leader>cl` | LSP fix all |
 | `<leader>qd` | All diagnostics to quickfix |
 | `<leader>qe` | Errors to quickfix |
-| `<leader>qr` | LSP references to quickfix |
 
 ## Files and Search
 
